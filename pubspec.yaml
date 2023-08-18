@@ -1,0 +1,77 @@
+name: surety
+description: A new Flutter application.
+
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.16.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.2
+  provider:
+  shared_preferences:
+  cached_network_image:
+  flutter_easyloading:
+  rflutter_alert:
+  flutter_svg:
+  cloud_firestore:
+  file_picker: ^4.6.1
+  firebase_storage:
+  firebase_auth:
+  firebase_core:
+  google_fonts:
+  get:
+  intl:
+  flutter_datetime_picker:
+  google_sign_in: ^6.1.4
+#  flutter_local_notifications:
+  lottie:
+#  pull_to_refresh: ^2.0.0
+  get_it:
+  fpdart:
+  injectable:
+  date_time_picker: ^2.1.0
+#  workmanager:
+  country_state_city_picker: ^1.2.8
+  cron: ^0.5.0
+#  modal_bottom_sheet:
+  download_assets: ^3.0.0
+  webview_flutter:
+  firebase_auth_platform_interface:
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  build_runner:
+  injectable_generator: ^1.5.2
+
+
+flutter:
+
+
+  uses-material-design: true
+
+  assets:
+    - assets/
+    - images/
+
+  fonts:
+    - family: Ubuntu
+      fonts:
+        - asset: assets/fonts/Ubuntu-B.ttf
+        - asset: assets/fonts/Ubuntu-BI.ttf
+        - asset: assets/fonts/Ubuntu-C.ttf
+        - asset: assets/fonts/Ubuntu-L.ttf
+        - asset: assets/fonts/Ubuntu-LI.ttf
+        - asset: assets/fonts/Ubuntu-M.ttf
+        - asset: assets/fonts/Ubuntu-MI.ttf
+        - asset: assets/fonts/Ubuntu-R.ttf
+        - asset: assets/fonts/Ubuntu-RI.ttf

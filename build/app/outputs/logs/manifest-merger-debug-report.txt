@@ -1,0 +1,764 @@
+-- Merging decision tree log ---
+application
+INJECTED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:17:5-54:19
+MERGED from [:firebase_auth] /Users/arybobysiregar/AndroidStudioProjects/surety/build/firebase_auth/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-15:19
+MERGED from [:firebase_auth] /Users/arybobysiregar/AndroidStudioProjects/surety/build/firebase_auth/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-15:19
+MERGED from [:firebase_storage] /Users/arybobysiregar/AndroidStudioProjects/surety/build/firebase_storage/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-15:19
+MERGED from [:firebase_storage] /Users/arybobysiregar/AndroidStudioProjects/surety/build/firebase_storage/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-15:19
+MERGED from [:cloud_firestore] /Users/arybobysiregar/AndroidStudioProjects/surety/build/cloud_firestore/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-15:19
+MERGED from [:cloud_firestore] /Users/arybobysiregar/AndroidStudioProjects/surety/build/cloud_firestore/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-15:19
+MERGED from [:firebase_core] /Users/arybobysiregar/AndroidStudioProjects/surety/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-15:19
+MERGED from [:firebase_core] /Users/arybobysiregar/AndroidStudioProjects/surety/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-15:19
+MERGED from [androidx.window:window:1.0.0-beta04] /Users/arybobysiregar/.gradle/caches/transforms-3/9ad533fdf0e2afba36588f1af96ec304/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:24:5-31:19
+MERGED from [androidx.window:window:1.0.0-beta04] /Users/arybobysiregar/.gradle/caches/transforms-3/9ad533fdf0e2afba36588f1af96ec304/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:24:5-31:19
+MERGED from [com.google.firebase:firebase-auth:21.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/192241f621ba5a8798ec4d7931f0c473/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:26:5-71:19
+MERGED from [com.google.firebase:firebase-auth:21.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/192241f621ba5a8798ec4d7931f0c473/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:26:5-71:19
+MERGED from [com.google.firebase:firebase-firestore:24.4.3] /Users/arybobysiregar/.gradle/caches/transforms-3/f472b97645f1c20a560a44808d4477f5/transformed/jetified-firebase-firestore-24.4.3/AndroidManifest.xml:15:5-23:19
+MERGED from [com.google.firebase:firebase-firestore:24.4.3] /Users/arybobysiregar/.gradle/caches/transforms-3/f472b97645f1c20a560a44808d4477f5/transformed/jetified-firebase-firestore-24.4.3/AndroidManifest.xml:15:5-23:19
+MERGED from [com.google.firebase:firebase-storage:20.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/64dbd6509ec02800e667f6f862160d4f/transformed/jetified-firebase-storage-20.1.0/AndroidManifest.xml:28:5-36:19
+MERGED from [com.google.firebase:firebase-storage:20.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/64dbd6509ec02800e667f6f862160d4f/transformed/jetified-firebase-storage-20.1.0/AndroidManifest.xml:28:5-36:19
+MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/9620a743703957defb872ac20548362d/transformed/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/9620a743703957defb872ac20548362d/transformed/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.firebase:firebase-appcheck-interop:16.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/1192a58bb7fea41c8e428bd75a6337af/transformed/jetified-firebase-appcheck-interop-16.1.0/AndroidManifest.xml:23:5-20
+MERGED from [com.google.firebase:firebase-appcheck-interop:16.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/1192a58bb7fea41c8e428bd75a6337af/transformed/jetified-firebase-appcheck-interop-16.1.0/AndroidManifest.xml:23:5-20
+MERGED from [com.google.firebase:firebase-common:20.3.0] /Users/arybobysiregar/.gradle/caches/transforms-3/904cf721afb6a21efd0e8a8cd4694461/transformed/jetified-firebase-common-20.3.0/AndroidManifest.xml:24:5-37:19
+MERGED from [com.google.firebase:firebase-common:20.3.0] /Users/arybobysiregar/.gradle/caches/transforms-3/904cf721afb6a21efd0e8a8cd4694461/transformed/jetified-firebase-common-20.3.0/AndroidManifest.xml:24:5-37:19
+MERGED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:30:5-143:19
+MERGED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:30:5-143:19
+MERGED from [com.google.android.gms:play-services-auth:20.6.0] /Users/arybobysiregar/.gradle/caches/transforms-3/bcc33c625da60ecb758eb012930312c4/transformed/jetified-play-services-auth-20.6.0/AndroidManifest.xml:22:5-38:19
+MERGED from [com.google.android.gms:play-services-auth:20.6.0] /Users/arybobysiregar/.gradle/caches/transforms-3/bcc33c625da60ecb758eb012930312c4/transformed/jetified-play-services-auth-20.6.0/AndroidManifest.xml:22:5-38:19
+MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/c9b090a317d56366324590199365d931/transformed/jetified-play-services-safetynet-17.0.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/c9b090a317d56366324590199365d931/transformed/jetified-play-services-safetynet-17.0.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-fido:20.0.1] /Users/arybobysiregar/.gradle/caches/transforms-3/7932a4412d2e4361df2e3c6fb98208b6/transformed/jetified-play-services-fido-20.0.1/AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.android.gms:play-services-fido:20.0.1] /Users/arybobysiregar/.gradle/caches/transforms-3/7932a4412d2e4361df2e3c6fb98208b6/transformed/jetified-play-services-fido-20.0.1/AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/arybobysiregar/.gradle/caches/transforms-3/e2f3409ae00026833f50b55d237555e6/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:19:5-23:19
+MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/arybobysiregar/.gradle/caches/transforms-3/e2f3409ae00026833f50b55d237555e6/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:19:5-23:19
+MERGED from [com.google.android.gms:play-services-tasks:18.0.2] /Users/arybobysiregar/.gradle/caches/transforms-3/4d82290217b5a582c1eea85215ab47a2/transformed/jetified-play-services-tasks-18.0.2/AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-tasks:18.0.2] /Users/arybobysiregar/.gradle/caches/transforms-3/4d82290217b5a582c1eea85215ab47a2/transformed/jetified-play-services-tasks-18.0.2/AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-basement:18.2.0] /Users/arybobysiregar/.gradle/caches/transforms-3/7b4154da9c45e1124d50fe15ffd691f1/transformed/jetified-play-services-basement-18.2.0/AndroidManifest.xml:20:5-24:19
+MERGED from [com.google.android.gms:play-services-basement:18.2.0] /Users/arybobysiregar/.gradle/caches/transforms-3/7b4154da9c45e1124d50fe15ffd691f1/transformed/jetified-play-services-basement-18.2.0/AndroidManifest.xml:20:5-24:19
+MERGED from [androidx.core:core:1.6.0] /Users/arybobysiregar/.gradle/caches/transforms-3/17d6a869e2c48900027bf4bfc036777c/transformed/core-1.6.0/AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.6.0] /Users/arybobysiregar/.gradle/caches/transforms-3/17d6a869e2c48900027bf4bfc036777c/transformed/core-1.6.0/AndroidManifest.xml:24:5-89
+MERGED from [androidx.startup:startup-runtime:1.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/5acdb2ace6b23b96f05222aa13601858/transformed/jetified-startup-runtime-1.0.0/AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.startup:startup-runtime:1.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/5acdb2ace6b23b96f05222aa13601858/transformed/jetified-startup-runtime-1.0.0/AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.room:room-runtime:2.2.5] /Users/arybobysiregar/.gradle/caches/transforms-3/438f93502836a47f7e0a556ab8af7cd3/transformed/room-runtime-2.2.5/AndroidManifest.xml:24:5-29:19
+MERGED from [androidx.room:room-runtime:2.2.5] /Users/arybobysiregar/.gradle/caches/transforms-3/438f93502836a47f7e0a556ab8af7cd3/transformed/room-runtime-2.2.5/AndroidManifest.xml:24:5-29:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/arybobysiregar/.gradle/caches/transforms-3/234270aad7e6c40a494ab40391356928/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/arybobysiregar/.gradle/caches/transforms-3/234270aad7e6c40a494ab40391356928/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.6.0] /Users/arybobysiregar/.gradle/caches/transforms-3/17d6a869e2c48900027bf4bfc036777c/transformed/core-1.6.0/AndroidManifest.xml:24:18-86
+	android:name
+		INJECTED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml
+manifest
+ADDED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:1:1-55:12
+INJECTED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:1:1-55:12
+INJECTED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:1:1-55:12
+INJECTED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:1:1-55:12
+MERGED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:1:1-55:12
+MERGED from [:shared_preferences_android] /Users/arybobysiregar/AndroidStudioProjects/surety/build/shared_preferences_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:firebase_auth] /Users/arybobysiregar/AndroidStudioProjects/surety/build/firebase_auth/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-17:12
+MERGED from [:firebase_storage] /Users/arybobysiregar/AndroidStudioProjects/surety/build/firebase_storage/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-17:12
+MERGED from [:cloud_firestore] /Users/arybobysiregar/AndroidStudioProjects/surety/build/cloud_firestore/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-17:12
+MERGED from [:firebase_core] /Users/arybobysiregar/AndroidStudioProjects/surety/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-17:12
+MERGED from [:file_picker] /Users/arybobysiregar/AndroidStudioProjects/surety/build/file_picker/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-19:12
+MERGED from [:flutter_plugin_android_lifecycle] /Users/arybobysiregar/AndroidStudioProjects/surety/build/flutter_plugin_android_lifecycle/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:sqflite] /Users/arybobysiregar/AndroidStudioProjects/surety/build/sqflite/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:path_provider_android] /Users/arybobysiregar/AndroidStudioProjects/surety/build/path_provider_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:google_sign_in_android] /Users/arybobysiregar/AndroidStudioProjects/surety/build/google_sign_in_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [:webview_flutter_android] /Users/arybobysiregar/AndroidStudioProjects/surety/build/webview_flutter_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.window:window-java:1.0.0-beta04] /Users/arybobysiregar/.gradle/caches/transforms-3/37fc68f122ca01cada4536caafca2d3e/transformed/jetified-window-java-1.0.0-beta04/AndroidManifest.xml:17:1-23:12
+MERGED from [androidx.work:work-runtime-ktx:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/793213ecb15e1fd3c346e074f8fa2643/transformed/work-runtime-ktx-2.7.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.window:window:1.0.0-beta04] /Users/arybobysiregar/.gradle/caches/transforms-3/9ad533fdf0e2afba36588f1af96ec304/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.multidex:multidex:2.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/82a2126e5c9d1a0dfe011bcf948d0685/transformed/multidex-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.firebase:firebase-auth:21.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/192241f621ba5a8798ec4d7931f0c473/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:17:1-73:12
+MERGED from [com.google.firebase:firebase-firestore:24.4.3] /Users/arybobysiregar/.gradle/caches/transforms-3/f472b97645f1c20a560a44808d4477f5/transformed/jetified-firebase-firestore-24.4.3/AndroidManifest.xml:2:1-25:12
+MERGED from [com.google.firebase:firebase-storage:20.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/64dbd6509ec02800e667f6f862160d4f/transformed/jetified-firebase-storage-20.1.0/AndroidManifest.xml:15:1-38:12
+MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/9620a743703957defb872ac20548362d/transformed/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:2:1-10:12
+MERGED from [com.google.firebase:firebase-appcheck-interop:16.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/1192a58bb7fea41c8e428bd75a6337af/transformed/jetified-firebase-appcheck-interop-16.1.0/AndroidManifest.xml:15:1-25:12
+MERGED from [com.google.firebase:firebase-common:20.3.0] /Users/arybobysiregar/.gradle/caches/transforms-3/904cf721afb6a21efd0e8a8cd4694461/transformed/jetified-firebase-common-20.3.0/AndroidManifest.xml:15:1-39:12
+MERGED from [androidx.webkit:webkit:1.6.0] /Users/arybobysiregar/.gradle/caches/transforms-3/09e91d336d97fc6e09c31a0ff53084a2/transformed/webkit-1.6.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:17:1-145:12
+MERGED from [com.google.android.gms:play-services-auth:20.6.0] /Users/arybobysiregar/.gradle/caches/transforms-3/bcc33c625da60ecb758eb012930312c4/transformed/jetified-play-services-auth-20.6.0/AndroidManifest.xml:17:1-40:12
+MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/c9b090a317d56366324590199365d931/transformed/jetified-play-services-safetynet-17.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-auth-api-phone:18.0.1] /Users/arybobysiregar/.gradle/caches/transforms-3/48466600c5d9cb5346a332c5c8ec7811/transformed/jetified-play-services-auth-api-phone-18.0.1/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-auth-base:18.0.4] /Users/arybobysiregar/.gradle/caches/transforms-3/532cde3e7efbf7255bbc943322d02b73/transformed/jetified-play-services-auth-base-18.0.4/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-fido:20.0.1] /Users/arybobysiregar/.gradle/caches/transforms-3/7932a4412d2e4361df2e3c6fb98208b6/transformed/jetified-play-services-fido-20.0.1/AndroidManifest.xml:2:1-10:12
+MERGED from [com.google.firebase:firebase-database-collection:18.0.1] /Users/arybobysiregar/.gradle/caches/transforms-3/54a809a843a261e6a91f729b59671822/transformed/jetified-firebase-database-collection-18.0.1/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/arybobysiregar/.gradle/caches/transforms-3/e2f3409ae00026833f50b55d237555e6/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:16:1-24:12
+MERGED from [com.google.android.gms:play-services-tasks:18.0.2] /Users/arybobysiregar/.gradle/caches/transforms-3/4d82290217b5a582c1eea85215ab47a2/transformed/jetified-play-services-tasks-18.0.2/AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.android.gms:play-services-basement:18.2.0] /Users/arybobysiregar/.gradle/caches/transforms-3/7b4154da9c45e1124d50fe15ffd691f1/transformed/jetified-play-services-basement-18.2.0/AndroidManifest.xml:16:1-26:12
+MERGED from [androidx.fragment:fragment:1.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/14c2410a6d9b922604fc398a8c81f803/transformed/fragment-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.browser:browser:1.4.0] /Users/arybobysiregar/.gradle/caches/transforms-3/9edf8518bb747efdafd2ad53dff92777/transformed/browser-1.4.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.loader:loader:1.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/47ffdd9f99643b86ae0fe3eec7c02161/transformed/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/d413426524bb73d90a8069ca2f314c46/transformed/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity:1.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/f538c74dde6081ef8a68a485995a2ab0/transformed/jetified-activity-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.customview:customview:1.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/5b4a15e6e31a49251f9655a4c94565c0/transformed/customview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core:1.6.0] /Users/arybobysiregar/.gradle/caches/transforms-3/17d6a869e2c48900027bf4bfc036777c/transformed/core-1.6.0/AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.lifecycle:lifecycle-service:2.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/8b4f0ff7829448e6da4e0c573662ec79/transformed/jetified-lifecycle-service-2.1.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /Users/arybobysiregar/.gradle/caches/transforms-3/1e42b065271f0fa92aeef36107dd469c/transformed/lifecycle-runtime-2.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/2fda44518d200819aa87231f2d9e6a18/transformed/lifecycle-livedata-2.1.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/4e3c99ccf98cd21ca84c911cd2a960de/transformed/lifecycle-livedata-core-2.1.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/0e04552279cddb8ad82a68874ba35b17/transformed/jetified-savedstate-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.startup:startup-runtime:1.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/5acdb2ace6b23b96f05222aa13601858/transformed/jetified-startup-runtime-1.0.0/AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/3e37e44e2d85453d095d2a2fbe568fde/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.firebase:firebase-components:17.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/ca8c3c9db649e754b34065e7a7727e6c/transformed/jetified-firebase-components-17.1.0/AndroidManifest.xml:15:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/ba8a5ef0426834b7713eb52256af2097/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.room:room-runtime:2.2.5] /Users/arybobysiregar/.gradle/caches/transforms-3/438f93502836a47f7e0a556ab8af7cd3/transformed/room-runtime-2.2.5/AndroidManifest.xml:17:1-31:12
+MERGED from [androidx.sqlite:sqlite-framework:2.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/1ecbe9b47ff60ee019984a027da4adbb/transformed/sqlite-framework-2.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.sqlite:sqlite:2.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/fc541669f62b5fcc6bdff56d02a7eceb/transformed/sqlite-2.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/1760a67b6e33dc0b3757bbe54171c7e1/transformed/core-runtime-2.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/arybobysiregar/.gradle/caches/transforms-3/234270aad7e6c40a494ab40391356928/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/c62bcfeae5767b3da44b7358f950fbb3/transformed/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/93ea86319511263817a003cb4b4e3be2/transformed/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:17:1-22:12
+MERGED from [io.grpc:grpc-android:1.50.2] /Users/arybobysiregar/.gradle/caches/transforms-3/d3acbb34fbcef70b0621e8e5d17bb9c4/transformed/jetified-grpc-android-1.50.2/AndroidManifest.xml:2:1-11:12
+MERGED from [com.google.firebase:protolite-well-known-types:18.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/35e04954518eb4825a1987ed91f0cc92/transformed/jetified-protolite-well-known-types-18.0.0/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.annotation:annotation-experimental:1.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/c3cdb0aa1112b156add5b178533c27b6/transformed/jetified-annotation-experimental-1.1.0/AndroidManifest.xml:17:1-24:12
+INJECTED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/debug/AndroidManifest.xml:1:1-20:12
+INJECTED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/debug/AndroidManifest.xml:1:1-20:12
+INJECTED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/debug/AndroidManifest.xml:1:1-20:12
+	package
+		ADDED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:2:5-35
+		INJECTED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/debug/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:1:1-55:12
+		INJECTED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/debug/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:1:1-55:12
+		INJECTED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/debug/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:1:11-69
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:4:5-79
+MERGED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:4:5-79
+MERGED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:4:5-79
+MERGED from [com.google.firebase:firebase-auth:21.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/192241f621ba5a8798ec4d7931f0c473/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:24:5-79
+MERGED from [com.google.firebase:firebase-auth:21.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/192241f621ba5a8798ec4d7931f0c473/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:24:5-79
+MERGED from [com.google.firebase:firebase-firestore:24.4.3] /Users/arybobysiregar/.gradle/caches/transforms-3/f472b97645f1c20a560a44808d4477f5/transformed/jetified-firebase-firestore-24.4.3/AndroidManifest.xml:12:5-79
+MERGED from [com.google.firebase:firebase-firestore:24.4.3] /Users/arybobysiregar/.gradle/caches/transforms-3/f472b97645f1c20a560a44808d4477f5/transformed/jetified-firebase-firestore-24.4.3/AndroidManifest.xml:12:5-79
+MERGED from [com.google.firebase:firebase-storage:20.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/64dbd6509ec02800e667f6f862160d4f/transformed/jetified-firebase-storage-20.1.0/AndroidManifest.xml:25:5-79
+MERGED from [com.google.firebase:firebase-storage:20.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/64dbd6509ec02800e667f6f862160d4f/transformed/jetified-firebase-storage-20.1.0/AndroidManifest.xml:25:5-79
+MERGED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:26:5-79
+MERGED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:26:5-79
+MERGED from [io.grpc:grpc-android:1.50.2] /Users/arybobysiregar/.gradle/caches/transforms-3/d3acbb34fbcef70b0621e8e5d17bb9c4/transformed/jetified-grpc-android-1.50.2/AndroidManifest.xml:9:5-79
+MERGED from [io.grpc:grpc-android:1.50.2] /Users/arybobysiregar/.gradle/caches/transforms-3/d3acbb34fbcef70b0621e8e5d17bb9c4/transformed/jetified-grpc-android-1.50.2/AndroidManifest.xml:9:5-79
+	android:name
+		ADDED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:4:22-76
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:5:5-76
+MERGED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:5:5-76
+MERGED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:5:5-76
+	android:name
+		ADDED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:5:22-73
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:6:5-81
+MERGED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:6:5-81
+MERGED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:6:5-81
+	android:name
+		ADDED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:6:22-78
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:7:5-79
+MERGED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:7:5-79
+MERGED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:7:5-79
+	android:name
+		ADDED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:7:22-76
+uses-permission#android.permission.ACCESS_BACKGROUND_LOCATION
+ADDED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:8:5-85
+MERGED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:8:5-85
+MERGED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:8:5-85
+	android:name
+		ADDED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:8:22-82
+uses-permission#android.permission.INTERNET
+ADDED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:9:5-67
+MERGED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:9:5-67
+MERGED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:9:5-67
+MERGED from [:google_sign_in_android] /Users/arybobysiregar/AndroidStudioProjects/surety/build/google_sign_in_android/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-67
+MERGED from [:google_sign_in_android] /Users/arybobysiregar/AndroidStudioProjects/surety/build/google_sign_in_android/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-67
+MERGED from [com.google.firebase:firebase-auth:21.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/192241f621ba5a8798ec4d7931f0c473/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-auth:21.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/192241f621ba5a8798ec4d7931f0c473/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-firestore:24.4.3] /Users/arybobysiregar/.gradle/caches/transforms-3/f472b97645f1c20a560a44808d4477f5/transformed/jetified-firebase-firestore-24.4.3/AndroidManifest.xml:13:5-67
+MERGED from [com.google.firebase:firebase-firestore:24.4.3] /Users/arybobysiregar/.gradle/caches/transforms-3/f472b97645f1c20a560a44808d4477f5/transformed/jetified-firebase-firestore-24.4.3/AndroidManifest.xml:13:5-67
+MERGED from [com.google.firebase:firebase-storage:20.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/64dbd6509ec02800e667f6f862160d4f/transformed/jetified-firebase-storage-20.1.0/AndroidManifest.xml:26:5-67
+MERGED from [com.google.firebase:firebase-storage:20.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/64dbd6509ec02800e667f6f862160d4f/transformed/jetified-firebase-storage-20.1.0/AndroidManifest.xml:26:5-67
+	android:name
+		ADDED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:9:22-64
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:10:5-81
+MERGED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:10:5-81
+MERGED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:10:5-81
+	android:name
+		ADDED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:10:22-78
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:11:5-80
+MERGED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:11:5-80
+MERGED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:11:5-80
+MERGED from [:file_picker] /Users/arybobysiregar/AndroidStudioProjects/surety/build/file_picker/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-80
+MERGED from [:file_picker] /Users/arybobysiregar/AndroidStudioProjects/surety/build/file_picker/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-80
+	android:name
+		ADDED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:11:22-77
+uses-permission#android.permission.CAMERA
+ADDED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:12:5-65
+MERGED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:12:5-65
+MERGED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:12:5-65
+	android:name
+		ADDED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:12:22-62
+uses-permission#android.permission.VIBRATE
+ADDED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:13:5-66
+MERGED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:13:5-66
+MERGED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:13:5-66
+	android:name
+		ADDED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:13:22-63
+uses-permission#android.permission.CALL_PHONE
+ADDED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:14:5-69
+MERGED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:14:5-69
+MERGED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:14:5-69
+	android:name
+		ADDED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:14:22-66
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:15:5-75
+MERGED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:15:5-75
+MERGED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:15:5-75
+	android:name
+		ADDED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml:15:22-72
+uses-sdk
+INJECTED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml
+INJECTED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml
+MERGED from [:shared_preferences_android] /Users/arybobysiregar/AndroidStudioProjects/surety/build/shared_preferences_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:shared_preferences_android] /Users/arybobysiregar/AndroidStudioProjects/surety/build/shared_preferences_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:firebase_auth] /Users/arybobysiregar/AndroidStudioProjects/surety/build/firebase_auth/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:firebase_auth] /Users/arybobysiregar/AndroidStudioProjects/surety/build/firebase_auth/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:firebase_storage] /Users/arybobysiregar/AndroidStudioProjects/surety/build/firebase_storage/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:firebase_storage] /Users/arybobysiregar/AndroidStudioProjects/surety/build/firebase_storage/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:cloud_firestore] /Users/arybobysiregar/AndroidStudioProjects/surety/build/cloud_firestore/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:cloud_firestore] /Users/arybobysiregar/AndroidStudioProjects/surety/build/cloud_firestore/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:firebase_core] /Users/arybobysiregar/AndroidStudioProjects/surety/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:firebase_core] /Users/arybobysiregar/AndroidStudioProjects/surety/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:file_picker] /Users/arybobysiregar/AndroidStudioProjects/surety/build/file_picker/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:file_picker] /Users/arybobysiregar/AndroidStudioProjects/surety/build/file_picker/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:flutter_plugin_android_lifecycle] /Users/arybobysiregar/AndroidStudioProjects/surety/build/flutter_plugin_android_lifecycle/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:flutter_plugin_android_lifecycle] /Users/arybobysiregar/AndroidStudioProjects/surety/build/flutter_plugin_android_lifecycle/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:sqflite] /Users/arybobysiregar/AndroidStudioProjects/surety/build/sqflite/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:sqflite] /Users/arybobysiregar/AndroidStudioProjects/surety/build/sqflite/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:path_provider_android] /Users/arybobysiregar/AndroidStudioProjects/surety/build/path_provider_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:path_provider_android] /Users/arybobysiregar/AndroidStudioProjects/surety/build/path_provider_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:google_sign_in_android] /Users/arybobysiregar/AndroidStudioProjects/surety/build/google_sign_in_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:google_sign_in_android] /Users/arybobysiregar/AndroidStudioProjects/surety/build/google_sign_in_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:webview_flutter_android] /Users/arybobysiregar/AndroidStudioProjects/surety/build/webview_flutter_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:webview_flutter_android] /Users/arybobysiregar/AndroidStudioProjects/surety/build/webview_flutter_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.window:window-java:1.0.0-beta04] /Users/arybobysiregar/.gradle/caches/transforms-3/37fc68f122ca01cada4536caafca2d3e/transformed/jetified-window-java-1.0.0-beta04/AndroidManifest.xml:19:5-21:41
+MERGED from [androidx.window:window-java:1.0.0-beta04] /Users/arybobysiregar/.gradle/caches/transforms-3/37fc68f122ca01cada4536caafca2d3e/transformed/jetified-window-java-1.0.0-beta04/AndroidManifest.xml:19:5-21:41
+MERGED from [androidx.work:work-runtime-ktx:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/793213ecb15e1fd3c346e074f8fa2643/transformed/work-runtime-ktx-2.7.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.work:work-runtime-ktx:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/793213ecb15e1fd3c346e074f8fa2643/transformed/work-runtime-ktx-2.7.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.window:window:1.0.0-beta04] /Users/arybobysiregar/.gradle/caches/transforms-3/9ad533fdf0e2afba36588f1af96ec304/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.window:window:1.0.0-beta04] /Users/arybobysiregar/.gradle/caches/transforms-3/9ad533fdf0e2afba36588f1af96ec304/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.multidex:multidex:2.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/82a2126e5c9d1a0dfe011bcf948d0685/transformed/multidex-2.0.0/AndroidManifest.xml:20:5-43
+MERGED from [androidx.multidex:multidex:2.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/82a2126e5c9d1a0dfe011bcf948d0685/transformed/multidex-2.0.0/AndroidManifest.xml:20:5-43
+MERGED from [com.google.firebase:firebase-auth:21.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/192241f621ba5a8798ec4d7931f0c473/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:21:5-44
+MERGED from [com.google.firebase:firebase-auth:21.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/192241f621ba5a8798ec4d7931f0c473/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:21:5-44
+MERGED from [com.google.firebase:firebase-firestore:24.4.3] /Users/arybobysiregar/.gradle/caches/transforms-3/f472b97645f1c20a560a44808d4477f5/transformed/jetified-firebase-firestore-24.4.3/AndroidManifest.xml:6:5-8:41
+MERGED from [com.google.firebase:firebase-firestore:24.4.3] /Users/arybobysiregar/.gradle/caches/transforms-3/f472b97645f1c20a560a44808d4477f5/transformed/jetified-firebase-firestore-24.4.3/AndroidManifest.xml:6:5-8:41
+MERGED from [com.google.firebase:firebase-storage:20.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/64dbd6509ec02800e667f6f862160d4f/transformed/jetified-firebase-storage-20.1.0/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-storage:20.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/64dbd6509ec02800e667f6f862160d4f/transformed/jetified-firebase-storage-20.1.0/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/9620a743703957defb872ac20548362d/transformed/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/9620a743703957defb872ac20548362d/transformed/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-appcheck-interop:16.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/1192a58bb7fea41c8e428bd75a6337af/transformed/jetified-firebase-appcheck-interop-16.1.0/AndroidManifest.xml:18:5-20:41
+MERGED from [com.google.firebase:firebase-appcheck-interop:16.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/1192a58bb7fea41c8e428bd75a6337af/transformed/jetified-firebase-appcheck-interop-16.1.0/AndroidManifest.xml:18:5-20:41
+MERGED from [com.google.firebase:firebase-common:20.3.0] /Users/arybobysiregar/.gradle/caches/transforms-3/904cf721afb6a21efd0e8a8cd4694461/transformed/jetified-firebase-common-20.3.0/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-common:20.3.0] /Users/arybobysiregar/.gradle/caches/transforms-3/904cf721afb6a21efd0e8a8cd4694461/transformed/jetified-firebase-common-20.3.0/AndroidManifest.xml:19:5-21:41
+MERGED from [androidx.webkit:webkit:1.6.0] /Users/arybobysiregar/.gradle/caches/transforms-3/09e91d336d97fc6e09c31a0ff53084a2/transformed/webkit-1.6.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.webkit:webkit:1.6.0] /Users/arybobysiregar/.gradle/caches/transforms-3/09e91d336d97fc6e09c31a0ff53084a2/transformed/webkit-1.6.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:21:5-23:41
+MERGED from [com.google.android.gms:play-services-auth:20.6.0] /Users/arybobysiregar/.gradle/caches/transforms-3/bcc33c625da60ecb758eb012930312c4/transformed/jetified-play-services-auth-20.6.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-auth:20.6.0] /Users/arybobysiregar/.gradle/caches/transforms-3/bcc33c625da60ecb758eb012930312c4/transformed/jetified-play-services-auth-20.6.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/c9b090a317d56366324590199365d931/transformed/jetified-play-services-safetynet-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/c9b090a317d56366324590199365d931/transformed/jetified-play-services-safetynet-17.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-auth-api-phone:18.0.1] /Users/arybobysiregar/.gradle/caches/transforms-3/48466600c5d9cb5346a332c5c8ec7811/transformed/jetified-play-services-auth-api-phone-18.0.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-api-phone:18.0.1] /Users/arybobysiregar/.gradle/caches/transforms-3/48466600c5d9cb5346a332c5c8ec7811/transformed/jetified-play-services-auth-api-phone-18.0.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-base:18.0.4] /Users/arybobysiregar/.gradle/caches/transforms-3/532cde3e7efbf7255bbc943322d02b73/transformed/jetified-play-services-auth-base-18.0.4/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-base:18.0.4] /Users/arybobysiregar/.gradle/caches/transforms-3/532cde3e7efbf7255bbc943322d02b73/transformed/jetified-play-services-auth-base-18.0.4/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-fido:20.0.1] /Users/arybobysiregar/.gradle/caches/transforms-3/7932a4412d2e4361df2e3c6fb98208b6/transformed/jetified-play-services-fido-20.0.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-fido:20.0.1] /Users/arybobysiregar/.gradle/caches/transforms-3/7932a4412d2e4361df2e3c6fb98208b6/transformed/jetified-play-services-fido-20.0.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-database-collection:18.0.1] /Users/arybobysiregar/.gradle/caches/transforms-3/54a809a843a261e6a91f729b59671822/transformed/jetified-firebase-database-collection-18.0.1/AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.firebase:firebase-database-collection:18.0.1] /Users/arybobysiregar/.gradle/caches/transforms-3/54a809a843a261e6a91f729b59671822/transformed/jetified-firebase-database-collection-18.0.1/AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/arybobysiregar/.gradle/caches/transforms-3/e2f3409ae00026833f50b55d237555e6/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/arybobysiregar/.gradle/caches/transforms-3/e2f3409ae00026833f50b55d237555e6/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-tasks:18.0.2] /Users/arybobysiregar/.gradle/caches/transforms-3/4d82290217b5a582c1eea85215ab47a2/transformed/jetified-play-services-tasks-18.0.2/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-tasks:18.0.2] /Users/arybobysiregar/.gradle/caches/transforms-3/4d82290217b5a582c1eea85215ab47a2/transformed/jetified-play-services-tasks-18.0.2/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-basement:18.2.0] /Users/arybobysiregar/.gradle/caches/transforms-3/7b4154da9c45e1124d50fe15ffd691f1/transformed/jetified-play-services-basement-18.2.0/AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-basement:18.2.0] /Users/arybobysiregar/.gradle/caches/transforms-3/7b4154da9c45e1124d50fe15ffd691f1/transformed/jetified-play-services-basement-18.2.0/AndroidManifest.xml:18:5-43
+MERGED from [androidx.fragment:fragment:1.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/14c2410a6d9b922604fc398a8c81f803/transformed/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/14c2410a6d9b922604fc398a8c81f803/transformed/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.browser:browser:1.4.0] /Users/arybobysiregar/.gradle/caches/transforms-3/9edf8518bb747efdafd2ad53dff92777/transformed/browser-1.4.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.browser:browser:1.4.0] /Users/arybobysiregar/.gradle/caches/transforms-3/9edf8518bb747efdafd2ad53dff92777/transformed/browser-1.4.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.loader:loader:1.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/47ffdd9f99643b86ae0fe3eec7c02161/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/47ffdd9f99643b86ae0fe3eec7c02161/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/d413426524bb73d90a8069ca2f314c46/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/d413426524bb73d90a8069ca2f314c46/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/f538c74dde6081ef8a68a485995a2ab0/transformed/jetified-activity-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/f538c74dde6081ef8a68a485995a2ab0/transformed/jetified-activity-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview:1.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/5b4a15e6e31a49251f9655a4c94565c0/transformed/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/5b4a15e6e31a49251f9655a4c94565c0/transformed/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.6.0] /Users/arybobysiregar/.gradle/caches/transforms-3/17d6a869e2c48900027bf4bfc036777c/transformed/core-1.6.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.6.0] /Users/arybobysiregar/.gradle/caches/transforms-3/17d6a869e2c48900027bf4bfc036777c/transformed/core-1.6.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-service:2.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/8b4f0ff7829448e6da4e0c573662ec79/transformed/jetified-lifecycle-service-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-service:2.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/8b4f0ff7829448e6da4e0c573662ec79/transformed/jetified-lifecycle-service-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /Users/arybobysiregar/.gradle/caches/transforms-3/1e42b065271f0fa92aeef36107dd469c/transformed/lifecycle-runtime-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /Users/arybobysiregar/.gradle/caches/transforms-3/1e42b065271f0fa92aeef36107dd469c/transformed/lifecycle-runtime-2.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/2fda44518d200819aa87231f2d9e6a18/transformed/lifecycle-livedata-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/2fda44518d200819aa87231f2d9e6a18/transformed/lifecycle-livedata-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/4e3c99ccf98cd21ca84c911cd2a960de/transformed/lifecycle-livedata-core-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/4e3c99ccf98cd21ca84c911cd2a960de/transformed/lifecycle-livedata-core-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/0e04552279cddb8ad82a68874ba35b17/transformed/jetified-savedstate-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/0e04552279cddb8ad82a68874ba35b17/transformed/jetified-savedstate-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.startup:startup-runtime:1.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/5acdb2ace6b23b96f05222aa13601858/transformed/jetified-startup-runtime-1.0.0/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.startup:startup-runtime:1.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/5acdb2ace6b23b96f05222aa13601858/transformed/jetified-startup-runtime-1.0.0/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/3e37e44e2d85453d095d2a2fbe568fde/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/3e37e44e2d85453d095d2a2fbe568fde/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.firebase:firebase-components:17.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/ca8c3c9db649e754b34065e7a7727e6c/transformed/jetified-firebase-components-17.1.0/AndroidManifest.xml:18:5-20:41
+MERGED from [com.google.firebase:firebase-components:17.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/ca8c3c9db649e754b34065e7a7727e6c/transformed/jetified-firebase-components-17.1.0/AndroidManifest.xml:18:5-20:41
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/ba8a5ef0426834b7713eb52256af2097/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/ba8a5ef0426834b7713eb52256af2097/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.room:room-runtime:2.2.5] /Users/arybobysiregar/.gradle/caches/transforms-3/438f93502836a47f7e0a556ab8af7cd3/transformed/room-runtime-2.2.5/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.room:room-runtime:2.2.5] /Users/arybobysiregar/.gradle/caches/transforms-3/438f93502836a47f7e0a556ab8af7cd3/transformed/room-runtime-2.2.5/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.sqlite:sqlite-framework:2.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/1ecbe9b47ff60ee019984a027da4adbb/transformed/sqlite-framework-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.sqlite:sqlite-framework:2.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/1ecbe9b47ff60ee019984a027da4adbb/transformed/sqlite-framework-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.sqlite:sqlite:2.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/fc541669f62b5fcc6bdff56d02a7eceb/transformed/sqlite-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.sqlite:sqlite:2.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/fc541669f62b5fcc6bdff56d02a7eceb/transformed/sqlite-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/1760a67b6e33dc0b3757bbe54171c7e1/transformed/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/1760a67b6e33dc0b3757bbe54171c7e1/transformed/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/arybobysiregar/.gradle/caches/transforms-3/234270aad7e6c40a494ab40391356928/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/arybobysiregar/.gradle/caches/transforms-3/234270aad7e6c40a494ab40391356928/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/c62bcfeae5767b3da44b7358f950fbb3/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/c62bcfeae5767b3da44b7358f950fbb3/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/93ea86319511263817a003cb4b4e3be2/transformed/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/93ea86319511263817a003cb4b4e3be2/transformed/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [io.grpc:grpc-android:1.50.2] /Users/arybobysiregar/.gradle/caches/transforms-3/d3acbb34fbcef70b0621e8e5d17bb9c4/transformed/jetified-grpc-android-1.50.2/AndroidManifest.xml:5:5-7:41
+MERGED from [io.grpc:grpc-android:1.50.2] /Users/arybobysiregar/.gradle/caches/transforms-3/d3acbb34fbcef70b0621e8e5d17bb9c4/transformed/jetified-grpc-android-1.50.2/AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.firebase:protolite-well-known-types:18.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/35e04954518eb4825a1987ed91f0cc92/transformed/jetified-protolite-well-known-types-18.0.0/AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.firebase:protolite-well-known-types:18.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/35e04954518eb4825a1987ed91f0cc92/transformed/jetified-protolite-well-known-types-18.0.0/AndroidManifest.xml:7:5-9:41
+MERGED from [androidx.annotation:annotation-experimental:1.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/c3cdb0aa1112b156add5b178533c27b6/transformed/jetified-annotation-experimental-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.annotation:annotation-experimental:1.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/c3cdb0aa1112b156add5b178533c27b6/transformed/jetified-annotation-experimental-1.1.0/AndroidManifest.xml:20:5-22:41
+INJECTED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/debug/AndroidManifest.xml
+INJECTED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/debug/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/debug/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/arybobysiregar/AndroidStudioProjects/surety/android/app/src/debug/AndroidManifest.xml
+service#com.google.firebase.components.ComponentDiscoveryService
+ADDED from [:firebase_auth] /Users/arybobysiregar/AndroidStudioProjects/surety/build/firebase_auth/intermediates/merged_manifest/debug/AndroidManifest.xml:10:9-14:19
+MERGED from [:firebase_storage] /Users/arybobysiregar/AndroidStudioProjects/surety/build/firebase_storage/intermediates/merged_manifest/debug/AndroidManifest.xml:10:9-14:19
+MERGED from [:firebase_storage] /Users/arybobysiregar/AndroidStudioProjects/surety/build/firebase_storage/intermediates/merged_manifest/debug/AndroidManifest.xml:10:9-14:19
+MERGED from [:cloud_firestore] /Users/arybobysiregar/AndroidStudioProjects/surety/build/cloud_firestore/intermediates/merged_manifest/debug/AndroidManifest.xml:10:9-14:19
+MERGED from [:cloud_firestore] /Users/arybobysiregar/AndroidStudioProjects/surety/build/cloud_firestore/intermediates/merged_manifest/debug/AndroidManifest.xml:10:9-14:19
+MERGED from [:firebase_core] /Users/arybobysiregar/AndroidStudioProjects/surety/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:10:9-14:19
+MERGED from [:firebase_core] /Users/arybobysiregar/AndroidStudioProjects/surety/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:10:9-14:19
+MERGED from [com.google.firebase:firebase-auth:21.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/192241f621ba5a8798ec4d7931f0c473/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:64:9-70:19
+MERGED from [com.google.firebase:firebase-auth:21.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/192241f621ba5a8798ec4d7931f0c473/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:64:9-70:19
+MERGED from [com.google.firebase:firebase-firestore:24.4.3] /Users/arybobysiregar/.gradle/caches/transforms-3/f472b97645f1c20a560a44808d4477f5/transformed/jetified-firebase-firestore-24.4.3/AndroidManifest.xml:16:9-22:19
+MERGED from [com.google.firebase:firebase-firestore:24.4.3] /Users/arybobysiregar/.gradle/caches/transforms-3/f472b97645f1c20a560a44808d4477f5/transformed/jetified-firebase-firestore-24.4.3/AndroidManifest.xml:16:9-22:19
+MERGED from [com.google.firebase:firebase-storage:20.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/64dbd6509ec02800e667f6f862160d4f/transformed/jetified-firebase-storage-20.1.0/AndroidManifest.xml:29:9-35:19
+MERGED from [com.google.firebase:firebase-storage:20.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/64dbd6509ec02800e667f6f862160d4f/transformed/jetified-firebase-storage-20.1.0/AndroidManifest.xml:29:9-35:19
+MERGED from [com.google.firebase:firebase-common:20.3.0] /Users/arybobysiregar/.gradle/caches/transforms-3/904cf721afb6a21efd0e8a8cd4694461/transformed/jetified-firebase-common-20.3.0/AndroidManifest.xml:32:9-36:35
+MERGED from [com.google.firebase:firebase-common:20.3.0] /Users/arybobysiregar/.gradle/caches/transforms-3/904cf721afb6a21efd0e8a8cd4694461/transformed/jetified-firebase-common-20.3.0/AndroidManifest.xml:32:9-36:35
+	android:exported
+		ADDED from [com.google.firebase:firebase-auth:21.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/192241f621ba5a8798ec4d7931f0c473/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:66:13-37
+	tools:targetApi
+		ADDED from [com.google.firebase:firebase-common:20.3.0] /Users/arybobysiregar/.gradle/caches/transforms-3/904cf721afb6a21efd0e8a8cd4694461/transformed/jetified-firebase-common-20.3.0/AndroidManifest.xml:36:13-32
+	android:directBootAware
+		ADDED from [com.google.firebase:firebase-common:20.3.0] /Users/arybobysiregar/.gradle/caches/transforms-3/904cf721afb6a21efd0e8a8cd4694461/transformed/jetified-firebase-common-20.3.0/AndroidManifest.xml:34:13-43
+	android:name
+		ADDED from [:firebase_auth] /Users/arybobysiregar/AndroidStudioProjects/surety/build/firebase_auth/intermediates/merged_manifest/debug/AndroidManifest.xml:10:18-89
+meta-data#com.google.firebase.components:io.flutter.plugins.firebase.auth.FlutterFirebaseAuthRegistrar
+ADDED from [:firebase_auth] /Users/arybobysiregar/AndroidStudioProjects/surety/build/firebase_auth/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-13:85
+	android:value
+		ADDED from [:firebase_auth] /Users/arybobysiregar/AndroidStudioProjects/surety/build/firebase_auth/intermediates/merged_manifest/debug/AndroidManifest.xml:13:17-82
+	android:name
+		ADDED from [:firebase_auth] /Users/arybobysiregar/AndroidStudioProjects/surety/build/firebase_auth/intermediates/merged_manifest/debug/AndroidManifest.xml:12:17-124
+meta-data#com.google.firebase.components:io.flutter.plugins.firebase.storage.FlutterFirebaseAppRegistrar
+ADDED from [:firebase_storage] /Users/arybobysiregar/AndroidStudioProjects/surety/build/firebase_storage/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-13:85
+	android:value
+		ADDED from [:firebase_storage] /Users/arybobysiregar/AndroidStudioProjects/surety/build/firebase_storage/intermediates/merged_manifest/debug/AndroidManifest.xml:13:17-82
+	android:name
+		ADDED from [:firebase_storage] /Users/arybobysiregar/AndroidStudioProjects/surety/build/firebase_storage/intermediates/merged_manifest/debug/AndroidManifest.xml:12:17-126
+meta-data#com.google.firebase.components:io.flutter.plugins.firebase.firestore.FlutterFirebaseFirestoreRegistrar
+ADDED from [:cloud_firestore] /Users/arybobysiregar/AndroidStudioProjects/surety/build/cloud_firestore/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-13:85
+	android:value
+		ADDED from [:cloud_firestore] /Users/arybobysiregar/AndroidStudioProjects/surety/build/cloud_firestore/intermediates/merged_manifest/debug/AndroidManifest.xml:13:17-82
+	android:name
+		ADDED from [:cloud_firestore] /Users/arybobysiregar/AndroidStudioProjects/surety/build/cloud_firestore/intermediates/merged_manifest/debug/AndroidManifest.xml:12:17-134
+meta-data#com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar
+ADDED from [:firebase_core] /Users/arybobysiregar/AndroidStudioProjects/surety/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-13:85
+	android:value
+		ADDED from [:firebase_core] /Users/arybobysiregar/AndroidStudioProjects/surety/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:13:17-82
+	android:name
+		ADDED from [:firebase_core] /Users/arybobysiregar/AndroidStudioProjects/surety/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:12:17-124
+queries
+ADDED from [:file_picker] /Users/arybobysiregar/AndroidStudioProjects/surety/build/file_picker/intermediates/merged_manifest/debug/AndroidManifest.xml:11:5-17:15
+intent#action:name:android.intent.action.GET_CONTENT+data:mimeType:*/*
+ADDED from [:file_picker] /Users/arybobysiregar/AndroidStudioProjects/surety/build/file_picker/intermediates/merged_manifest/debug/AndroidManifest.xml:12:9-16:18
+action#android.intent.action.GET_CONTENT
+ADDED from [:file_picker] /Users/arybobysiregar/AndroidStudioProjects/surety/build/file_picker/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-72
+	android:name
+		ADDED from [:file_picker] /Users/arybobysiregar/AndroidStudioProjects/surety/build/file_picker/intermediates/merged_manifest/debug/AndroidManifest.xml:13:21-69
+data
+ADDED from [:file_picker] /Users/arybobysiregar/AndroidStudioProjects/surety/build/file_picker/intermediates/merged_manifest/debug/AndroidManifest.xml:15:13-44
+	android:mimeType
+		ADDED from [:file_picker] /Users/arybobysiregar/AndroidStudioProjects/surety/build/file_picker/intermediates/merged_manifest/debug/AndroidManifest.xml:15:19-41
+uses-library#androidx.window.extensions
+ADDED from [androidx.window:window:1.0.0-beta04] /Users/arybobysiregar/.gradle/caches/transforms-3/9ad533fdf0e2afba36588f1af96ec304/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
+	android:required
+		ADDED from [androidx.window:window:1.0.0-beta04] /Users/arybobysiregar/.gradle/caches/transforms-3/9ad533fdf0e2afba36588f1af96ec304/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:27:13-37
+	android:name
+		ADDED from [androidx.window:window:1.0.0-beta04] /Users/arybobysiregar/.gradle/caches/transforms-3/9ad533fdf0e2afba36588f1af96ec304/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:26:13-54
+uses-library#androidx.window.sidecar
+ADDED from [androidx.window:window:1.0.0-beta04] /Users/arybobysiregar/.gradle/caches/transforms-3/9ad533fdf0e2afba36588f1af96ec304/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:28:9-30:40
+	android:required
+		ADDED from [androidx.window:window:1.0.0-beta04] /Users/arybobysiregar/.gradle/caches/transforms-3/9ad533fdf0e2afba36588f1af96ec304/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
+	android:name
+		ADDED from [androidx.window:window:1.0.0-beta04] /Users/arybobysiregar/.gradle/caches/transforms-3/9ad533fdf0e2afba36588f1af96ec304/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51
+activity#com.google.firebase.auth.internal.GenericIdpActivity
+ADDED from [com.google.firebase:firebase-auth:21.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/192241f621ba5a8798ec4d7931f0c473/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:27:9-44:20
+	android:excludeFromRecents
+		ADDED from [com.google.firebase:firebase-auth:21.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/192241f621ba5a8798ec4d7931f0c473/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:29:13-46
+	android:launchMode
+		ADDED from [com.google.firebase:firebase-auth:21.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/192241f621ba5a8798ec4d7931f0c473/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:31:13-44
+	android:exported
+		ADDED from [com.google.firebase:firebase-auth:21.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/192241f621ba5a8798ec4d7931f0c473/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:30:13-36
+	android:theme
+		ADDED from [com.google.firebase:firebase-auth:21.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/192241f621ba5a8798ec4d7931f0c473/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:32:13-72
+	android:name
+		ADDED from [com.google.firebase:firebase-auth:21.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/192241f621ba5a8798ec4d7931f0c473/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:28:13-80
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:firebase.auth+data:path:/+data:scheme:genericidp
+ADDED from [com.google.firebase:firebase-auth:21.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/192241f621ba5a8798ec4d7931f0c473/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:33:13-43:29
+action#android.intent.action.VIEW
+ADDED from [com.google.firebase:firebase-auth:21.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/192241f621ba5a8798ec4d7931f0c473/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:34:17-69
+	android:name
+		ADDED from [com.google.firebase:firebase-auth:21.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/192241f621ba5a8798ec4d7931f0c473/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:34:25-66
+category#android.intent.category.DEFAULT
+ADDED from [com.google.firebase:firebase-auth:21.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/192241f621ba5a8798ec4d7931f0c473/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:36:17-76
+	android:name
+		ADDED from [com.google.firebase:firebase-auth:21.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/192241f621ba5a8798ec4d7931f0c473/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:36:27-73
+category#android.intent.category.BROWSABLE
+ADDED from [com.google.firebase:firebase-auth:21.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/192241f621ba5a8798ec4d7931f0c473/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:37:17-78
+	android:name
+		ADDED from [com.google.firebase:firebase-auth:21.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/192241f621ba5a8798ec4d7931f0c473/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:37:27-75
+activity#com.google.firebase.auth.internal.RecaptchaActivity
+ADDED from [com.google.firebase:firebase-auth:21.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/192241f621ba5a8798ec4d7931f0c473/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:45:9-62:20
+	android:excludeFromRecents
+		ADDED from [com.google.firebase:firebase-auth:21.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/192241f621ba5a8798ec4d7931f0c473/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:47:13-46
+	android:launchMode
+		ADDED from [com.google.firebase:firebase-auth:21.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/192241f621ba5a8798ec4d7931f0c473/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:49:13-44
+	android:exported
+		ADDED from [com.google.firebase:firebase-auth:21.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/192241f621ba5a8798ec4d7931f0c473/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:48:13-36
+	android:theme
+		ADDED from [com.google.firebase:firebase-auth:21.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/192241f621ba5a8798ec4d7931f0c473/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:50:13-72
+	android:name
+		ADDED from [com.google.firebase:firebase-auth:21.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/192241f621ba5a8798ec4d7931f0c473/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:46:13-79
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:firebase.auth+data:path:/+data:scheme:recaptcha
+ADDED from [com.google.firebase:firebase-auth:21.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/192241f621ba5a8798ec4d7931f0c473/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:51:13-61:29
+meta-data#com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar
+ADDED from [com.google.firebase:firebase-auth:21.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/192241f621ba5a8798ec4d7931f0c473/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:67:13-69:85
+	android:value
+		ADDED from [com.google.firebase:firebase-auth:21.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/192241f621ba5a8798ec4d7931f0c473/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:69:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-auth:21.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/192241f621ba5a8798ec4d7931f0c473/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:68:17-109
+meta-data#com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar
+ADDED from [com.google.firebase:firebase-firestore:24.4.3] /Users/arybobysiregar/.gradle/caches/transforms-3/f472b97645f1c20a560a44808d4477f5/transformed/jetified-firebase-firestore-24.4.3/AndroidManifest.xml:19:13-21:85
+	android:value
+		ADDED from [com.google.firebase:firebase-firestore:24.4.3] /Users/arybobysiregar/.gradle/caches/transforms-3/f472b97645f1c20a560a44808d4477f5/transformed/jetified-firebase-firestore-24.4.3/AndroidManifest.xml:21:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-firestore:24.4.3] /Users/arybobysiregar/.gradle/caches/transforms-3/f472b97645f1c20a560a44808d4477f5/transformed/jetified-firebase-firestore-24.4.3/AndroidManifest.xml:20:17-111
+meta-data#com.google.firebase.components:com.google.firebase.storage.StorageRegistrar
+ADDED from [com.google.firebase:firebase-storage:20.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/64dbd6509ec02800e667f6f862160d4f/transformed/jetified-firebase-storage-20.1.0/AndroidManifest.xml:32:13-34:85
+	android:value
+		ADDED from [com.google.firebase:firebase-storage:20.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/64dbd6509ec02800e667f6f862160d4f/transformed/jetified-firebase-storage-20.1.0/AndroidManifest.xml:34:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-storage:20.1.0] /Users/arybobysiregar/.gradle/caches/transforms-3/64dbd6509ec02800e667f6f862160d4f/transformed/jetified-firebase-storage-20.1.0/AndroidManifest.xml:33:17-107
+provider#com.google.firebase.provider.FirebaseInitProvider
+ADDED from [com.google.firebase:firebase-common:20.3.0] /Users/arybobysiregar/.gradle/caches/transforms-3/904cf721afb6a21efd0e8a8cd4694461/transformed/jetified-firebase-common-20.3.0/AndroidManifest.xml:25:9-30:39
+	android:authorities
+		ADDED from [com.google.firebase:firebase-common:20.3.0] /Users/arybobysiregar/.gradle/caches/transforms-3/904cf721afb6a21efd0e8a8cd4694461/transformed/jetified-firebase-common-20.3.0/AndroidManifest.xml:27:13-72
+	android:exported
+		ADDED from [com.google.firebase:firebase-common:20.3.0] /Users/arybobysiregar/.gradle/caches/transforms-3/904cf721afb6a21efd0e8a8cd4694461/transformed/jetified-firebase-common-20.3.0/AndroidManifest.xml:29:13-37
+	android:directBootAware
+		ADDED from [com.google.firebase:firebase-common:20.3.0] /Users/arybobysiregar/.gradle/caches/transforms-3/904cf721afb6a21efd0e8a8cd4694461/transformed/jetified-firebase-common-20.3.0/AndroidManifest.xml:28:13-43
+	android:initOrder
+		ADDED from [com.google.firebase:firebase-common:20.3.0] /Users/arybobysiregar/.gradle/caches/transforms-3/904cf721afb6a21efd0e8a8cd4694461/transformed/jetified-firebase-common-20.3.0/AndroidManifest.xml:30:13-36
+	android:name
+		ADDED from [com.google.firebase:firebase-common:20.3.0] /Users/arybobysiregar/.gradle/caches/transforms-3/904cf721afb6a21efd0e8a8cd4694461/transformed/jetified-firebase-common-20.3.0/AndroidManifest.xml:26:13-77
+uses-permission#android.permission.WAKE_LOCK
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:25:5-68
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:25:22-65
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:27:5-81
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:27:22-78
+uses-permission#android.permission.FOREGROUND_SERVICE
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:28:5-77
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:28:22-74
+provider#androidx.startup.InitializationProvider
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:31:9-39:20
+MERGED from [androidx.startup:startup-runtime:1.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/5acdb2ace6b23b96f05222aa13601858/transformed/jetified-startup-runtime-1.0.0/AndroidManifest.xml:26:9-30:34
+MERGED from [androidx.startup:startup-runtime:1.0.0] /Users/arybobysiregar/.gradle/caches/transforms-3/5acdb2ace6b23b96f05222aa13601858/transformed/jetified-startup-runtime-1.0.0/AndroidManifest.xml:26:9-30:34
+	tools:node
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:35:13-31
+	android:authorities
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:33:13-68
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:34:13-37
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:32:13-67
+meta-data#androidx.work.WorkManagerInitializer
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:36:13-38:52
+	android:value
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:38:17-49
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:37:17-68
+service#androidx.work.impl.background.systemalarm.SystemAlarmService
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:41:9-46:35
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:44:13-72
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:45:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:46:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:43:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:42:13-88
+service#androidx.work.impl.background.systemjob.SystemJobService
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:47:9-53:35
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:50:13-70
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:51:13-36
+	android:permission
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:52:13-69
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:53:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:49:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:48:13-84
+service#androidx.work.impl.foreground.SystemForegroundService
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:54:9-59:35
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:57:13-77
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:58:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:59:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:56:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:55:13-81
+receiver#androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:61:9-66:35
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:64:13-35
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:65:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:66:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:63:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:62:13-88
+receiver#androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:67:9-77:20
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:70:13-36
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:71:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:72:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:69:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:68:13-106
+intent-filter#action:name:android.intent.action.ACTION_POWER_CONNECTED+action:name:android.intent.action.ACTION_POWER_DISCONNECTED
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:73:13-76:29
+action#android.intent.action.ACTION_POWER_CONNECTED
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:74:17-87
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:74:25-84
+action#android.intent.action.ACTION_POWER_DISCONNECTED
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:75:17-90
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:75:25-87
+receiver#androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:78:9-88:20
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:81:13-36
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:82:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:83:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:80:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:79:13-104
+intent-filter#action:name:android.intent.action.BATTERY_LOW+action:name:android.intent.action.BATTERY_OKAY
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:84:13-87:29
+action#android.intent.action.BATTERY_OKAY
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:85:17-77
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:85:25-74
+action#android.intent.action.BATTERY_LOW
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:86:17-76
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:86:25-73
+receiver#androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:89:9-99:20
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:92:13-36
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:93:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:94:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:91:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:90:13-104
+intent-filter#action:name:android.intent.action.DEVICE_STORAGE_LOW+action:name:android.intent.action.DEVICE_STORAGE_OK
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:95:13-98:29
+action#android.intent.action.DEVICE_STORAGE_LOW
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:96:17-83
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:96:25-80
+action#android.intent.action.DEVICE_STORAGE_OK
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:97:17-82
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:97:25-79
+receiver#androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:100:9-109:20
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:103:13-36
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:104:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:105:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:102:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:101:13-103
+intent-filter#action:name:android.net.conn.CONNECTIVITY_CHANGE
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:106:13-108:29
+action#android.net.conn.CONNECTIVITY_CHANGE
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:107:17-79
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:107:25-76
+receiver#androidx.work.impl.background.systemalarm.RescheduleReceiver
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:110:9-121:20
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:113:13-36
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:114:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:115:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:112:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:111:13-88
+intent-filter#action:name:android.intent.action.BOOT_COMPLETED+action:name:android.intent.action.TIMEZONE_CHANGED+action:name:android.intent.action.TIME_SET
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:116:13-120:29
+action#android.intent.action.BOOT_COMPLETED
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:117:17-79
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:117:25-76
+action#android.intent.action.TIME_SET
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:118:17-73
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:118:25-70
+action#android.intent.action.TIMEZONE_CHANGED
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:119:17-81
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:119:25-78
+receiver#androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:122:9-131:20
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:125:13-72
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:126:13-37
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:127:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:124:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:123:13-99
+intent-filter#action:name:androidx.work.impl.background.systemalarm.UpdateProxies
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:128:13-130:29
+action#androidx.work.impl.background.systemalarm.UpdateProxies
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:129:17-98
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:129:25-95
+receiver#androidx.work.impl.diagnostics.DiagnosticsReceiver
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:132:9-142:20
+	android:enabled
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:135:13-35
+	android:exported
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:136:13-36
+	android:permission
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:137:13-57
+	tools:targetApi
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:138:13-32
+	android:directBootAware
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:134:13-44
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:133:13-78
+intent-filter#action:name:androidx.work.diagnostics.REQUEST_DIAGNOSTICS
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:139:13-141:29
+action#androidx.work.diagnostics.REQUEST_DIAGNOSTICS
+ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:140:17-88
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.0] /Users/arybobysiregar/.gradle/caches/transforms-3/6148cb354bb4ae0909bb12dfdaf8cbb1/transformed/work-runtime-2.7.0/AndroidManifest.xml:140:25-85
+activity#com.google.android.gms.auth.api.signin.internal.SignInHubActivity
+ADDED from [com.google.android.gms:play-services-auth:20.6.0] /Users/arybobysiregar/.gradle/caches/transforms-3/bcc33c625da60ecb758eb012930312c4/transformed/jetified-play-services-auth-20.6.0/AndroidManifest.xml:23:9-27:75
+	android:excludeFromRecents
+		ADDED from [com.google.android.gms:play-services-auth:20.6.0] /Users/arybobysiregar/.gradle/caches/transforms-3/bcc33c625da60ecb758eb012930312c4/transformed/jetified-play-services-auth-20.6.0/AndroidManifest.xml:25:13-46
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:20.6.0] /Users/arybobysiregar/.gradle/caches/transforms-3/bcc33c625da60ecb758eb012930312c4/transformed/jetified-play-services-auth-20.6.0/AndroidManifest.xml:26:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-auth:20.6.0] /Users/arybobysiregar/.gradle/caches/transforms-3/bcc33c625da60ecb758eb012930312c4/transformed/jetified-play-services-auth-20.6.0/AndroidManifest.xml:27:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:20.6.0] /Users/arybobysiregar/.gradle/caches/transforms-3/bcc33c625da60ecb758eb012930312c4/transformed/jetified-play-services-auth-20.6.0/AndroidManifest.xml:24:13-93
+service#com.google.android.gms.auth.api.signin.RevocationBoundService
+ADDED from [com.google.android.gms:play-services-auth:20.6.0] /Users/arybobysiregar/.gradle/caches/transforms-3/bcc33c625da60ecb758eb012930312c4/transformed/jetified-play-services-auth-20.6.0/AndroidManifest.xml:33:9-37:51
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:20.6.0] /Users/arybobysiregar/.gradle/caches/transforms-3/bcc33c625da60ecb758eb012930312c4/transformed/jetified-play-services-auth-20.6.0/AndroidManifest.xml:35:13-36
+	android:visibleToInstantApps
+		ADDED from [com.google.android.gms:play-services-auth:20.6.0] /Users/arybobysiregar/.gradle/caches/transforms-3/bcc33c625da60ecb758eb012930312c4/transformed/jetified-play-services-auth-20.6.0/AndroidManifest.xml:37:13-48
+	android:permission
+		ADDED from [com.google.android.gms:play-services-auth:20.6.0] /Users/arybobysiregar/.gradle/caches/transforms-3/bcc33c625da60ecb758eb012930312c4/transformed/jetified-play-services-auth-20.6.0/AndroidManifest.xml:36:13-107
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:20.6.0] /Users/arybobysiregar/.gradle/caches/transforms-3/bcc33c625da60ecb758eb012930312c4/transformed/jetified-play-services-auth-20.6.0/AndroidManifest.xml:34:13-89
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:18.0.1] /Users/arybobysiregar/.gradle/caches/transforms-3/e2f3409ae00026833f50b55d237555e6/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:9-22:45
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:18.0.1] /Users/arybobysiregar/.gradle/caches/transforms-3/e2f3409ae00026833f50b55d237555e6/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:22:19-43
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:18.0.1] /Users/arybobysiregar/.gradle/caches/transforms-3/e2f3409ae00026833f50b55d237555e6/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:21:19-78
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:18.0.1] /Users/arybobysiregar/.gradle/caches/transforms-3/e2f3409ae00026833f50b55d237555e6/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:19-85
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:18.2.0] /Users/arybobysiregar/.gradle/caches/transforms-3/7b4154da9c45e1124d50fe15ffd691f1/transformed/jetified-play-services-basement-18.2.0/AndroidManifest.xml:21:9-23:69
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:18.2.0] /Users/arybobysiregar/.gradle/caches/transforms-3/7b4154da9c45e1124d50fe15ffd691f1/transformed/jetified-play-services-basement-18.2.0/AndroidManifest.xml:23:13-66
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:18.2.0] /Users/arybobysiregar/.gradle/caches/transforms-3/7b4154da9c45e1124d50fe15ffd691f1/transformed/jetified-play-services-basement-18.2.0/AndroidManifest.xml:22:13-58
+service#androidx.room.MultiInstanceInvalidationService
+ADDED from [androidx.room:room-runtime:2.2.5] /Users/arybobysiregar/.gradle/caches/transforms-3/438f93502836a47f7e0a556ab8af7cd3/transformed/room-runtime-2.2.5/AndroidManifest.xml:25:9-28:40
+	android:exported
+		ADDED from [androidx.room:room-runtime:2.2.5] /Users/arybobysiregar/.gradle/caches/transforms-3/438f93502836a47f7e0a556ab8af7cd3/transformed/room-runtime-2.2.5/AndroidManifest.xml:28:13-37
+	android:directBootAware
+		ADDED from [androidx.room:room-runtime:2.2.5] /Users/arybobysiregar/.gradle/caches/transforms-3/438f93502836a47f7e0a556ab8af7cd3/transformed/room-runtime-2.2.5/AndroidManifest.xml:27:13-43
+	android:name
+		ADDED from [androidx.room:room-runtime:2.2.5] /Users/arybobysiregar/.gradle/caches/transforms-3/438f93502836a47f7e0a556ab8af7cd3/transformed/room-runtime-2.2.5/AndroidManifest.xml:26:13-74

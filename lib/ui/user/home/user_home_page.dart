@@ -1,0 +1,355 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:get/get.dart';
+import 'package:provider/provider.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:surety/helper/color_palette.dart';
+import 'package:surety/helper/constants.dart';
+import 'package:surety/local_storage_service.dart';
+import 'package:surety/provider/article_provider.dart';
+import 'package:surety/provider/auth.dart';
+import 'package:surety/routes.dart';
+import 'package:surety/setup_locator.dart';
+
+class UserHomePage extends StatefulWidget {
+  const UserHomePage({Key? key}) : super(key: key);
+
+  @override
+  _UserHomePageState createState() => _UserHomePageState();
+}
+
+class _UserHomePageState extends State<UserHomePage> {
+  bool getData = true;
+  int selectedIndex = Get.arguments ?? 0;
+
+  List<String> history = [];
+  var storageService = locator<LocalStorageService>();
+
+  @override
+  void initState() {
+    if (getData) {
+      // EasyLoading.show(status: "Loading");
+    }
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => ArticleProvider()..getAllArticles(),
+        ),
+      ],
+      child: SafeArea(
+        child: Scaffold(
+          body: SingleChildScrollView(
+            child: Consumer<AuthProvider>(builder: (context, valueAuth, _) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ///  Header
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: ColorPalette.generalSecondaryColor,
+                    ),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("Hello, ${valueAuth.user.fullName}"),
+                              SizedBox(height: 5),
+                              Text(
+                                "Good Afternoon",
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                          ),
+                          child: Column(
+                            children: [
+                              Image.asset("images/cup.png",
+                                  width: 30, height: 20),
+                              Text(
+                                "122",
+                                style: TextStyle(fontSize: 12),
+                              )
+                            ],
+                          ),
+                        ),
+                        SizedBox(width: 5),
+                        CachedNetworkImage(
+                          imageUrl: valueAuth.user.photoProfile ?? "",
+                          imageBuilder: (context, imageProvider) => Container(
+                            width: 50.0,
+                            height: 50.0,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                image: imageProvider,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          placeholder: (context, url) =>
+                              CircularProgressIndicator(),
+                          errorWidget: (context, url, error) => Icon(
+                            Icons.person,
+                            size: 40,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  ///  Banner
+                  Container(
+                    width: double.infinity,
+                    height: 120,
+                    margin: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                      color: ColorPalette.generalPrimaryColor,
+                    ),
+                  ),
+
+                  /// Content
+                  Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Column(
+                      children: [
+                        /// mood content
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                "How are you feeling today?",
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 10),
+                        Container(
+                          height: 50,
+                          child: GridView.builder(
+                            itemCount: moodStickers.length,
+                            shrinkWrap: true,
+                            physics: NeverScrollableScrollPhysics(),
+                            scrollDirection: Axis.horizontal,
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 1, mainAxisSpacing: 8),
+                            itemBuilder: (context, index) {
+                              return Text(
+                                moodStickers[index].values.first,
+                                style: TextStyle(fontSize: 20),
+                              );
+                            },
+                          ),
+                        ),
+
+                        /// Article
+                        SizedBox(height: 10),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                "Articles",
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () {},
+                              child: Text(
+                                "see all",
+                                style: TextStyle(
+                                  color: ColorPalette.generalPrimaryColor,
+                                  decoration: TextDecoration.underline,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+
+                        Consumer<ArticleProvider>(
+                            builder: (context, articleValue, _) {
+                          return Container(
+                            width: double.infinity,
+                            height: 230,
+                            child: ListView.builder(
+                              itemCount: articleValue.articles.length,
+                              scrollDirection: Axis.horizontal,
+                              itemBuilder: (context, index) {
+                                final article = articleValue.articles[index];
+                                return Container(
+                                  width: 250,
+                                  margin: EdgeInsets.all(10),
+                                  padding: EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(20)),
+                                      border: Border.all()),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        height: 100,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.all(
+                                            Radius.circular(10),
+                                          ),
+                                          image: DecorationImage(
+                                            fit: BoxFit.cover,
+                                            image:
+                                                NetworkImage(article.picture!),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(height: 10),
+                                      Text(
+                                        article.title ?? "-",
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      SizedBox(height: 10),
+                                      Row(
+                                        children: [
+                                          CachedNetworkImage(
+                                            imageUrl: article
+                                                    .userModel?.photoProfile ??
+                                                "",
+                                            imageBuilder:
+                                                (context, imageProvider) =>
+                                                    Container(
+                                              width: 40.0,
+                                              height: 40.0,
+                                              decoration: BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                image: DecorationImage(
+                                                  image: imageProvider,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              ),
+                                            ),
+                                            placeholder: (context, url) =>
+                                                CircularProgressIndicator(),
+                                            errorWidget:
+                                                (context, url, error) => Icon(
+                                              Icons.person,
+                                              size: 40,
+                                            ),
+                                          ),
+                                          SizedBox(width: 10),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                article.userModel?.fullName ??
+                                                    "-",
+                                                maxLines: 1,
+                                                overflow: TextOverflow.ellipsis,
+                                                style: TextStyle(
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                              Text(
+                                                article.createdAt ?? "-",
+                                                maxLines: 1,
+                                                overflow: TextOverflow.ellipsis,
+                                                style: TextStyle(
+                                                  fontSize: 12,
+                                                ),
+                                              ),
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              },
+                            ),
+                          );
+                        }),
+
+                        /// Products
+                        SizedBox(height: 10),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                "Products",
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () {},
+                              child: Text(
+                                "see all",
+                                style: TextStyle(
+                                  color: ColorPalette.generalPrimaryColor,
+                                  decoration: TextDecoration.underline,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              );
+            }),
+          ),
+        ),
+      ),
+    );
+  }
+
+  doSignOut(BuildContext context) async {
+    EasyLoading.show(status: "Loading...");
+    var result =
+        await Provider.of<AuthProvider>(context, listen: false).doSignOut();
+    result.fold((l) {
+      EasyLoading.dismiss();
+      Alert(
+        context: context,
+        type: AlertType.error,
+        title: "Error",
+        desc: l,
+        buttons: [
+          DialogButton(
+            child: Text(
+              "Close",
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+            onPressed: () => Navigator.pop(context),
+            color: ColorPalette.generalPrimaryColor,
+            radius: BorderRadius.circular(0.0),
+          ),
+        ],
+      ).show();
+    }, (r) {
+      EasyLoading.dismiss();
+      Get.offAllNamed(Routes.login);
+    });
+  }
+}

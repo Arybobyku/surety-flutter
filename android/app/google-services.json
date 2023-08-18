@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "997069454259",
+    "project_id": "surety-3640c",
+    "storage_bucket": "surety-3640c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:997069454259:android:aa80218901b8cbe85e29c6",
+        "android_client_info": {
+          "package_name": "com.dartdroid.surety"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "997069454259-g5upem5oojdq7kc179t30rme0ja4fmhs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSncsat9BSo2ZSpfmQG9du0rWsOjDe2To"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "997069454259-g5upem5oojdq7kc179t30rme0ja4fmhs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

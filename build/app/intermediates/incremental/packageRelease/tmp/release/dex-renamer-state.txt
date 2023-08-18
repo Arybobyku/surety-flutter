@@ -1,0 +1,4 @@
+#Fri Aug 18 14:00:14 WIB 2023
+base.0=/Users/arybobysiregar/AndroidStudioProjects/surety/build/app/intermediates/dex/release/minifyReleaseWithR8/classes.dex
+renamed.0=classes.dex
+path.0=classes.dex
