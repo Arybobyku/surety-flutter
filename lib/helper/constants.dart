@@ -7,7 +7,7 @@ class Constants {
   static const String role = 'role';
   static const String history = 'history';
   static const String userModel = 'userModel';
-  static const String notifikasiPengembalian = 'notifikasiPengembalian';
+  static const String banner = 'https://firebasestorage.googleapis.com/v0/b/surety-3640c.appspot.com/o/banner%2Fbanner.png?alt=media&token=ceb4a2e5-8766-4e9a-b067-775761701fe2';
 }
 
 String parseDate(String dateString) {

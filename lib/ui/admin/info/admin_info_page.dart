@@ -1,6 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
@@ -35,7 +35,7 @@ class _AdminInfoPageState extends State<AdminInfoPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        drawer: Consumer<AuthProvider>(builder: (context, valueAuth, _) {
+        drawer: Consumer<AuthProvider>(builder: (context, state, _) {
           return Drawer(
             child: ListView(
               children: [
@@ -46,19 +46,44 @@ class _AdminInfoPageState extends State<AdminInfoPage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Icon(
-                          Icons.person,
-                          size: 80,
-                          color: Colors.white,
+                        CachedNetworkImage(
+                          imageUrl: state.user.photoProfile ?? "",
+                          imageBuilder: (context, imageProvider) => Container(
+                            width: 60.0,
+                            height: 60.0,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                image: imageProvider,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          placeholder: (context, url) =>
+                              CircularProgressIndicator(),
+                          errorWidget: (context, url, error) => Icon(
+                            Icons.person,
+                            size: 80,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
                         ),
                         Text(
-                          valueAuth.user.fullName,
-                          style: TextStyle(fontSize: 14, color: Colors.white),
+                          state.user.fullName,
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                         SizedBox(height: 4),
                         Text(
-                          valueAuth.user.email,
-                          style: TextStyle(fontSize: 14, color: Colors.white),
+                          state.user.email,
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.white,
+                          ),
                         ),
                         SizedBox(height: 4),
                       ],
@@ -71,7 +96,7 @@ class _AdminInfoPageState extends State<AdminInfoPage> {
                 HorizontalIconLabel(
                   icon: Icons.add,
                   label: "Add Products",
-                  ontap: () {},
+                  ontap: () => Get.toNamed(Routes.adminProducts),
                 ),
                 HorizontalIconLabel(
                   icon: Icons.app_shortcut,
@@ -107,8 +132,7 @@ class _AdminInfoPageState extends State<AdminInfoPage> {
         ),
         body: SingleChildScrollView(
           child: Column(
-            children: [
-            ],
+            children: [],
           ),
         ),
       ),

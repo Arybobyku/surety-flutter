@@ -7,22 +7,22 @@ import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:surety/helper/color_palette.dart';
-import 'package:surety/model/article_model.dart';
-import 'package:surety/provider/article_provider.dart';
+import 'package:surety/model/product_model.dart';
 import 'package:surety/provider/auth.dart';
+import 'package:surety/provider/product_provider.dart';
 import 'package:surety/ui/widget/button_picker.dart';
 import 'package:surety/ui/widget/button_rounded.dart';
 import 'package:surety/ui/widget/input_field_rounded.dart';
 
-class AdminArticlePage extends StatefulWidget {
-  const AdminArticlePage({Key? key}) : super(key: key);
+class AdminProductPage extends StatefulWidget {
+  const AdminProductPage({Key? key}) : super(key: key);
 
   @override
-  State<AdminArticlePage> createState() => _AdminArticlePageState();
+  State<AdminProductPage> createState() => _AdminProductPageState();
 }
 
-class _AdminArticlePageState extends State<AdminArticlePage> {
-  ArticleModel articleModel = ArticleModel();
+class _AdminProductPageState extends State<AdminProductPage> {
+  ProductModel productModel = ProductModel();
   File? image = null;
 
   @override
@@ -35,8 +35,8 @@ class _AdminArticlePageState extends State<AdminArticlePage> {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (context) => ArticleProvider()
-            ..getAllArticlesByCreator(context.read<AuthProvider>().user.id!),
+          create: (context) => ProductProvider()
+            ..getAllProductByCreator(context.read<AuthProvider>().user.id!),
         ),
       ],
       builder: (context, widget) {
@@ -44,11 +44,11 @@ class _AdminArticlePageState extends State<AdminArticlePage> {
           backgroundColor: ColorPalette.generalBackgroundColor,
           appBar: AppBar(
             backgroundColor: ColorPalette.generalSecondaryColor,
-            title: Text("Articles"),
+            title: Text("Products"),
           ),
           floatingActionButton: FloatingActionButton(
             onPressed: () {
-              final articleProvider = context.read<ArticleProvider>();
+              final productProvider = context.read<ProductProvider>();
 
               showModalBottomSheet(
                 context: context,
@@ -77,13 +77,13 @@ class _AdminArticlePageState extends State<AdminArticlePage> {
                         }
 
                         return ChangeNotifierProvider.value(
-                          value: articleProvider,
+                          value: productProvider,
                           builder: (context, _) {
                             return SingleChildScrollView(
                               child: Column(
                                 children: [
                                   Text(
-                                    "Add Article",
+                                    "Add Products",
                                     style: TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold,
@@ -94,7 +94,7 @@ class _AdminArticlePageState extends State<AdminArticlePage> {
                                     title: "Title",
                                     hint: "Enter title",
                                     onChange: (val) {
-                                      articleModel.title = val;
+                                      productModel.title = val;
                                     },
                                   ),
                                   SizedBox(height: 10),
@@ -103,7 +103,17 @@ class _AdminArticlePageState extends State<AdminArticlePage> {
                                     hint: "Enter description",
                                     minLines: 5,
                                     onChange: (val) {
-                                      articleModel.description = val;
+                                      productModel.description = val;
+                                    },
+                                  ),
+                                  SizedBox(height: 10),
+                                  InputFieldRounded(
+                                    title: "Price",
+                                    hint: "Price",
+                                    keyboardType: TextInputType.number,
+                                    minLines: 5,
+                                    onChange: (val) {
+                                      productModel.price = double.parse(val);
                                     },
                                   ),
                                   image != null
@@ -143,12 +153,12 @@ class _AdminArticlePageState extends State<AdminArticlePage> {
                                   ButtonRounded(
                                     text: "Add",
                                     onPressed: () {
-                                      articleModel.userModel =
+                                      productModel.userModel =
                                           Provider.of<AuthProvider>(context,
                                                   listen: false)
                                               .user;
-                                      doCreateArticle(
-                                          articleModel, image, context);
+                                      doCreateProduct(
+                                          productModel, image, context);
                                     },
                                   ),
                                 ],
@@ -167,9 +177,9 @@ class _AdminArticlePageState extends State<AdminArticlePage> {
           body: SafeArea(
             child: Padding(
               padding: const EdgeInsets.all(5),
-              child: Consumer<ArticleProvider>(
-                builder: (context, state, _) {
-                  if (state.loading) {
+              child: Consumer<ProductProvider>(
+                builder: (context, value, _) {
+                  if (value.loading) {
                     return Center(
                       child: CircularProgressIndicator(),
                     );
@@ -179,7 +189,7 @@ class _AdminArticlePageState extends State<AdminArticlePage> {
                       padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: Column(
                         children: [
-                          ...state.articlesByCreator.map(
+                          ...value.productsByCreator.map(
                             (e) => Container(
                               width: double.infinity,
                               margin: EdgeInsets.all(10),
@@ -217,8 +227,8 @@ class _AdminArticlePageState extends State<AdminArticlePage> {
                                   GestureDetector(
                                     onTap: () {
                                       context
-                                          .read<ArticleProvider>()
-                                          .removeArticle(e.id!);
+                                          .read<ProductProvider>()
+                                          .removeProduct(e.id!);
                                     },
                                     child: Icon(
                                       Icons.delete,
@@ -242,12 +252,12 @@ class _AdminArticlePageState extends State<AdminArticlePage> {
     );
   }
 
-  doCreateArticle(
-      ArticleModel article, File? image, BuildContext context) async {
+  doCreateProduct(
+      ProductModel product, File? image, BuildContext context) async {
     EasyLoading.show(status: "Loading...");
 
     var result =
-        await context.read<ArticleProvider>().createArticle(article, image);
+        await context.read<ProductProvider>().createProduct(product, image);
 
     result.fold((l) {
       EasyLoading.dismiss();
@@ -270,9 +280,9 @@ class _AdminArticlePageState extends State<AdminArticlePage> {
         ],
       ).show();
     }, (r) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text("Success Add Article")));
       EasyLoading.dismiss();
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("Success Add Product")));
       Get.back();
     });
   }

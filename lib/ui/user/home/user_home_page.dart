@@ -9,6 +9,7 @@ import 'package:surety/helper/constants.dart';
 import 'package:surety/local_storage_service.dart';
 import 'package:surety/provider/article_provider.dart';
 import 'package:surety/provider/auth.dart';
+import 'package:surety/provider/product_provider.dart';
 import 'package:surety/routes.dart';
 import 'package:surety/setup_locator.dart';
 
@@ -40,6 +41,9 @@ class _UserHomePageState extends State<UserHomePage> {
       providers: [
         ChangeNotifierProvider(
           create: (context) => ArticleProvider()..getAllArticles(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => ProductProvider()..getAllProducts(),
         ),
       ],
       child: SafeArea(
@@ -120,6 +124,10 @@ class _UserHomePageState extends State<UserHomePage> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(20)),
                       color: ColorPalette.generalPrimaryColor,
+                      image: DecorationImage(
+                        fit: BoxFit.fill,
+                        image: NetworkImage(Constants.banner)
+                      )
                     ),
                   ),
 
@@ -182,16 +190,15 @@ class _UserHomePageState extends State<UserHomePage> {
                           ],
                         ),
 
-                        Consumer<ArticleProvider>(
-                            builder: (context, articleValue, _) {
+                        Consumer<ArticleProvider>(builder: (context, state, _) {
                           return Container(
                             width: double.infinity,
                             height: 230,
                             child: ListView.builder(
-                              itemCount: articleValue.articles.length,
+                              itemCount: state.articles.length,
                               scrollDirection: Axis.horizontal,
                               itemBuilder: (context, index) {
-                                final article = articleValue.articles[index];
+                                final article = state.articles[index];
                                 return Container(
                                   width: 250,
                                   margin: EdgeInsets.all(10),
@@ -311,6 +318,94 @@ class _UserHomePageState extends State<UserHomePage> {
                               ),
                             ),
                           ],
+                        ),
+
+                        Consumer<ProductProvider>(
+                          builder: (context, state, _) {
+                            return Container(
+                              width: double.infinity,
+                              height: 210,
+                              child: ListView.builder(
+                                itemCount: state.products.length,
+                                scrollDirection: Axis.horizontal,
+                                itemBuilder: (context, index) {
+                                  final product = state.products[index];
+                                  return Container(
+                                    width: 250,
+                                    margin: EdgeInsets.all(10),
+                                    decoration: BoxDecoration(
+                                      color: ColorPalette.generalBackgroundColor,
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(20),
+                                      ),
+                                    ),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Container(
+                                          height: 100,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.all(
+                                              Radius.circular(10),
+                                            ),
+                                            image: DecorationImage(
+                                              fit: BoxFit.cover,
+                                              image: NetworkImage(
+                                                  product.picture!),
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(height: 10),
+                                        Text(
+                                          product.title ?? "-",
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        Text(
+                                          "\$${product.price}",
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                        SizedBox(height: 10),
+                                        Expanded(
+                                          child: GestureDetector(
+                                            onTap: () {},
+                                            child: Container(
+                                              width: double.infinity,
+                                              decoration: BoxDecoration(
+                                                color: Colors.orange,
+                                                borderRadius:
+                                                    BorderRadius.only(
+                                                      bottomLeft: Radius.circular(20),
+                                                      bottomRight: Radius.circular(20),
+                                                    ),
+                                              ),
+                                              alignment: Alignment.center,
+                                              child: Text(
+                                                'Buy',
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 16,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  );
+                                },
+                              ),
+                            );
+                          },
                         ),
                       ],
                     ),
