@@ -7,6 +7,7 @@ import 'package:surety/ui/auth/register_expertise_page.dart';
 import 'package:surety/ui/auth/register_page.dart';
 import 'package:surety/ui/auth/reset_page.dart';
 import 'package:surety/ui/navigator_page.dart';
+import 'package:surety/ui/user/comment/user_comment_page.dart';
 import 'package:surety/ui/user/home/user_home_page.dart';
 import 'package:surety/ui/user/main_menu_page.dart';
 import 'package:surety/ui/user/profile/user_detail_profile_page.dart';
@@ -28,6 +29,7 @@ class Routes {
   static const String adminProducts = "/adminProducts";
 
   static const String userHomePage = "/userHomePage";
+  static const String userCommentPage = "/userCommentPage";
   static const String userProfileDetail = "/userProfileDetail";
 
   static final newRoutes = <GetPage>[
@@ -47,6 +49,7 @@ class Routes {
     /// User Screen
     GetPage(name: mainMenu, page: () => MainMenuPage()),
     GetPage(name: userHomePage, page: () => UserHomePage()),
+    GetPage(name: userCommentPage, page: () => UserCommentPage()),
     GetPage(name: userProfileDetail, page: () => UserDetailProfilePage()),
   ];
 }
