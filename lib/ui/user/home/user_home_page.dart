@@ -122,13 +122,11 @@ class _UserHomePageState extends State<UserHomePage> {
                     height: 120,
                     margin: EdgeInsets.all(10),
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(20)),
-                      color: ColorPalette.generalPrimaryColor,
-                      image: DecorationImage(
-                        fit: BoxFit.fill,
-                        image: NetworkImage(Constants.banner)
-                      )
-                    ),
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                        color: ColorPalette.generalPrimaryColor,
+                        image: DecorationImage(
+                            fit: BoxFit.fill,
+                            image: NetworkImage(Constants.banner))),
                   ),
 
                   /// Content
@@ -199,97 +197,100 @@ class _UserHomePageState extends State<UserHomePage> {
                               scrollDirection: Axis.horizontal,
                               itemBuilder: (context, index) {
                                 final article = state.articles[index];
-                                return Container(
-                                  width: 250,
-                                  margin: EdgeInsets.all(10),
-                                  padding: EdgeInsets.all(10),
-                                  decoration: BoxDecoration(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(20)),
-                                      border: Border.all()),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Container(
-                                        height: 100,
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.all(
-                                            Radius.circular(10),
-                                          ),
-                                          image: DecorationImage(
-                                            fit: BoxFit.cover,
-                                            image:
-                                                NetworkImage(article.picture!),
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(height: 10),
-                                      Text(
-                                        article.title ?? "-",
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                      SizedBox(height: 10),
-                                      Row(
-                                        children: [
-                                          CachedNetworkImage(
-                                            imageUrl: article
-                                                    .userModel?.photoProfile ??
-                                                "",
-                                            imageBuilder:
-                                                (context, imageProvider) =>
-                                                    Container(
-                                              width: 40.0,
-                                              height: 40.0,
-                                              decoration: BoxDecoration(
-                                                shape: BoxShape.circle,
-                                                image: DecorationImage(
-                                                  image: imageProvider,
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ),
+                                return GestureDetector(
+                                  onTap: ()=>Get.toNamed(Routes.userArticleDetail,arguments: article),
+                                  child: Container(
+                                    width: 250,
+                                    margin: EdgeInsets.all(10),
+                                    padding: EdgeInsets.all(10),
+                                    decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.all(Radius.circular(20)),
+                                        border: Border.all()),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                          height: 100,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.all(
+                                              Radius.circular(10),
                                             ),
-                                            placeholder: (context, url) =>
-                                                CircularProgressIndicator(),
-                                            errorWidget:
-                                                (context, url, error) => Icon(
-                                              Icons.person,
-                                              size: 40,
+                                            image: DecorationImage(
+                                              fit: BoxFit.cover,
+                                              image:
+                                                  NetworkImage(article.picture!),
                                             ),
                                           ),
-                                          SizedBox(width: 10),
-                                          Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                article.userModel?.fullName ??
-                                                    "-",
-                                                maxLines: 1,
-                                                overflow: TextOverflow.ellipsis,
-                                                style: TextStyle(
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.bold,
+                                        ),
+                                        SizedBox(height: 10),
+                                        Text(
+                                          article.title ?? "-",
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        SizedBox(height: 10),
+                                        Row(
+                                          children: [
+                                            CachedNetworkImage(
+                                              imageUrl: article
+                                                      .userModel?.photoProfile ??
+                                                  "",
+                                              imageBuilder:
+                                                  (context, imageProvider) =>
+                                                      Container(
+                                                width: 40.0,
+                                                height: 40.0,
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  image: DecorationImage(
+                                                    image: imageProvider,
+                                                    fit: BoxFit.cover,
+                                                  ),
                                                 ),
                                               ),
-                                              Text(
-                                                article.createdAt ?? "-",
-                                                maxLines: 1,
-                                                overflow: TextOverflow.ellipsis,
-                                                style: TextStyle(
-                                                  fontSize: 12,
-                                                ),
+                                              placeholder: (context, url) =>
+                                                  CircularProgressIndicator(),
+                                              errorWidget:
+                                                  (context, url, error) => Icon(
+                                                Icons.person,
+                                                size: 40,
                                               ),
-                                            ],
-                                          )
-                                        ],
-                                      ),
-                                    ],
+                                            ),
+                                            SizedBox(width: 10),
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  article.userModel?.fullName ??
+                                                      "-",
+                                                  maxLines: 1,
+                                                  overflow: TextOverflow.ellipsis,
+                                                  style: TextStyle(
+                                                    fontSize: 12,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  article.createdAt ?? "-",
+                                                  maxLines: 1,
+                                                  overflow: TextOverflow.ellipsis,
+                                                  style: TextStyle(
+                                                    fontSize: 12,
+                                                  ),
+                                                ),
+                                              ],
+                                            )
+                                          ],
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 );
                               },
@@ -330,76 +331,84 @@ class _UserHomePageState extends State<UserHomePage> {
                                 scrollDirection: Axis.horizontal,
                                 itemBuilder: (context, index) {
                                   final product = state.products[index];
-                                  return Container(
-                                    width: 250,
-                                    margin: EdgeInsets.all(10),
-                                    decoration: BoxDecoration(
-                                      color: ColorPalette.generalBackgroundColor,
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(20),
+                                  return GestureDetector(
+                                    onTap: () => Get.toNamed(
+                                        Routes.userProductDetail,
+                                        arguments: product),
+                                    child: Container(
+                                      width: 250,
+                                      margin: EdgeInsets.all(10),
+                                      decoration: BoxDecoration(
+                                        color:
+                                            ColorPalette.generalBackgroundColor,
+                                        borderRadius: BorderRadius.all(
+                                          Radius.circular(20),
+                                        ),
                                       ),
-                                    ),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Container(
-                                          height: 100,
-                                          decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.all(
-                                              Radius.circular(10),
-                                            ),
-                                            image: DecorationImage(
-                                              fit: BoxFit.cover,
-                                              image: NetworkImage(
-                                                  product.picture!),
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(height: 10),
-                                        Text(
-                                          product.title ?? "-",
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                        Text(
-                                          "\$${product.price}",
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: TextStyle(
-                                            fontSize: 16,
-                                          ),
-                                        ),
-                                        SizedBox(height: 10),
-                                        Expanded(
-                                          child: GestureDetector(
-                                            onTap: () {},
-                                            child: Container(
-                                              width: double.infinity,
-                                              decoration: BoxDecoration(
-                                                color: Colors.orange,
-                                                borderRadius:
-                                                    BorderRadius.only(
-                                                      bottomLeft: Radius.circular(20),
-                                                      bottomRight: Radius.circular(20),
-                                                    ),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Container(
+                                            height: 100,
+                                            decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.all(
+                                                Radius.circular(10),
                                               ),
-                                              alignment: Alignment.center,
-                                              child: Text(
-                                                'Buy',
-                                                style: TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 16,
+                                              image: DecorationImage(
+                                                fit: BoxFit.cover,
+                                                image: NetworkImage(
+                                                    product.picture!),
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(height: 10),
+                                          Text(
+                                            product.title ?? "-",
+                                            maxLines: 1,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          Text(
+                                            "\$${product.price}",
+                                            maxLines: 1,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                            ),
+                                          ),
+                                          SizedBox(height: 10),
+                                          Expanded(
+                                            child: GestureDetector(
+                                              onTap: () {},
+                                              child: Container(
+                                                width: double.infinity,
+                                                decoration: BoxDecoration(
+                                                  color: Colors.orange,
+                                                  borderRadius:
+                                                      BorderRadius.only(
+                                                    bottomLeft:
+                                                        Radius.circular(20),
+                                                    bottomRight:
+                                                        Radius.circular(20),
+                                                  ),
+                                                ),
+                                                alignment: Alignment.center,
+                                                child: Text(
+                                                  'Buy',
+                                                  style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 16,
+                                                  ),
                                                 ),
                                               ),
                                             ),
-                                          ),
-                                        )
-                                      ],
+                                          )
+                                        ],
+                                      ),
                                     ),
                                   );
                                 },

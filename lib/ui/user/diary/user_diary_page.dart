@@ -276,7 +276,7 @@ class _UserDiaryPageState extends State<UserDiaryPage> {
                                                             );
                                                   },
                                                   child: Icon(
-                                                    diary.likes!
+                                                   diary.likes!=null && diary.likes!
                                                             .where((element) =>
                                                                 element.email ==
                                                                 authState
@@ -286,7 +286,7 @@ class _UserDiaryPageState extends State<UserDiaryPage> {
                                                         : Icons.favorite_border,
                                                   ),
                                                 ),
-                                                if (diary.likes!.isNotEmpty)
+                                                if (diary.likes!=null && diary.likes!.isNotEmpty)
                                                   Text(
                                                     "${diary.likes?.length ?? ""}",
                                                   ),
@@ -305,7 +305,7 @@ class _UserDiaryPageState extends State<UserDiaryPage> {
                                                     );
                                                   },
                                                 ),
-                                                if (diary.comments!.isNotEmpty)
+                                                if (diary.comments!=null && diary.comments!.isNotEmpty)
                                                   Text(
                                                     "${diary.comments?.length ?? ""}",
                                                   ),
