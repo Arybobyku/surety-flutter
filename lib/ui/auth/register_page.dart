@@ -103,7 +103,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           secureText: false,
                         ),
                         SizedBox(height: 7),
-                        GestureDetector(
+                        InkWell(
                           onTap: () {
                             DatePicker.showDatePicker(
                               context,
@@ -161,7 +161,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           onChange: (val) {
                             password = val;
                           },
-                          suffixIcon: GestureDetector(
+                          suffixIcon: InkWell(
                             onTap: () {
                               setState(() {
                                 secureText = !secureText;
@@ -180,7 +180,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           onChange: (val) {
                             password2 = val;
                           },
-                          suffixIcon: GestureDetector(
+                          suffixIcon: InkWell(
                             onTap: () {
                               setState(() {
                                 secureText2 = !secureText2;
@@ -208,7 +208,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           },
                         ),
                         SizedBox(height: 10),
-                        GestureDetector(
+                        InkWell(
                           onTap: () => Get.toNamed(Routes.registerExpertise),
                           child: Container(
                             padding: EdgeInsets.all(10),
@@ -226,7 +226,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           ),
                         ),
                         SizedBox(height: 10),
-                        GestureDetector(
+                        InkWell(
                           onTap: () => Get.back(),
                           child: Container(
                             padding: EdgeInsets.all(10),
@@ -285,7 +285,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            GestureDetector(
+                            InkWell(
                               onTap: () {
                                 doSignWithGoogle();
                               },

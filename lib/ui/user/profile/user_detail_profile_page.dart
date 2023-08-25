@@ -96,7 +96,7 @@ class _UserDetailProfilePageState extends State<UserDetailProfilePage> {
                                     width: 150,
                                     height: 150,
                                     alignment: Alignment.bottomCenter,
-                                    child: GestureDetector(
+                                    child: InkWell(
                                       onTap: () {
                                         setState(() {
                                           photoProfile = null;
@@ -114,7 +114,7 @@ class _UserDetailProfilePageState extends State<UserDetailProfilePage> {
                               ),
 
                     photoProfile == null
-                        ? GestureDetector(
+                        ? InkWell(
                             onTap: () => doImagePicker(),
                             child: Icon(Icons.edit),
                           )
@@ -139,7 +139,7 @@ class _UserDetailProfilePageState extends State<UserDetailProfilePage> {
                       secureText: false,
                     ),
                     SizedBox(height: 7),
-                    GestureDetector(
+                    InkWell(
                       onTap: () {
                         DatePicker.showDatePicker(
                           context,
@@ -202,7 +202,7 @@ class _UserDetailProfilePageState extends State<UserDetailProfilePage> {
                     //   onChange: (val) {
                     //     password = val;
                     //   },
-                    //   suffixIcon: GestureDetector(
+                    //   suffixIcon: InkWell(
                     //     onTap: () {
                     //       setState(() {
                     //         secureText = !secureText;
@@ -221,7 +221,7 @@ class _UserDetailProfilePageState extends State<UserDetailProfilePage> {
                     //   onChange: (val) {
                     //     password2 = val;
                     //   },
-                    //   suffixIcon: GestureDetector(
+                    //   suffixIcon: InkWell(
                     //     onTap: () {
                     //       setState(() {
                     //         secureText2 = !secureText2;

@@ -169,7 +169,7 @@ class _UserCommunityPageState extends State<UserCommunityPage> {
                                           SizedBox(height: 15),
                                           Row(
                                             children: [
-                                              GestureDetector(
+                                              InkWell(
                                                 onTap: () {
                                                   diary.likes!
                                                       .where((element) =>
@@ -210,7 +210,7 @@ class _UserCommunityPageState extends State<UserCommunityPage> {
                                                   "${diary.likes?.length ?? ""}",
                                                 ),
                                               SizedBox(width: 10),
-                                              GestureDetector(
+                                              InkWell(
                                                 child: Icon(Icons.comment),
                                                 onTap: () {
                                                   context

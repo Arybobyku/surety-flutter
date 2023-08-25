@@ -74,42 +74,52 @@ class _UserHomePageState extends State<UserHomePage> {
                             ],
                           ),
                         ),
-                        Container(
-                          padding: EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                          ),
-                          child: Column(
-                            children: [
-                              Image.asset("images/cup.png",
-                                  width: 30, height: 20),
-                              Text(
-                                "122",
-                                style: TextStyle(fontSize: 12),
-                              )
-                            ],
+                        InkWell(
+                          onTap: (){
+
+                          },
+                          child: Container(
+                            padding: EdgeInsets.all(5),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                            ),
+                            child: Column(
+                              children: [
+                                Image.asset("images/cup.png",
+                                    width: 30, height: 20),
+                                Text(
+                                  "122",
+                                  style: TextStyle(fontSize: 12),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                         SizedBox(width: 5),
-                        CachedNetworkImage(
-                          imageUrl: valueAuth.user.photoProfile ?? "",
-                          imageBuilder: (context, imageProvider) => Container(
-                            width: 50.0,
-                            height: 50.0,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              image: DecorationImage(
-                                image: imageProvider,
-                                fit: BoxFit.cover,
+                        InkWell(
+                          onTap: (){
+                            Get.toNamed(Routes.userProfileDetail);
+                          },
+                          child: CachedNetworkImage(
+                            imageUrl: valueAuth.user.photoProfile ?? "",
+                            imageBuilder: (context, imageProvider) => Container(
+                              width: 50.0,
+                              height: 50.0,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                image: DecorationImage(
+                                  image: imageProvider,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
-                          ),
-                          placeholder: (context, url) =>
-                              CircularProgressIndicator(),
-                          errorWidget: (context, url, error) => Icon(
-                            Icons.person,
-                            size: 40,
+                            placeholder: (context, url) =>
+                                CircularProgressIndicator(),
+                            errorWidget: (context, url, error) => Icon(
+                              Icons.person,
+                              size: 40,
+                            ),
                           ),
                         ),
                       ],
@@ -117,16 +127,23 @@ class _UserHomePageState extends State<UserHomePage> {
                   ),
 
                   ///  Banner
-                  Container(
-                    width: double.infinity,
-                    height: 120,
-                    margin: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
+                  InkWell(
+                    onTap: (){
+
+                    },
+                    child: Container(
+                      width: double.infinity,
+                      height: 120,
+                      margin: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(20)),
                         color: ColorPalette.generalPrimaryColor,
                         image: DecorationImage(
-                            fit: BoxFit.fill,
-                            image: NetworkImage(Constants.banner))),
+                          fit: BoxFit.fill,
+                          image: NetworkImage(Constants.banner),
+                        ),
+                      ),
+                    ),
                   ),
 
                   /// Content
@@ -147,7 +164,8 @@ class _UserHomePageState extends State<UserHomePage> {
                         ),
                         SizedBox(height: 10),
                         Container(
-                          height: 50,
+                          height: 25,
+                          width: double.infinity,
                           child: GridView.builder(
                             itemCount: moodStickers.length,
                             shrinkWrap: true,
@@ -155,11 +173,17 @@ class _UserHomePageState extends State<UserHomePage> {
                             scrollDirection: Axis.horizontal,
                             gridDelegate:
                                 SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 1, mainAxisSpacing: 8),
+                              crossAxisCount: 1,
+                              mainAxisSpacing: 8,
+                              childAspectRatio: 0.6,
+                            ),
                             itemBuilder: (context, index) {
-                              return Text(
-                                moodStickers[index].values.first,
-                                style: TextStyle(fontSize: 20),
+                              return InkWell(
+                                onTap: () {},
+                                child: Text(
+                                  moodStickers[index].values.first,
+                                  style: TextStyle(fontSize: 20),
+                                ),
                               );
                             },
                           ),
@@ -175,7 +199,7 @@ class _UserHomePageState extends State<UserHomePage> {
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                             ),
-                            GestureDetector(
+                            InkWell(
                               onTap: () {},
                               child: Text(
                                 "see all",
@@ -197,15 +221,17 @@ class _UserHomePageState extends State<UserHomePage> {
                               scrollDirection: Axis.horizontal,
                               itemBuilder: (context, index) {
                                 final article = state.articles[index];
-                                return GestureDetector(
-                                  onTap: ()=>Get.toNamed(Routes.userArticleDetail,arguments: article),
+                                return InkWell(
+                                  onTap: () => Get.toNamed(
+                                      Routes.userArticleDetail,
+                                      arguments: article),
                                   child: Container(
                                     width: 250,
                                     margin: EdgeInsets.all(10),
                                     padding: EdgeInsets.all(10),
                                     decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.all(Radius.circular(20)),
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(20)),
                                         border: Border.all()),
                                     child: Column(
                                       crossAxisAlignment:
@@ -219,8 +245,8 @@ class _UserHomePageState extends State<UserHomePage> {
                                             ),
                                             image: DecorationImage(
                                               fit: BoxFit.cover,
-                                              image:
-                                                  NetworkImage(article.picture!),
+                                              image: NetworkImage(
+                                                  article.picture!),
                                             ),
                                           ),
                                         ),
@@ -238,8 +264,8 @@ class _UserHomePageState extends State<UserHomePage> {
                                         Row(
                                           children: [
                                             CachedNetworkImage(
-                                              imageUrl: article
-                                                      .userModel?.photoProfile ??
+                                              imageUrl: article.userModel
+                                                      ?.photoProfile ??
                                                   "",
                                               imageBuilder:
                                                   (context, imageProvider) =>
@@ -271,7 +297,8 @@ class _UserHomePageState extends State<UserHomePage> {
                                                   article.userModel?.fullName ??
                                                       "-",
                                                   maxLines: 1,
-                                                  overflow: TextOverflow.ellipsis,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
                                                   style: TextStyle(
                                                     fontSize: 12,
                                                     fontWeight: FontWeight.bold,
@@ -280,7 +307,8 @@ class _UserHomePageState extends State<UserHomePage> {
                                                 Text(
                                                   article.createdAt ?? "-",
                                                   maxLines: 1,
-                                                  overflow: TextOverflow.ellipsis,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
                                                   style: TextStyle(
                                                     fontSize: 12,
                                                   ),
@@ -308,7 +336,7 @@ class _UserHomePageState extends State<UserHomePage> {
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                             ),
-                            GestureDetector(
+                            InkWell(
                               onTap: () {},
                               child: Text(
                                 "see all",
@@ -331,7 +359,7 @@ class _UserHomePageState extends State<UserHomePage> {
                                 scrollDirection: Axis.horizontal,
                                 itemBuilder: (context, index) {
                                   final product = state.products[index];
-                                  return GestureDetector(
+                                  return InkWell(
                                     onTap: () => Get.toNamed(
                                         Routes.userProductDetail,
                                         arguments: product),
@@ -382,7 +410,7 @@ class _UserHomePageState extends State<UserHomePage> {
                                           ),
                                           SizedBox(height: 10),
                                           Expanded(
-                                            child: GestureDetector(
+                                            child: InkWell(
                                               onTap: () {},
                                               child: Container(
                                                 width: double.infinity,

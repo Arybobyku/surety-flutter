@@ -24,7 +24,7 @@ class SmallButton extends StatelessWidget {
               ? ColorPalette.generalWhite
               : ColorPalette.generalPrimaryColor,
           borderRadius: BorderRadius.circular(15)),
-      child: GestureDetector(
+      child: InkWell(
         onTap: onPressed,
         child: Text(
           text,

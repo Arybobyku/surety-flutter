@@ -15,6 +15,7 @@ class InputFieldRounded extends StatelessWidget {
   final int minLines;
   final String? errortext;
   final FormFieldValidator? validatorCheck;
+  final TextEditingController? controller;
 
   const InputFieldRounded({
     Key? key,
@@ -31,6 +32,7 @@ class InputFieldRounded extends StatelessWidget {
     this.secureText = false,
     this.minLines = 1,
     this.enable = true,
+    this.controller,
   }) : super(key: key);
 
   @override
@@ -56,6 +58,7 @@ class InputFieldRounded extends StatelessWidget {
             obscureText: secureText,
             cursorColor: ColorPalette.generalPrimaryColor,
             keyboardType: keyboardType,
+            controller: controller,
             enabled: enable,
             minLines: minLines,
             maxLines: secureText ? 1 : 10,

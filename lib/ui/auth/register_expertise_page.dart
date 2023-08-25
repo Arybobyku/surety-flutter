@@ -103,7 +103,7 @@ class _RegisterExpertisePageState extends State<RegisterExpertisePage> {
                           secureText: false,
                         ),
                         SizedBox(height: 7),
-                        GestureDetector(
+                        InkWell(
                           onTap: () {
                             DatePicker.showDatePicker(
                               context,
@@ -161,7 +161,7 @@ class _RegisterExpertisePageState extends State<RegisterExpertisePage> {
                           onChange: (val) {
                             password = val;
                           },
-                          suffixIcon: GestureDetector(
+                          suffixIcon: InkWell(
                             onTap: () {
                               setState(() {
                                 secureText = !secureText;
@@ -180,7 +180,7 @@ class _RegisterExpertisePageState extends State<RegisterExpertisePage> {
                           onChange: (val) {
                             password2 = val;
                           },
-                          suffixIcon: GestureDetector(
+                          suffixIcon: InkWell(
                             onTap: () {
                               setState(() {
                                 secureText2 = !secureText2;
@@ -216,7 +216,7 @@ class _RegisterExpertisePageState extends State<RegisterExpertisePage> {
                           },
                         ),
                         SizedBox(height: 10),
-                        GestureDetector(
+                        InkWell(
                           onTap: () =>
                               Get.offNamedUntil(Routes.login, (route) => false),
                           child: Container(
@@ -276,7 +276,7 @@ class _RegisterExpertisePageState extends State<RegisterExpertisePage> {
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            GestureDetector(
+                            InkWell(
                               onTap: () {
                                 doSignWithGoogle();
                               },

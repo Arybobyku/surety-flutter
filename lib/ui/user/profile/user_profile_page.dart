@@ -49,7 +49,7 @@ class UserProfilePage extends StatelessWidget {
                       SizedBox(width: 10),
                       Expanded(child: Text("${valueAuth.user.fullName}")),
                       SizedBox(width: 10),
-                      GestureDetector(
+                      InkWell(
                         onTap: () => Get.toNamed(Routes.userProfileDetail),
                         child: Icon(Icons.edit),
                       )

@@ -15,7 +15,7 @@ class BoxInfo extends StatelessWidget {
   final Color backgroundColor;
   @override
   Widget build(BuildContext context) {
-    return  GestureDetector(
+    return  InkWell(
       onTap: onTap,
       child: Container(
         width: double.infinity,

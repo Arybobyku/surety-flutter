@@ -133,7 +133,7 @@ class _AdminProductPageState extends State<AdminProductPage> {
                                                 ),
                                               ),
                                             ),
-                                            GestureDetector(
+                                            InkWell(
                                               onTap: () {
                                                 updateStateModal(() {
                                                   image = null;
@@ -224,7 +224,7 @@ class _AdminProductPageState extends State<AdminProductPage> {
                                         fontWeight: FontWeight.bold),
                                   ),
                                   Text(e.description ?? "-"),
-                                  GestureDetector(
+                                  InkWell(
                                     onTap: () {
                                       context
                                           .read<ProductProvider>()

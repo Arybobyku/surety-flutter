@@ -23,7 +23,7 @@ class UserDiaryPage extends StatefulWidget {
 
 class _UserDiaryPageState extends State<UserDiaryPage> {
   File? image = null;
-  String? description = null;
+  TextEditingController description = TextEditingController();
   bool isPublic = true;
 
   @override
@@ -73,7 +73,7 @@ class _UserDiaryPageState extends State<UserDiaryPage> {
                           children: [
                             Expanded(
                               child: Text(
-                                "What's on your opinion?",
+                                "what's on your mind today?",
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
@@ -82,7 +82,7 @@ class _UserDiaryPageState extends State<UserDiaryPage> {
                             ),
                             Row(
                               children: [
-                                Icon(Icons.public, size: 20),
+                                Icon(Icons.lock, size: 20),
                                 SizedBox(
                                   height: 20,
                                   child: Switch(
@@ -94,21 +94,21 @@ class _UserDiaryPageState extends State<UserDiaryPage> {
                                     },
                                   ),
                                 ),
-                                Icon(Icons.lock, size: 20),
+                                Icon(Icons.public, size: 20),
                               ],
                             ),
                           ],
                         ),
                         InputFieldRounded(
                           hint: '...',
+                          controller: description,
                           onChange: (String value) {
                             setState(() {
-                              description = value;
                             });
                           },
                         ),
                         image == null
-                            ? GestureDetector(
+                            ? InkWell(
                                 onTap: () {
                                   doImagePicker();
                                 },
@@ -116,7 +116,7 @@ class _UserDiaryPageState extends State<UserDiaryPage> {
                               )
                             : Row(
                                 children: [
-                                  GestureDetector(
+                                  InkWell(
                                     onTap: () {
                                       setState(() {
                                         image = null;
@@ -141,21 +141,21 @@ class _UserDiaryPageState extends State<UserDiaryPage> {
                                 ],
                               ),
 
-                        if (description != null)
+                        if (description.text != "")
                           ButtonRounded(
                             text: "Submit",
                             onPressed: () {
                               context.read<DiaryProvider>().createDiary(
                                     DiaryModel(
                                       userModel: authState.user,
-                                      description: description,
+                                      description: description.text,
                                       isPublic: isPublic,
                                     ),
                                     image,
                                   );
 
                               setState(() {
-                                description = null;
+                                description = TextEditingController();
                                 image = null;
                               });
                             },
@@ -250,7 +250,7 @@ class _UserDiaryPageState extends State<UserDiaryPage> {
                                             SizedBox(height: 15),
                                             Row(
                                               children: [
-                                                GestureDetector(
+                                                InkWell(
                                                   onTap: () {
                                                     diary.likes!
                                                             .where((element) =>
@@ -291,7 +291,7 @@ class _UserDiaryPageState extends State<UserDiaryPage> {
                                                     "${diary.likes?.length ?? ""}",
                                                   ),
                                                 SizedBox(width: 10),
-                                                GestureDetector(
+                                                InkWell(
                                                   child: Icon(Icons.comment),
                                                   onTap: () {
                                                     context

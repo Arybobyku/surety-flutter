@@ -12,7 +12,7 @@ class HorizontalIconLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: ontap,
       child: Container(
         margin: EdgeInsets.only(top: 10),

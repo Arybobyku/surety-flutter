@@ -123,7 +123,7 @@ class _AdminArticlePageState extends State<AdminArticlePage> {
                                                 ),
                                               ),
                                             ),
-                                            GestureDetector(
+                                            InkWell(
                                               onTap: () {
                                                 updateStateModal(() {
                                                   image = null;
@@ -214,7 +214,7 @@ class _AdminArticlePageState extends State<AdminArticlePage> {
                                         fontWeight: FontWeight.bold),
                                   ),
                                   Text(e.description ?? "-"),
-                                  GestureDetector(
+                                  InkWell(
                                     onTap: () {
                                       context
                                           .read<ArticleProvider>()

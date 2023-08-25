@@ -16,7 +16,7 @@ class SearchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: onTapSearch,
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 15),

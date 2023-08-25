@@ -74,7 +74,7 @@ class _LoginPageState extends State<LoginPage> {
                                 InputFieldRounded(
                                   title: "Password",
                                   hint: "Password",
-                                  suffixIcon: GestureDetector(
+                                  suffixIcon: InkWell(
                                     onTap: () {
                                       setState(() {
 
@@ -82,7 +82,7 @@ class _LoginPageState extends State<LoginPage> {
                                       });
                                     },
                                     child: Icon(
-                                      Icons.remove_red_eye_outlined,
+                                    secureText?  Icons.remove_red_eye_outlined :Icons.visibility_off,
                                       color: ColorPalette.generalPrimaryColor,
                                     ),
                                   ),
@@ -129,7 +129,7 @@ class _LoginPageState extends State<LoginPage> {
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    GestureDetector(
+                                    InkWell(
                                       onTap: () {
                                         doSignWithGoogle();
                                       },

@@ -18,7 +18,7 @@ class UserCommentPage extends StatefulWidget {
 
 class _UserCommentPageState extends State<UserCommentPage> {
   DiaryProvider diaryProvider = Get.arguments;
-  String myComment = "";
+  TextEditingController commentController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -106,7 +106,7 @@ class _UserCommentPageState extends State<UserCommentPage> {
                                 SizedBox(height: 15),
                                 Row(
                                   children: [
-                                    GestureDetector(
+                                    InkWell(
                                       onTap: () {
                                         diary.likes!
                                                 .where((element) =>
@@ -170,33 +170,37 @@ class _UserCommentPageState extends State<UserCommentPage> {
                                       ),
                                     ),
                                     child: Row(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         CachedNetworkImage(
                                           imageUrl:
-                                          comment.userModel?.photoProfile ?? "",
-                                          imageBuilder: (context, imageProvider) =>
-                                              Container(
-                                                width: 30.0,
-                                                height: 30.0,
-                                                decoration: BoxDecoration(
-                                                  shape: BoxShape.circle,
-                                                  image: DecorationImage(
-                                                    image: imageProvider,
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                ),
+                                              comment.userModel?.photoProfile ??
+                                                  "",
+                                          imageBuilder:
+                                              (context, imageProvider) =>
+                                                  Container(
+                                            width: 30.0,
+                                            height: 30.0,
+                                            decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              image: DecorationImage(
+                                                image: imageProvider,
+                                                fit: BoxFit.cover,
                                               ),
+                                            ),
+                                          ),
                                           placeholder: (context, url) =>
                                               CircularProgressIndicator(),
                                           errorWidget: (context, url, error) =>
                                               Icon(
-                                                Icons.person,
-                                              ),
+                                            Icons.person,
+                                          ),
                                         ),
                                         SizedBox(width: 10),
                                         Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
                                             Text(
                                               comment.userModel?.fullName ?? "",
@@ -206,7 +210,10 @@ class _UserCommentPageState extends State<UserCommentPage> {
                                               ),
                                             ),
                                             Text(comment.description ?? ""),
-                                            Text(comment.createAt ?? "",style: TextStyle(fontSize: 10),),
+                                            Text(
+                                              comment.createAt ?? "",
+                                              style: TextStyle(fontSize: 10),
+                                            ),
                                           ],
                                         ),
                                       ],
@@ -228,11 +235,9 @@ class _UserCommentPageState extends State<UserCommentPage> {
                     children: [
                       Expanded(
                         child: InputFieldRounded(
+                          controller: commentController,
                           hint: "...",
-                          initialValue: myComment,
-                          onChange: (val) {
-                            myComment = val;
-                          },
+                          onChange: (String value) {},
                         ),
                       ),
                       SizedBox(width: 10),
@@ -242,13 +247,13 @@ class _UserCommentPageState extends State<UserCommentPage> {
                                 diary,
                                 CommentModel(
                                   userModel: authState.user,
-                                  description: myComment,
+                                  description: commentController.value.text,
                                   createAt: DateFormat('dd MMMM,yyyy')
                                       .format(DateTime.now()),
                                 ),
                               );
                           setState(() {
-                            myComment = "";
+                           commentController = TextEditingController();
                           });
                         },
                         child: Container(
