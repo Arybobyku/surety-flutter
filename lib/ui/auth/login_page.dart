@@ -82,7 +82,7 @@ class _LoginPageState extends State<LoginPage> {
                                       });
                                     },
                                     child: Icon(
-                                    secureText?  Icons.remove_red_eye_outlined :Icons.visibility_off,
+                                      secureText?  Icons.visibility_off :Icons.visibility,
                                       color: ColorPalette.generalPrimaryColor,
                                     ),
                                   ),
@@ -203,7 +203,7 @@ class _LoginPageState extends State<LoginPage> {
         context: context,
         type: AlertType.error,
         title: "Error Login",
-        desc: "Incorrect email or password",
+        desc: l,
         buttons: [
           DialogButton(
             child: Text(

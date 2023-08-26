@@ -168,7 +168,7 @@ class _RegisterExpertisePageState extends State<RegisterExpertisePage> {
                               });
                             },
                             child: Icon(
-                              Icons.remove_red_eye_outlined,
+                              secureText?  Icons.visibility_off :Icons.visibility,
                               color: ColorPalette.generalPrimaryColor,
                             ),
                           ),
@@ -187,7 +187,7 @@ class _RegisterExpertisePageState extends State<RegisterExpertisePage> {
                               });
                             },
                             child: Icon(
-                              Icons.remove_red_eye_outlined,
+                              secureText2?  Icons.visibility_off :Icons.visibility,
                               color: ColorPalette.generalPrimaryColor,
                             ),
                           ),
@@ -382,7 +382,7 @@ class _RegisterExpertisePageState extends State<RegisterExpertisePage> {
         ).show();
       }, (r) {
         EasyLoading.dismiss();
-        Get.offAllNamed(Routes.userHomePage);
+        Get.offNamedUntil(Routes.login, (route) => false);
       });
     } else {
       Alert(

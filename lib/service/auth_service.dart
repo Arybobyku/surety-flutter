@@ -23,6 +23,10 @@ class AuthService {
       //NOTE: Insert to User Model
       //NOTE: Register To FireStore
       var userService = await UserService().setUser(user);
+
+       await _auth.currentUser?.sendEmailVerification();
+      _auth.signOut();
+
       user = userService;
       return user;
     } catch (e) {
@@ -55,7 +59,13 @@ class AuthService {
         email: email,
         password: password,
       );
+
       print("UUID USER ${userCredential.user!.uid}");
+
+      if(_auth.currentUser!=null && !_auth.currentUser!.emailVerified){
+        print("UUID USER ${_auth.currentUser!.emailVerified}");
+        return throw ("Please Verified Your Email");
+      }
       UserModel user =
           await UserService().getUserById(userCredential.user!.uid);
       return user;

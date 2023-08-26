@@ -54,9 +54,9 @@ class AuthProvider extends ChangeNotifier {
     try {
       user = await _authService.signUp(user);
       this.user = user;
-
-      storageService.saveToPref(Constants.role, user.role);
-      storageService.saveToPref(Constants.userModel, jsonEncode(user.toJson()));
+      //
+      // storageService.saveToPref(Constants.role, user.role);
+      // storageService.saveToPref(Constants.userModel, jsonEncode(user.toJson()));
       notifyListeners();
       return right(true);
     } catch (e) {
