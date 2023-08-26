@@ -103,8 +103,7 @@ class _UserDiaryPageState extends State<UserDiaryPage> {
                           hint: '...',
                           controller: description,
                           onChange: (String value) {
-                            setState(() {
-                            });
+                            setState(() {});
                           },
                         ),
                         image == null
@@ -276,23 +275,37 @@ class _UserDiaryPageState extends State<UserDiaryPage> {
                                                             );
                                                   },
                                                   child: Icon(
-                                                   diary.likes!=null && diary.likes!
-                                                            .where((element) =>
-                                                                element.email ==
-                                                                authState
-                                                                    .user.email)
-                                                            .isNotEmpty
+                                                    diary.likes != null &&
+                                                            diary.likes!
+                                                                .where((element) =>
+                                                                    element
+                                                                        .email ==
+                                                                    authState
+                                                                        .user
+                                                                        .email)
+                                                                .isNotEmpty
                                                         ? Icons.favorite
                                                         : Icons.favorite_border,
+                                                    color: ColorPalette
+                                                        .generalPrimaryColor,
                                                   ),
                                                 ),
-                                                if (diary.likes!=null && diary.likes!.isNotEmpty)
+                                                if (diary.likes != null &&
+                                                    diary.likes!.isNotEmpty)
                                                   Text(
                                                     "${diary.likes?.length ?? ""}",
+                                                    style: TextStyle(
+                                                      color: ColorPalette
+                                                          .generalPrimaryColor,
+                                                    ),
                                                   ),
                                                 SizedBox(width: 10),
                                                 InkWell(
-                                                  child: Icon(Icons.comment),
+                                                  child: Icon(
+                                                    Icons.comment,
+                                                    color: ColorPalette
+                                                        .generalPrimaryColor,
+                                                  ),
                                                   onTap: () {
                                                     context
                                                         .read<DiaryProvider>()
@@ -305,9 +318,14 @@ class _UserDiaryPageState extends State<UserDiaryPage> {
                                                     );
                                                   },
                                                 ),
-                                                if (diary.comments!=null && diary.comments!.isNotEmpty)
+                                                if (diary.comments != null &&
+                                                    diary.comments!.isNotEmpty)
                                                   Text(
                                                     "${diary.comments?.length ?? ""}",
+                                                    style: TextStyle(
+                                                      color: ColorPalette
+                                                          .generalPrimaryColor,
+                                                    ),
                                                   ),
                                               ],
                                             )

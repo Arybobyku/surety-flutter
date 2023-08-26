@@ -136,17 +136,29 @@ class _UserCommentPageState extends State<UserCommentPage> {
                                                 .isNotEmpty
                                             ? Icons.favorite
                                             : Icons.favorite_border,
+                                        color: ColorPalette.generalPrimaryColor,
                                       ),
                                     ),
                                     if (diary.likes!.isNotEmpty)
                                       Text(
                                         "${diary.likes?.length ?? ""}",
+                                        style: TextStyle(
+                                          color:
+                                              ColorPalette.generalPrimaryColor,
+                                        ),
                                       ),
                                     SizedBox(width: 10),
-                                    Icon(Icons.comment),
+                                    Icon(
+                                      Icons.comment,
+                                      color: ColorPalette.generalPrimaryColor,
+                                    ),
                                     if (diary.likes!.isNotEmpty)
                                       Text(
                                         "${diary.comments?.length ?? ""}",
+                                        style: TextStyle(
+                                          color:
+                                              ColorPalette.generalPrimaryColor,
+                                        ),
                                       ),
                                   ],
                                 )
@@ -253,7 +265,7 @@ class _UserCommentPageState extends State<UserCommentPage> {
                                 ),
                               );
                           setState(() {
-                           commentController = TextEditingController();
+                            commentController = TextEditingController();
                           });
                         },
                         child: Container(

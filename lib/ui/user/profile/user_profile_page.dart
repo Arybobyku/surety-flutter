@@ -15,8 +15,10 @@ class UserProfilePage extends StatelessWidget {
     return SafeArea(
       child: Consumer<AuthProvider>(builder: (context, valueAuth, _) {
         return Scaffold(
+          backgroundColor: ColorPalette.generalBackgroundColor,
           body: SingleChildScrollView(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ///  Header
                 Container(
@@ -53,6 +55,83 @@ class UserProfilePage extends StatelessWidget {
                         onTap: () => Get.toNamed(Routes.userProfileDetail),
                         child: Icon(Icons.edit),
                       )
+                    ],
+                  ),
+                ),
+                SizedBox(height: 20),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      //symptoms
+                      Text(
+                        "what are your Symptoms Today?",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      //TODO: add daily symptoms
+                      Container(
+                        padding: EdgeInsets.all(5),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          color: ColorPalette.generalPrimaryColor,
+                        ),
+                        child: TextButton(
+                          onPressed: () {},
+                          child: Text(
+                            "+Add",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                      ),
+
+                      SizedBox(height: 20),
+                      Text(
+                        "Track Period",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      Slider(
+                        activeColor: ColorPalette.generalPrimaryColor,
+
+                        value: 0,
+                        onChanged: (val) {},
+                      ),
+                      SizedBox(height: 20),
+                      Text(
+                        "Diet",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      Text(
+                        "Exercise",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      Text(
+                        "Weight",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
+                      ),
                     ],
                   ),
                 ),

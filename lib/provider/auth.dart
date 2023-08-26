@@ -33,9 +33,10 @@ class AuthProvider extends ChangeNotifier {
     try {
       final userCredential = await _authService.signInWithGoogle();
       user = UserModel(
-        fullName: '',
-        password: '',
+        fullName: userCredential.user?.displayName ?? "-",
+        photoProfile: userCredential.user?.photoURL ?? null,
         email: userCredential.user!.email!,
+        password: '',
         isValid: true,
       );
       storageService.saveToPref(Constants.role, 0);
