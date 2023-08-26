@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:fpdart/fpdart.dart';
-import 'package:intl/intl.dart';
 import 'package:surety/model/comment_model.dart';
 import 'package:surety/model/diary_model.dart';
 import 'package:surety/model/user_model.dart';
@@ -19,10 +18,11 @@ class DiaryProvider extends ChangeNotifier {
   Future<Either<String, bool>> createDiary(
       DiaryModel diary, File? image) async {
     try {
-      diary.createdAt = DateFormat('dd MMMM,yyyy').format(DateTime.now());
+      diary.createdAt = DateTime.now();
       diary.creator = diary.userModel!.id;
       diary.isExpert = diary.userModel?.expertise == null ? false : true;
       final result = await _diaryService.createDiary(diary, image);
+      diary.likes = [];
       diaries.add(result);
       diariesByCreator.add(result);
       notifyListeners();
@@ -54,10 +54,7 @@ class DiaryProvider extends ChangeNotifier {
 
   void addComment(DiaryModel diary, CommentModel commentModel) async {
     try {
-
-
       diary.comments!.add(commentModel);
-      print("ADDCOMMENT ${diary.comments}");
       await _diaryService.updateDiary(diary);
 
       if (diariesByCreator
@@ -72,7 +69,7 @@ class DiaryProvider extends ChangeNotifier {
       }
       notifyListeners();
     } catch (e) {
-      print("ERROR COMMENTS"+ e.toString());
+      print("ERROR COMMENTS" + e.toString());
     }
   }
 
@@ -104,6 +101,8 @@ class DiaryProvider extends ChangeNotifier {
 
       notifyListeners();
     } catch (e) {
+
+      print("DIARY BY CREATOR $e");
       print(e.toString());
     }
   }

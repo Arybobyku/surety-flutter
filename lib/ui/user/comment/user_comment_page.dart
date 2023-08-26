@@ -4,10 +4,13 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:surety/helper/color_palette.dart';
+import 'package:surety/helper/extension/date_time_extension.dart';
+import 'package:surety/helper/extension/string_extension.dart';
 import 'package:surety/model/comment_model.dart';
 import 'package:surety/provider/auth.dart';
 import 'package:surety/provider/diary_provider.dart';
 import 'package:surety/ui/widget/input_field_rounded.dart';
+import 'package:surety/ui/widget/video_widget.dart';
 
 class UserCommentPage extends StatefulWidget {
   const UserCommentPage({Key? key}) : super(key: key);
@@ -77,12 +80,38 @@ class _UserCommentPageState extends State<UserCommentPage> {
                                     ),
                                     SizedBox(width: 10),
                                     Expanded(
-                                      child: Text(
-                                          diary.userModel?.fullName ?? "-"),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            diary.userModel?.fullName ?? "-",
+                                            style: TextStyle(fontSize: 18),
+                                          ),
+                                          if (diary.isExpert!)
+                                            Row(
+                                              children: [
+                                                Icon(Icons.stars_sharp,
+                                                    size: 18),
+                                                Text("Expert"),
+                                              ],
+                                            ),
+                                        ],
+                                      ),
                                     ),
-                                    diary.isPublic!
-                                        ? Icon(Icons.public)
-                                        : Icon(Icons.lock),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children: [
+                                        diary.isPublic!
+                                            ? Icon(Icons.public)
+                                            : Icon(Icons.lock),
+                                        Text(
+                                          diary.createdAt!.timeAgoFormat(),
+                                          style: TextStyle(fontSize: 11),
+                                        )
+                                      ],
+                                    ),
                                   ],
                                 ),
 
@@ -92,17 +121,32 @@ class _UserCommentPageState extends State<UserCommentPage> {
                                   style: TextStyle(fontSize: 18),
                                 ),
                                 SizedBox(height: 5),
-                                if (diary.image != null)
-                                  Container(
-                                    height: 180,
-                                    width: double.infinity,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(10)),
-                                        image: DecorationImage(
-                                            fit: BoxFit.fill,
-                                            image: NetworkImage(diary.image!))),
-                                  ),
+                                diary.image != null
+                                    ? diary.image!
+                                            .getExtension()
+                                            .contains("mp4")
+                                        ? VideoWidget(
+                                            url: diary.image!,
+                                            play: true,
+                                            key: new PageStorageKey(
+                                              "keydata1",
+                                            ),
+                                          )
+                                        : Container(
+                                            height: 180,
+                                            width: double.infinity,
+                                            decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.all(
+                                                Radius.circular(10),
+                                              ),
+                                              image: DecorationImage(
+                                                fit: BoxFit.fitHeight,
+                                                image:
+                                                    NetworkImage(diary.image!),
+                                              ),
+                                            ),
+                                          )
+                                    : SizedBox(),
                                 SizedBox(height: 15),
                                 Row(
                                   children: [
@@ -129,17 +173,19 @@ class _UserCommentPageState extends State<UserCommentPage> {
                                                 );
                                       },
                                       child: Icon(
-                                        diary.likes!
-                                                .where((element) =>
-                                                    element.email ==
-                                                    authState.user.email)
-                                                .isNotEmpty
+                                        diary.likes != null &&
+                                                diary.likes!
+                                                    .where((element) =>
+                                                        element.email ==
+                                                        authState.user.email)
+                                                    .isNotEmpty
                                             ? Icons.favorite
                                             : Icons.favorite_border,
                                         color: ColorPalette.generalPrimaryColor,
                                       ),
                                     ),
-                                    if (diary.likes!.isNotEmpty)
+                                    if (diary.likes != null &&
+                                        diary.likes!.isNotEmpty)
                                       Text(
                                         "${diary.likes?.length ?? ""}",
                                         style: TextStyle(
@@ -152,7 +198,8 @@ class _UserCommentPageState extends State<UserCommentPage> {
                                       Icons.comment,
                                       color: ColorPalette.generalPrimaryColor,
                                     ),
-                                    if (diary.likes!.isNotEmpty)
+                                    if (diary.comments != null &&
+                                        diary.comments!.isNotEmpty)
                                       Text(
                                         "${diary.comments?.length ?? ""}",
                                         style: TextStyle(

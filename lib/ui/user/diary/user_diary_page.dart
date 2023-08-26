@@ -7,12 +7,16 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:surety/helper/color_palette.dart';
+import 'package:surety/helper/extension/date_time_extension.dart';
+import 'package:surety/helper/extension/string_extension.dart';
 import 'package:surety/model/diary_model.dart';
 import 'package:surety/provider/auth.dart';
 import 'package:surety/provider/diary_provider.dart';
 import 'package:surety/routes.dart';
 import 'package:surety/ui/widget/button_rounded.dart';
 import 'package:surety/ui/widget/input_field_rounded.dart';
+import 'package:surety/ui/widget/video_widget.dart';
+import 'package:video_player/video_player.dart';
 
 class UserDiaryPage extends StatefulWidget {
   const UserDiaryPage({Key? key}) : super(key: key);
@@ -124,19 +128,32 @@ class _UserDiaryPageState extends State<UserDiaryPage> {
                                     child: Icon(Icons.delete),
                                   ),
                                   SizedBox(width: 10),
-                                  Container(
-                                    margin:
-                                        EdgeInsets.only(top: 15, bottom: 30),
-                                    height: 150,
-                                    width: 150,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(5),
-                                      image: DecorationImage(
-                                        fit: BoxFit.cover,
-                                        image: FileImage(image!),
-                                      ),
-                                    ),
-                                  ),
+                                  image!=null && image!.path.getExtension().contains("mp4")
+                                      ? Expanded(
+                                          child: Container(
+                                            height: 200,
+                                            width: double.infinity,
+                                            child: VideoPlayer(
+                                              VideoPlayerController.file(
+                                                File(image!.path),
+                                              )..initialize(),
+                                            ),
+                                          ),
+                                        )
+                                      : Container(
+                                          margin: EdgeInsets.only(
+                                              top: 15, bottom: 30),
+                                          height: 150,
+                                          width: 150,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                            image: DecorationImage(
+                                              fit: BoxFit.cover,
+                                              image: FileImage(image!),
+                                            ),
+                                          ),
+                                        ),
                                 ],
                               ),
 
@@ -174,6 +191,7 @@ class _UserDiaryPageState extends State<UserDiaryPage> {
                                     itemBuilder: (context, index) {
                                       final diary =
                                           state.diariesByCreator[index];
+
                                       return Container(
                                         padding: EdgeInsets.all(15),
                                         margin:
@@ -216,13 +234,46 @@ class _UserDiaryPageState extends State<UserDiaryPage> {
                                                 ),
                                                 SizedBox(width: 10),
                                                 Expanded(
-                                                  child: Text(diary.userModel
-                                                          ?.fullName ??
-                                                      "-"),
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Text(
+                                                        diary.userModel
+                                                                ?.fullName ??
+                                                            "-",
+                                                        style: TextStyle(
+                                                            fontSize: 18),
+                                                      ),
+                                                      if (diary.isExpert!)
+                                                        Row(
+                                                          children: [
+                                                            Icon(
+                                                                Icons
+                                                                    .stars_sharp,
+                                                                size: 18),
+                                                            Text("Expert"),
+                                                          ],
+                                                        ),
+                                                    ],
+                                                  ),
                                                 ),
-                                                diary.isPublic!
-                                                    ? Icon(Icons.public)
-                                                    : Icon(Icons.lock),
+                                                Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.end,
+                                                  children: [
+                                                    diary.isPublic!
+                                                        ? Icon(Icons.public)
+                                                        : Icon(Icons.lock),
+                                                    Text(
+                                                      diary.createdAt!
+                                                          .timeAgoFormat(),
+                                                      style: TextStyle(
+                                                          fontSize: 11),
+                                                    )
+                                                  ],
+                                                ),
                                               ],
                                             ),
 
@@ -232,20 +283,34 @@ class _UserDiaryPageState extends State<UserDiaryPage> {
                                               style: TextStyle(fontSize: 18),
                                             ),
                                             SizedBox(height: 5),
-                                            if (diary.image != null)
-                                              Container(
-                                                height: 180,
-                                                width: double.infinity,
-                                                decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.all(
-                                                            Radius.circular(
-                                                                10)),
-                                                    image: DecorationImage(
-                                                        fit: BoxFit.fill,
-                                                        image: NetworkImage(
-                                                            diary.image!))),
-                                              ),
+                                            diary.image != null
+                                                ? diary.image!.getExtension().contains("mp4")
+                                                    ? VideoWidget(
+                                                        url: diary.image!,
+                                                        play: true,
+                                                        key: new PageStorageKey(
+                                                          "keydata$index",
+                                                        ),
+                                                      )
+                                                    : Container(
+                                                        height: 180,
+                                                        width: double.infinity,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius.all(
+                                                            Radius.circular(10),
+                                                          ),
+                                                          image:
+                                                              DecorationImage(
+                                                            fit: BoxFit
+                                                                .fitHeight,
+                                                            image: NetworkImage(
+                                                                diary.image!),
+                                                          ),
+                                                        ),
+                                                      )
+                                                : SizedBox(),
                                             SizedBox(height: 15),
                                             Row(
                                               children: [

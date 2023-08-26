@@ -1,4 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:intl/intl.dart';
 import 'package:surety/model/user_model.dart';
 
 import 'comment_model.dart';
@@ -7,7 +7,7 @@ class DiaryModel {
   String? id;
   String? description;
   String? image;
-  String? createdAt;
+  DateTime? createdAt;
   bool? isPublic;
   bool? isExpert;
   UserModel? userModel;
@@ -32,7 +32,7 @@ class DiaryModel {
         id: id,
         description: json['description'],
         image: json['image'],
-        createdAt: json['createdAt'],
+        createdAt: DateFormat("dd-MM-yyyy").parse(json['createdAt']),
         isPublic: json['isPublic'],
         creator: json['creator'],
         isExpert: json['isExpert'],
@@ -56,7 +56,7 @@ class DiaryModel {
   Map<String, dynamic> toJson() => {
         'id': id,
         'description': description,
-        'createdAt': createdAt,
+        'createdAt': createdAt.toString(),
         'image': image,
         'isPublic': isPublic,
         'likes': likes != null ? likes?.map((e) => e.toJson()).toList() : [],
