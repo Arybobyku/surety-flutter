@@ -1,9 +1,8 @@
-import 'dart:io';
-
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:surety/model/user_model.dart';
-import 'package:flutter/cupertino.dart';
 
 import 'user_service.dart';
 
@@ -24,7 +23,7 @@ class AuthService {
       //NOTE: Register To FireStore
       var userService = await UserService().setUser(user);
 
-       await _auth.currentUser?.sendEmailVerification();
+      await _auth.currentUser?.sendEmailVerification();
       _auth.signOut();
 
       user = userService;
@@ -62,7 +61,7 @@ class AuthService {
 
       print("UUID USER ${userCredential.user!.uid}");
 
-      if(_auth.currentUser!=null && !_auth.currentUser!.emailVerified){
+      if (_auth.currentUser != null && !_auth.currentUser!.emailVerified) {
         print("UUID USER ${_auth.currentUser!.emailVerified}");
         return throw ("Please Verified Your Email");
       }
@@ -85,5 +84,14 @@ class AuthService {
     );
 
     return await FirebaseAuth.instance.signInWithCredential(credential);
+  }
+
+  Future<UserCredential> signInWithFacebook() async {
+    final LoginResult loginResult = await FacebookAuth.instance.login();
+
+    final OAuthCredential facebookAuthCredential =
+        FacebookAuthProvider.credential(loginResult.accessToken!.token);
+    return await FirebaseAuth.instance
+        .signInWithCredential(facebookAuthCredential);
   }
 }

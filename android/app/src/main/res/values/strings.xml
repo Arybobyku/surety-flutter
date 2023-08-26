@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Surety</string>
+    <string name="facebook_app_id">205025592329823</string>
+    <string name="fb_login_protocol_scheme">fb205025592329823</string>
+    <string name="facebook_client_token">73745bc7e24433e9c6f4274395a65d72</string>
+</resources>

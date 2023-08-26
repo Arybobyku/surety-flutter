@@ -224,14 +224,14 @@ class _UserCommunityPageState extends State<UserCommunityPage> {
                                                         .unLikeDiary(
                                                           diary,
                                                           authState.user,
-                                                          true,
+                                                          false,
                                                         )
                                                     : context
                                                         .read<DiaryProvider>()
                                                         .likeDiary(
                                                           diary,
                                                           authState.user,
-                                                          true,
+                                                          false,
                                                         );
                                               },
                                               child: Icon(

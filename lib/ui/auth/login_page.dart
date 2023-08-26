@@ -131,6 +131,16 @@ class _LoginPageState extends State<LoginPage> {
                                   children: [
                                     InkWell(
                                       onTap: () {
+                                        doSignWithFacebook();
+                                      },
+                                      child: Image.asset(
+                                        'images/facebook.png',
+                                        height: 25,
+                                      ),
+                                    ),
+                                    SizedBox(width: 10),
+                                    InkWell(
+                                      onTap: () {
                                         doSignWithGoogle();
                                       },
                                       child: Image.asset(
@@ -227,6 +237,38 @@ class _LoginPageState extends State<LoginPage> {
   doSignWithGoogle() async {
     var result = await Provider.of<AuthProvider>(context, listen: false)
         .doSignInWithGoogle();
+
+    result.fold((l) {
+      EasyLoading.dismiss();
+      print("===>${l}");
+      Alert(
+        context: context,
+        type: AlertType.error,
+        title: "Error",
+        desc: "Something went wrong",
+        buttons: [
+          DialogButton(
+            child: Text(
+              "Close",
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+            onPressed: () => Navigator.pop(context),
+            color: ColorPalette.generalPrimaryColor,
+            radius: BorderRadius.circular(0.0),
+          ),
+        ],
+      ).show();
+    }, (r) {
+      EasyLoading.dismiss();
+      Get.offAllNamed(
+        Routes.navigator,
+      );
+    });
+  }
+
+  doSignWithFacebook() async {
+    var result = await Provider.of<AuthProvider>(context, listen: false)
+        .doSignWithFacebook();
 
     result.fold((l) {
       EasyLoading.dismiss();

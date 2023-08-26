@@ -31,6 +31,7 @@ dependencies:
   intl:
   flutter_datetime_picker:
   google_sign_in: ^6.1.4
+  flutter_facebook_auth:
 #  flutter_local_notifications:
   lottie:
 #  pull_to_refresh: ^2.0.0

@@ -32,7 +32,7 @@ class DiaryModel {
         id: id,
         description: json['description'],
         image: json['image'],
-        createdAt: DateFormat("dd-MM-yyyy").parse(json['createdAt']),
+        createdAt: DateFormat("yyyy-MM-dd hh:mm:ss").parse(json['createdAt']),
         isPublic: json['isPublic'],
         creator: json['creator'],
         isExpert: json['isExpert'],

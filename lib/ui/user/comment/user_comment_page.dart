@@ -162,14 +162,14 @@ class _UserCommentPageState extends State<UserCommentPage> {
                                                 .unLikeDiary(
                                                   diary,
                                                   authState.user,
-                                                  true,
+                                                  false,
                                                 )
                                             : context
                                                 .read<DiaryProvider>()
                                                 .likeDiary(
                                                   diary,
                                                   authState.user,
-                                                  true,
+                                                  false,
                                                 );
                                       },
                                       child: Icon(

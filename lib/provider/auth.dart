@@ -47,6 +47,24 @@ class AuthProvider extends ChangeNotifier {
     }
   }
 
+  Future doSignWithFacebook() async {
+    try {
+      final userCredential = await _authService.signInWithFacebook();
+      user = UserModel(
+        fullName: userCredential.user?.displayName ?? "-",
+        photoProfile: userCredential.user?.photoURL ?? null,
+        email: userCredential.user!.email!,
+        password: '',
+        isValid: true,
+      );
+      storageService.saveToPref(Constants.role, 0);
+      storageService.saveToPref(Constants.userModel, jsonEncode(user.toJson()));
+      return right(true);
+    } catch (e) {
+      return left(e.toString());
+    }
+  }
+
   Future<Either<String, bool>> doSignUp({
     required UserModel user,
     // required File photoProfile,
