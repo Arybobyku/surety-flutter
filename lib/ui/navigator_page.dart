@@ -10,7 +10,6 @@ import 'package:surety/model/user_model.dart';
 import 'package:surety/provider/auth.dart';
 import 'package:surety/routes.dart';
 import 'package:surety/setup_locator.dart';
-import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
 class NavigatorPage extends StatefulWidget {

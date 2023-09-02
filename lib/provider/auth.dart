@@ -125,4 +125,8 @@ class AuthProvider extends ChangeNotifier {
       return left(e.toString());
     }
   }
+
+  Future<void> resendVerificationEmail()async{
+
+  }
 }

@@ -397,7 +397,26 @@ class _RegisterPageState extends State<RegisterPage> {
         ).show();
       }, (r) {
         EasyLoading.dismiss();
-        Get.offNamedUntil(Routes.login, (route) => false);
+        Alert(
+          context: context,
+          type: AlertType.info,
+          title: "Success",
+          desc: "Please verify your email first before login",
+          buttons: [
+            DialogButton(
+              child: Text(
+                "Close",
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+              onPressed: (){
+                Navigator.pop(context);
+                Get.offNamedUntil(Routes.login, (route) => false);
+              },
+              color: ColorPalette.generalPrimaryColor,
+              radius: BorderRadius.circular(0.0),
+            ),
+          ],
+        ).show();
       });
     } else {
       Alert(

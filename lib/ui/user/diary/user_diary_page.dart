@@ -157,7 +157,7 @@ class _UserDiaryPageState extends State<UserDiaryPage> {
                                 ],
                               ),
 
-                        if (description.text != "")
+                        if (description.text != "" || image != null)
                           ButtonRounded(
                             text: "Submit",
                             onPressed: () {

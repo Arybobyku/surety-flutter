@@ -212,7 +212,7 @@ class _LoginPageState extends State<LoginPage> {
       Alert(
         context: context,
         type: AlertType.error,
-        title: "Error Login",
+        title: "Failed Login",
         desc: l,
         buttons: [
           DialogButton(
@@ -244,7 +244,7 @@ class _LoginPageState extends State<LoginPage> {
       Alert(
         context: context,
         type: AlertType.error,
-        title: "Error",
+        title: "Failed",
         desc: "Something went wrong",
         buttons: [
           DialogButton(

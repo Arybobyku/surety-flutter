@@ -20,8 +20,9 @@ class FormProvider extends ChangeNotifier {
     userId: '',
   );
 
-  Future<bool> getFormById(UserModel user) async {
+  Future<void> getFormById(UserModel user) async {
     try {
+      print("TESTING");
       loading = true;
       final result = await _formService.getFormById(user.id!);
       if (result != null) {
@@ -29,14 +30,14 @@ class FormProvider extends ChangeNotifier {
       }
       if (formModel.dailyLogin == null) {
         await update(FormType.Login, "1", user);
-        return true;
+        dailyLogin = true;
       }
       loading = false;
+      dailyLogin = false;
       notifyListeners();
-      return false;
     } catch (e) {
       print(e);
-      return false;
+      dailyLogin = false;
     }
   }
 

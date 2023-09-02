@@ -24,6 +24,7 @@ class UserHomePage extends StatefulWidget {
 
 class _UserHomePageState extends State<UserHomePage> {
   bool getData = true;
+  bool alreadyShowDialog = false;
   int selectedIndex = Get.arguments ?? 0;
 
   List<String> history = [];
@@ -31,8 +32,7 @@ class _UserHomePageState extends State<UserHomePage> {
 
   @override
   void initState() {
-    if (getData) {
-    }
+    if (getData) {}
     super.initState();
   }
 
@@ -46,11 +46,51 @@ class _UserHomePageState extends State<UserHomePage> {
         ChangeNotifierProvider(
           create: (context) => ProductProvider()..getAllProducts(),
         ),
+        ChangeNotifierProvider.value(
+          value: context.read<FormProvider>()
+            ..getFormById(context.read<AuthProvider>().user),
+        ),
       ],
       child: SafeArea(
         child: Scaffold(
           body: SingleChildScrollView(
-            child: Consumer<AuthProvider>(builder: (context, valueAuth, _) {
+            child: Consumer2<AuthProvider, FormProvider>(
+                builder: (context, valueAuth, stateForm, _) {
+              if (stateForm.dailyLogin && !alreadyShowDialog) {
+                alreadyShowDialog = true;
+                WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+                  Alert(
+                    context: context,
+                    type: AlertType.none,
+                    content: Column(
+                      children: [
+                        Image.asset(
+                          "images/cup.png",
+                          height: 80,
+                          width: 80,
+                        ),
+                        SizedBox(height: 20),
+                        Text(
+                          "Congratulation you get 1 point from daily login",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontSize: 18),
+                        )
+                      ],
+                    ),
+                    buttons: [
+                      DialogButton(
+                        child: Text(
+                          "Close",
+                          style: TextStyle(color: Colors.white, fontSize: 20),
+                        ),
+                        onPressed: () => Get.back(),
+                        color: ColorPalette.generalPrimaryColor,
+                        radius: BorderRadius.circular(0.0),
+                      ),
+                    ],
+                  ).show();
+                });
+              }
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -76,9 +116,7 @@ class _UserHomePageState extends State<UserHomePage> {
                           ),
                         ),
                         InkWell(
-                          onTap: () {
-
-                          },
+                          onTap: () {},
                           child: Container(
                             padding: EdgeInsets.all(5),
                             decoration: BoxDecoration(
@@ -87,19 +125,18 @@ class _UserHomePageState extends State<UserHomePage> {
                                   BorderRadius.all(Radius.circular(10)),
                             ),
                             child: Consumer<FormProvider>(
-                              builder: (context,stateForm,_) {
-                                return Column(
-                                  children: [
-                                    Image.asset("images/cup.png",
-                                        width: 30, height: 20),
-                                    Text(
-                                      "${stateForm.formModel.totalPoints}",
-                                      style: TextStyle(fontSize: 12),
-                                    )
-                                  ],
-                                );
-                              }
-                            ),
+                                builder: (context, stateForm, _) {
+                              return Column(
+                                children: [
+                                  Image.asset("images/cup.png",
+                                      width: 30, height: 20),
+                                  Text(
+                                    "${stateForm.formModel.totalPoints}",
+                                    style: TextStyle(fontSize: 12),
+                                  )
+                                ],
+                              );
+                            }),
                           ),
                         ),
                         SizedBox(width: 5),
