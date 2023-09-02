@@ -107,6 +107,15 @@ class AuthProvider extends ChangeNotifier {
     }
   }
 
+  Future doChangePassword(String password) async {
+    try {
+      await _authService.changePassword(password);
+      return right(true);
+    } catch (e) {
+      return left(e.toString());
+    }
+  }
+
   Future<Either<String, bool>> doSignOut() async {
     try {
       await _authService.signOut();

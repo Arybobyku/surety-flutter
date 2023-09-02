@@ -3,9 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:surety/helper/color_palette.dart';
+import 'package:surety/helper/enum/form_enums.dart';
+import 'package:surety/helper/extension/form_extension.dart';
 import 'package:surety/model/user_model.dart';
 import 'package:surety/provider/auth.dart';
+import 'package:surety/provider/form_provider.dart';
 import 'package:surety/routes.dart';
+import 'package:surety/ui/widget/button_rounded.dart';
+import 'package:surety/ui/widget/input_field_rounded.dart';
 
 class UserProfilePage extends StatelessWidget {
   const UserProfilePage({Key? key}) : super(key: key);
@@ -16,237 +21,504 @@ class UserProfilePage extends StatelessWidget {
       child: Consumer<AuthProvider>(builder: (context, valueAuth, _) {
         return Scaffold(
           backgroundColor: ColorPalette.generalBackgroundColor,
-          body: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ///  Header
-                Container(
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: ColorPalette.generalSecondaryColor,
+          body: Consumer<FormProvider>(builder: (context, stateForm, _) {
+            return SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ///  Header
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: ColorPalette.generalSecondaryColor,
+                    ),
+                    child: Row(
+                      children: [
+                        CachedNetworkImage(
+                          imageUrl: valueAuth.user.photoProfile ?? "",
+                          imageBuilder: (context, imageProvider) => Container(
+                            width: 50.0,
+                            height: 50.0,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                image: imageProvider,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          placeholder: (context, url) =>
+                              CircularProgressIndicator(),
+                          errorWidget: (context, url, error) => Icon(
+                            Icons.person,
+                            size: 40,
+                          ),
+                        ),
+                        SizedBox(width: 10),
+                        Expanded(child: Text("${valueAuth.user.fullName}")),
+                        SizedBox(width: 10),
+                        InkWell(
+                          onTap: () {},
+                          child: Container(
+                            padding: EdgeInsets.all(5),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                            ),
+                            child: Column(
+                              children: [
+                                Image.asset("images/cup.png",
+                                    width: 30, height: 20),
+                                Text(
+                                  "${stateForm.formModel.totalPoints ?? "-"}",
+                                  style: TextStyle(fontSize: 12),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 10),
+                        InkWell(
+                          onTap: () => Get.toNamed(Routes.userProfileDetail),
+                          child: Icon(Icons.edit),
+                        )
+                      ],
+                    ),
                   ),
-                  child: Row(
-                    children: [
-                      CachedNetworkImage(
-                        imageUrl: valueAuth.user.photoProfile ?? "",
-                        imageBuilder: (context, imageProvider) => Container(
-                          width: 50.0,
-                          height: 50.0,
+                  SizedBox(height: 20),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        //symptoms
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                "what are your Symptoms Today?",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                ),
+                              ),
+                            ),
+                            RichText(
+                              text: TextSpan(
+                                children: [
+                                  WidgetSpan(
+                                    child: Icon(
+                                      Icons.history,
+                                      color: ColorPalette.generalPrimaryColor,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 10),
+                        GridView.builder(
+                          itemCount:
+                              stateForm.formModel.dailySymptoms?.length ?? 0,
+                          shrinkWrap: true,
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 4,
+                            mainAxisSpacing: 2,
+                            childAspectRatio: 1.3,
+                          ),
+                          itemBuilder: (context, index) {
+                            return Container(
+                              padding: EdgeInsets.all(5),
+                              margin: EdgeInsets.symmetric(horizontal: 5),
+                              decoration: BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                color: ColorPalette.generalPrimaryColor,
+                              ),
+                              alignment: Alignment.center,
+                              child: Text(
+                                "${stateForm.formModel.dailySymptoms![index].value}",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                        SizedBox(height: 10),
+                        Container(
+                          padding: EdgeInsets.all(5),
                           decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
-                              image: imageProvider,
-                              fit: BoxFit.cover,
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            color: ColorPalette.generalPrimaryColor,
+                          ),
+                          child: TextButton(
+                            onPressed: () {
+                              showBottomModel(
+                                context,
+                                valueAuth.user,
+                                FormType.Symptoms,
+                              );
+                            },
+                            child: Text(
+                              "+Add",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
                             ),
                           ),
                         ),
-                        placeholder: (context, url) =>
-                            CircularProgressIndicator(),
-                        errorWidget: (context, url, error) => Icon(
-                          Icons.person,
-                          size: 40,
-                        ),
-                      ),
-                      SizedBox(width: 10),
-                      Expanded(child: Text("${valueAuth.user.fullName}")),
-                      SizedBox(width: 10),
-                      InkWell(
-                        onTap: () => Get.toNamed(Routes.userProfileDetail),
-                        child: Icon(Icons.edit),
-                      )
-                    ],
-                  ),
-                ),
-                SizedBox(height: 20),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      //symptoms
-                      Text(
-                        "what are your Symptoms Today?",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                        ),
-                      ),
-                      SizedBox(height: 10),
-                      //TODO: add daily symptoms
-                      Container(
-                        padding: EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          color: ColorPalette.generalPrimaryColor,
-                        ),
-                        child: TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            "+Add",
+
+                        SizedBox(height: 20),
+                        RichText(
+                          text: TextSpan(
+                            text: "Track Period",
                             style: TextStyle(
-                              color: Colors.black,
                               fontWeight: FontWeight.bold,
-                              fontSize: 16,
+                              fontSize: 18,
+                              color: Colors.black,
                             ),
+                            children: [
+                              WidgetSpan(
+                                child: Icon(
+                                  Icons.water_drop,
+                                  color: ColorPalette.generalPrimaryColor,
+                                ),
+                              )
+                            ],
                           ),
                         ),
-                      ),
-
-                      SizedBox(height: 20),
-                      Text(
-                        "Track Period",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
+                        SizedBox(height: 20),
+                        Slider(
+                          activeColor: ColorPalette.generalPrimaryColor,
+                          value: 0,
+                          onChanged: (val) {},
                         ),
-                      ),
-                      SizedBox(height: 20),
-                      Slider(
-                        activeColor: ColorPalette.generalPrimaryColor,
-
-                        value: 0,
-                        onChanged: (val) {},
-                      ),
-                      SizedBox(height: 20),
-                      Text(
-                        "Diet",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
+                        SizedBox(height: 20),
+                        RichText(
+                          text: TextSpan(
+                            text: "Diet",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                              color: Colors.black,
+                            ),
+                            children: [
+                              WidgetSpan(
+                                child: Icon(
+                                  Icons.food_bank,
+                                  color: ColorPalette.generalPrimaryColor,
+                                ),
+                              )
+                            ],
+                          ),
                         ),
-                      ),
-                      SizedBox(height: 20),
-                      Text(
-                        "Exercise",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
+                        //Diet
+                        SizedBox(height: 10),
+                        Row(
+                          children: [
+                            InkWell(
+                              onTap: () => stateForm.formModel.dailyDiet == null
+                                  ? showBottomModel(
+                                      context,
+                                      valueAuth.user,
+                                      FormType.Diet,
+                                    )
+                                  : showSnackBar(context, FormType.Diet),
+                              child: RichText(
+                                text: TextSpan(
+                                  children: [
+                                    WidgetSpan(
+                                      child: Icon(
+                                        Icons.insights,
+                                        color: ColorPalette
+                                            .generalDarkPrimaryColor,
+                                        size: 20,
+                                      ),
+                                      alignment: PlaceholderAlignment.middle,
+                                    ),
+                                    TextSpan(
+                                      text: "Daily Calories",
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        color: Colors.black,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                            SizedBox(width: 20),
+                            InkWell(
+                              onTap: () => Get.toNamed(Routes.userFormDetail,
+                                  arguments: stateForm.formModel.diet),
+                              child: RichText(
+                                text: TextSpan(
+                                  children: [
+                                    WidgetSpan(
+                                      child: Icon(
+                                        Icons.bar_chart,
+                                        color: ColorPalette
+                                            .generalDarkPrimaryColor,
+                                        size: 20,
+                                      ),
+                                      alignment: PlaceholderAlignment.middle,
+                                    ),
+                                    TextSpan(
+                                      text: "Previous Calories",
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        color: Colors.black,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
-                      ),
-                      SizedBox(height: 20),
-                      Text(
-                        "Weight",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
+                        SizedBox(height: 20),
+                        RichText(
+                          text: TextSpan(
+                            text: "Exercise",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                              color: Colors.black,
+                            ),
+                            children: [
+                              WidgetSpan(
+                                child: Icon(
+                                  Icons.fitness_center,
+                                  color: ColorPalette.generalPrimaryColor,
+                                ),
+                              )
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                        SizedBox(height: 10),
+                        //Exercise
+                        Row(
+                          children: [
+                            InkWell(
+                              onTap: () => stateForm.formModel.dailyExercise ==
+                                      null
+                                  ? showBottomModel(
+                                      context,
+                                      valueAuth.user,
+                                      FormType.Exercise,
+                                    )
+                                  : showSnackBar(context, FormType.Exercise),
+                              child: RichText(
+                                text: TextSpan(
+                                  children: [
+                                    WidgetSpan(
+                                      child: Icon(
+                                        Icons.edit_document,
+                                        color: ColorPalette
+                                            .generalDarkPrimaryColor,
+                                        size: 20,
+                                      ),
+                                      alignment: PlaceholderAlignment.middle,
+                                    ),
+                                    TextSpan(
+                                      text: "Daily",
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        color: Colors.black,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                            SizedBox(width: 70),
+                            InkWell(
+                              onTap: () => Get.toNamed(Routes.userFormDetail,
+                                  arguments: stateForm.formModel.exercise),
+                              child: RichText(
+                                text: TextSpan(
+                                  children: [
+                                    WidgetSpan(
+                                      child: Icon(
+                                        Icons.bar_chart,
+                                        color: ColorPalette
+                                            .generalDarkPrimaryColor,
+                                        size: 20,
+                                      ),
+                                      alignment: PlaceholderAlignment.middle,
+                                    ),
+                                    TextSpan(
+                                      text: "Previous",
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        color: Colors.black,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 20),
+                        RichText(
+                          text: TextSpan(
+                            text: "Weight",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                              color: Colors.black,
+                            ),
+                            children: [
+                              WidgetSpan(
+                                child: Icon(
+                                  Icons.monitor_weight,
+                                  color: ColorPalette.generalPrimaryColor,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: 10),
+                        //Weight
+                        Row(
+                          children: [
+                            InkWell(
+                              onTap: () =>
+                                  stateForm.formModel.dailyWeight == null
+                                      ? showBottomModel(
+                                          context,
+                                          valueAuth.user,
+                                          FormType.Weight,
+                                        )
+                                      : showSnackBar(context, FormType.Weight),
+                              child: RichText(
+                                text: TextSpan(
+                                  children: [
+                                    WidgetSpan(
+                                      child: Icon(
+                                        Icons.sunny,
+                                        color: ColorPalette
+                                            .generalDarkPrimaryColor,
+                                        size: 20,
+                                      ),
+                                      alignment: PlaceholderAlignment.middle,
+                                    ),
+                                    TextSpan(
+                                      text: "Today",
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        color: Colors.black,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                            SizedBox(width: 60),
+                            InkWell(
+                              onTap: () => Get.toNamed(Routes.userFormDetail,
+                                  arguments: stateForm.formModel.weight),
+                              child: RichText(
+                                text: TextSpan(
+                                  children: [
+                                    WidgetSpan(
+                                      child: Icon(
+                                        Icons.waterfall_chart,
+                                        color: ColorPalette
+                                            .generalDarkPrimaryColor,
+                                        size: 20,
+                                      ),
+                                      alignment: PlaceholderAlignment.middle,
+                                    ),
+                                    TextSpan(
+                                      text: "Weight Logs",
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        color: Colors.black,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
-                ),
-              ],
-            ),
-          ),
+                ],
+              ),
+            );
+          }),
         );
       }),
     );
   }
 
-  showBottomModel(BuildContext context, UserModel user) {
-    // showMaterialModalBottomSheet(
-    //   context: context,
-    //   expand: false,
-    //   closeProgressThreshold: 230,
-    //   builder: (context) {
-    //     return SingleChildScrollView(
-    //       child: Padding(
-    //         padding: const EdgeInsets.symmetric(horizontal: 20),
-    //         child: Column(
-    //           crossAxisAlignment: CrossAxisAlignment.center,
-    //           children: [
-    //             SizedBox(height: 10),
-    //             Container(
-    //               height: 3,
-    //               width: 80,
-    //               decoration: BoxDecoration(
-    //                   color: ColorPalette.generalDarkGrey,
-    //                   borderRadius: BorderRadius.circular(10)),
-    //             ),
-    //             SizedBox(height: 20),
-    //             Text(
-    //               "Ubah Profile",
-    //               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-    //             ),
-    //             SizedBox(height: 30),
-    //             InputFieldRounded(
-    //               label: "Nama Lengkap",
-    //               hint: '',
-    //               initialValue: user.namaLengkap,
-    //               onChange: (val) {
-    //                 user.namaLengkap = val;
-    //               },
-    //               secureText: false,
-    //             ),
-    //             InputFieldRounded(
-    //               label:"Tempat Lahir",
-    //               hint: '',
-    //               initialValue: user.tempatLahir,
-    //               onChange: (val) {
-    //                 user.tempatLahir = val;
-    //               },
-    //               secureText: false,
-    //             ),
-    //             ButtonRounded(
-    //               text: "Update",
-    //               onPressed: () {
-    //                 doChangeProfile(context, user);
-    //               },
-    //             ),
-    //             SizedBox(height: 30),
-    //           ],
-    //         ),
-    //       ),
-    //     );
-    //   },
-    // );
+  showSnackBar(context, FormType formType) {
+    ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("You've added ${formType.name} for today")));
   }
 
-// doChangeProfile(BuildContext context, UserModel user) async {
-//   EasyLoading.show(status: "Loading");
-//   var result = await Provider.of<AuthProvider>(context, listen: false)
-//       .doUpdateProfile(user);
-//   result.fold(
-//     (l) {
-//       EasyLoading.dismiss();
-//       Alert(
-//         context: context,
-//         type: AlertType.error,
-//         title: "Error Update",
-//         desc: l,
-//         buttons: [
-//           DialogButton(
-//             child: Text(
-//               "Close",
-//               style: TextStyle(color: Colors.white, fontSize: 20),
-//             ),
-//             onPressed: () => Navigator.pop(context),
-//             color: ColorPalette.generalPrimaryColor,
-//             radius: BorderRadius.circular(0.0),
-//           ),
-//         ],
-//       ).show();
-//     },
-//     (r) {
-//       EasyLoading.dismiss();
-//       Alert(
-//         context: context,
-//         type: AlertType.success,
-//         title: "Berhasil",
-//         desc: "Berhasil update profile",
-//         buttons: [
-//           DialogButton(
-//             child: Text(
-//               "Close",
-//               style: TextStyle(color: Colors.white, fontSize: 20),
-//             ),
-//             onPressed: () => Navigator.pop(context),
-//             color: ColorPalette.generalPrimaryColor,
-//             radius: BorderRadius.circular(0.0),
-//           ),
-//         ],
-//       ).show();
-//     },
-//   );
-// }
+  showBottomModel(BuildContext context, UserModel user, FormType type) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      builder: (context) {
+        String value = '';
+        return SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom,
+                left: 20,
+                right: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(height: 10),
+                Container(
+                  height: 3,
+                  width: 80,
+                  decoration: BoxDecoration(
+                      color: ColorPalette.generalDarkGrey,
+                      borderRadius: BorderRadius.circular(10)),
+                ),
+                SizedBox(height: 20),
+                Text(
+                  "Form ${type.name}",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 30),
+                InputFieldRounded(
+                  hint: '${type.name}',
+                  onChange: (val) {
+                    value = val;
+                  },
+                ),
+                ButtonRounded(
+                  text: "Add",
+                  onPressed: () {
+                    context.read<FormProvider>().update(type, value, user);
+
+                    Get.back();
+                  },
+                ),
+                SizedBox(height: 30),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
 }

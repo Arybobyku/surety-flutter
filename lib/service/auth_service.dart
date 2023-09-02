@@ -50,6 +50,14 @@ class AuthService {
     }
   }
 
+  Future<void> changePassword(String password) async {
+    try {
+      await _auth.currentUser?.updatePassword(password);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   //NOTE: Function to Sign in
   Future<UserModel> signIn(
       {required String email, required String password}) async {
@@ -59,10 +67,7 @@ class AuthService {
         password: password,
       );
 
-      print("UUID USER ${userCredential.user!.uid}");
-
       if (_auth.currentUser != null && !_auth.currentUser!.emailVerified) {
-        print("UUID USER ${_auth.currentUser!.emailVerified}");
         return throw ("Please Verified Your Email");
       }
       UserModel user =

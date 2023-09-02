@@ -41,7 +41,6 @@ class DiaryModel {
             : null,
         likes: json['likes'] != null
             ? List<UserModel>.from(json['likes'].map((e) {
-                print(e);
                 return UserModel.fromJson(e as Map<String, dynamic>, e['id']);
               }).toList())
             : null,

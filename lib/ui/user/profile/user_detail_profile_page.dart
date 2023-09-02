@@ -28,6 +28,11 @@ class UserDetailProfilePage extends StatefulWidget {
 class _UserDetailProfilePageState extends State<UserDetailProfilePage> {
   File? photoProfile = null;
 
+  bool secureText = true;
+  bool secureText2 = true;
+
+  String? password = null;
+  String? password2 = null;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -196,48 +201,57 @@ class _UserDetailProfilePageState extends State<UserDetailProfilePage> {
                       hint: 'Gender',
                       icon: Icon(Icons.man, color: Colors.grey),
                     ),
-                    // InputFieldRounded(
-                    //   hint: "Password",
-                    //   icon: Icon(Icons.lock),
-                    //   onChange: (val) {
-                    //     password = val;
-                    //   },
-                    //   suffixIcon: InkWell(
-                    //     onTap: () {
-                    //       setState(() {
-                    //         secureText = !secureText;
-                    //       });
-                    //     },
-                    //     child: Icon(
-                    //       Icons.remove_red_eye_outlined,
-                    //       color: ColorPalette.generalPrimaryColor,
-                    //     ),
-                    //   ),
-                    //   secureText: secureText,
-                    // ),
-                    // InputFieldRounded(
-                    //   hint: "Confirm Password",
-                    //   icon: Icon(Icons.lock),
-                    //   onChange: (val) {
-                    //     password2 = val;
-                    //   },
-                    //   suffixIcon: InkWell(
-                    //     onTap: () {
-                    //       setState(() {
-                    //         secureText2 = !secureText2;
-                    //       });
-                    //     },
-                    //     child: Icon(
-                    //       Icons.remove_red_eye_outlined,
-                    //       color: ColorPalette.generalPrimaryColor,
-                    //     ),
-                    //   ),
-                    //   secureText: secureText2,
-                    // ),
 
                     ButtonRounded(
                       text: "Save",
                       onPressed: () => doSave(valueAuth.user, photoProfile),
+                    ),
+
+                    SizedBox(height: 20),
+
+                    InputFieldRounded(
+                      hint: "Password",
+                      icon: Icon(Icons.lock),
+                      onChange: (val) {
+                        password = val;
+                      },
+                      suffixIcon: InkWell(
+                        onTap: () {
+                          setState(() {
+                            secureText = !secureText;
+                          });
+                        },
+                        child: Icon(
+                          secureText?  Icons.visibility_off :Icons.visibility,
+                          color: ColorPalette.generalPrimaryColor,
+                        ),
+                      ),
+                      secureText: secureText,
+                    ),
+
+                    InputFieldRounded(
+                      hint: "Confirm Password",
+                      icon: Icon(Icons.lock),
+                      onChange: (val) {
+                        password2 = val;
+                      },
+                      suffixIcon: InkWell(
+                        onTap: () {
+                          setState(() {
+                            secureText2 = !secureText2;
+                          });
+                        },
+                        child: Icon(
+                          secureText2?  Icons.visibility_off :Icons.visibility,
+                          color: ColorPalette.generalPrimaryColor,
+                        ),
+                      ),
+                      secureText: secureText2,
+                    ),
+
+                    ButtonRounded(
+                      text: "Change Password",
+                      onPressed: () => doChangePassword(password,password2),
                     ),
                   ],
                 ),
@@ -289,6 +303,44 @@ class _UserDetailProfilePageState extends State<UserDetailProfilePage> {
       ).show();
     }, (r) {
       EasyLoading.dismiss();
+    });
+  }
+
+  doChangePassword(String? password1, String? password2) async {
+    if(password1 == null){
+      return ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Please insert password")));
+    }
+    if(password1 != password2){
+      return ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Password do not match")));
+    }
+    EasyLoading.show(status: "Loading...");
+
+    var result = await Provider.of<AuthProvider>(context, listen: false)
+        .doChangePassword(password1!);
+
+    result.fold((l) {
+      EasyLoading.dismiss();
+      Alert(
+        context: context,
+        type: AlertType.error,
+        title: "Error Change Password",
+        desc: l,
+        buttons: [
+          DialogButton(
+            child: Text(
+              "Close",
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+            onPressed: () => Navigator.pop(context),
+            color: ColorPalette.generalPrimaryColor,
+            radius: BorderRadius.circular(0.0),
+          ),
+        ],
+      ).show();
+    }, (r) {
+      EasyLoading.dismiss();
+
+      return ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Success change passwrod")));
     });
   }
 

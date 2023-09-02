@@ -1,11 +1,9 @@
+import 'package:intl/intl.dart';
+
 extension DateTimExtension on DateTime{
   String timeAgoFormat({bool numericDates = true}) {
     final date2 = DateTime.now();
     final difference = date2.difference(this);
-    print(difference);
-    print(date2);
-    print(this);
-
 
     if ((difference.inDays / 7).floor() >= 1) {
       return (numericDates) ? '1 week ago' : 'Last week';
@@ -26,5 +24,14 @@ extension DateTimExtension on DateTime{
     } else {
       return 'Just now';
     }
+  }
+
+  String dateFormat(){
+    return DateFormat("dd-MM-yyyy").format(this);
+  }
+
+  bool isSameDate(DateTime other) {
+    return year == other.year && month == other.month
+        && day == other.day;
   }
 }

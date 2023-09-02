@@ -6,9 +6,11 @@ import 'package:provider/provider.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:surety/helper/color_palette.dart';
 import 'package:surety/helper/constants.dart';
+import 'package:surety/helper/extension/form_extension.dart';
 import 'package:surety/local_storage_service.dart';
 import 'package:surety/provider/article_provider.dart';
 import 'package:surety/provider/auth.dart';
+import 'package:surety/provider/form_provider.dart';
 import 'package:surety/provider/product_provider.dart';
 import 'package:surety/routes.dart';
 import 'package:surety/setup_locator.dart';
@@ -30,7 +32,6 @@ class _UserHomePageState extends State<UserHomePage> {
   @override
   void initState() {
     if (getData) {
-      // EasyLoading.show(status: "Loading");
     }
     super.initState();
   }
@@ -75,30 +76,35 @@ class _UserHomePageState extends State<UserHomePage> {
                           ),
                         ),
                         InkWell(
-                          onTap: (){
+                          onTap: () {
 
                           },
                           child: Container(
                             padding: EdgeInsets.all(5),
                             decoration: BoxDecoration(
                               color: Colors.white,
-                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
                             ),
-                            child: Column(
-                              children: [
-                                Image.asset("images/cup.png",
-                                    width: 30, height: 20),
-                                Text(
-                                  "122",
-                                  style: TextStyle(fontSize: 12),
-                                )
-                              ],
+                            child: Consumer<FormProvider>(
+                              builder: (context,stateForm,_) {
+                                return Column(
+                                  children: [
+                                    Image.asset("images/cup.png",
+                                        width: 30, height: 20),
+                                    Text(
+                                      "${stateForm.formModel.totalPoints}",
+                                      style: TextStyle(fontSize: 12),
+                                    )
+                                  ],
+                                );
+                              }
                             ),
                           ),
                         ),
                         SizedBox(width: 5),
                         InkWell(
-                          onTap: (){
+                          onTap: () {
                             Get.toNamed(Routes.userProfileDetail);
                           },
                           child: CachedNetworkImage(
@@ -128,9 +134,7 @@ class _UserHomePageState extends State<UserHomePage> {
 
                   ///  Banner
                   InkWell(
-                    onTap: (){
-
-                    },
+                    onTap: () {},
                     child: Container(
                       width: double.infinity,
                       height: 120,
