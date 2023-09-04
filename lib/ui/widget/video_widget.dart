@@ -51,7 +51,6 @@ class _VideoWidgetState extends State<VideoWidget> {
               key: new PageStorageKey(widget.url),
               controller: ChewieController(
                 videoPlayerController: videoPlayerController,
-                aspectRatio: 4 / 2,
                 // Prepare the video to be played and display the first frame
                 autoInitialize: true,
                 looping: false,

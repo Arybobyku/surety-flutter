@@ -34,6 +34,7 @@ class _UserFormDetailPageState extends State<UserFormDetailPage> {
                   (e) => Container(
                     width: double.infinity,
                     padding: EdgeInsets.all(10),
+                    margin: EdgeInsets.only(bottom: 10),
                     decoration: BoxDecoration(
                       color: Colors.white,
                     ),
@@ -51,6 +52,13 @@ class _UserFormDetailPageState extends State<UserFormDetailPage> {
                             fontSize: 20,
                           ),
                         ),
+                        if(e.value2!=null)
+                          Text(
+                            e.value2!,
+                            style: TextStyle(
+                              fontSize: 20,
+                            ),
+                          ),
                       ],
                     ),
                   ),

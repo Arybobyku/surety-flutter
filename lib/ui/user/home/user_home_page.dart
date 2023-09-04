@@ -57,7 +57,6 @@ class _UserHomePageState extends State<UserHomePage> {
             child: Consumer2<AuthProvider, FormProvider>(
                 builder: (context, valueAuth, stateForm, _) {
               if (stateForm.dailyLogin && !alreadyShowDialog) {
-                alreadyShowDialog = true;
                 WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
                   Alert(
                     context: context,

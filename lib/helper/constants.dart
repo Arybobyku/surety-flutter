@@ -67,3 +67,13 @@ final List<Map<String, String>> moodStickers = [
   {"sick": "🤒"},
   {"angry": "😡"},
 ];
+
+final symptomsList = [
+  "Hot Flushes/Flashes",
+  "Irregular periods",
+  "Vaginal Dryness",
+  "Loss of libido",
+  "Trouble Sleeping",
+  "Reduce Libido",
+  "Mood Swings",
+];

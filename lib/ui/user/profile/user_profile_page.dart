@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:surety/helper/color_palette.dart';
+import 'package:surety/helper/constants.dart';
 import 'package:surety/helper/enum/form_enums.dart';
 import 'package:surety/helper/extension/form_extension.dart';
 import 'package:surety/model/user_model.dart';
@@ -55,7 +56,11 @@ class UserProfilePage extends StatelessWidget {
                           ),
                         ),
                         SizedBox(width: 10),
-                        Expanded(child: Text("${valueAuth.user.fullName}")),
+                        Expanded(
+                            child: Text(
+                          "${valueAuth.user.fullName}",
+                          style: TextStyle(fontSize: 18),
+                        )),
                         SizedBox(width: 10),
                         InkWell(
                           onTap: () {},
@@ -72,7 +77,7 @@ class UserProfilePage extends StatelessWidget {
                                     width: 30, height: 20),
                                 Text(
                                   "${stateForm.formModel.totalPoints ?? "-"}",
-                                  style: TextStyle(fontSize: 12),
+                                  style: TextStyle(fontSize: 16),
                                 )
                               ],
                             ),
@@ -104,56 +109,122 @@ class UserProfilePage extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            RichText(
-                              text: TextSpan(
-                                children: [
-                                  WidgetSpan(
-                                    child: Icon(
-                                      Icons.history,
-                                      color: ColorPalette.generalPrimaryColor,
+                            GestureDetector(
+                              onTap: () => Get.toNamed(
+                                Routes.userFormDetail,
+                                arguments: stateForm.formModel.symptoms,
+                              ),
+                              child: RichText(
+                                text: TextSpan(
+                                  children: [
+                                    WidgetSpan(
+                                      child: Icon(
+                                        Icons.history,
+                                        color: ColorPalette.generalPrimaryColor,
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                           ],
                         ),
                         SizedBox(height: 10),
                         GridView.builder(
-                          itemCount:
-                              stateForm.formModel.dailySymptoms?.length ?? 0,
+                          itemCount: symptomsList.length,
                           shrinkWrap: true,
                           gridDelegate:
                               SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 4,
-                            mainAxisSpacing: 2,
-                            childAspectRatio: 1.3,
+                            crossAxisCount: 3,
+                            mainAxisSpacing: 5,
+                            childAspectRatio: 1.9,
                           ),
                           itemBuilder: (context, index) {
-                            return Container(
-                              padding: EdgeInsets.all(5),
-                              margin: EdgeInsets.symmetric(horizontal: 5),
-                              decoration: BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
-                                color: ColorPalette.generalPrimaryColor,
-                              ),
-                              alignment: Alignment.center,
-                              child: Text(
-                                "${stateForm.formModel.dailySymptoms![index].value}",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
+                            return GestureDetector(
+                              onTap: () {
+                                context.read<FormProvider>().update(
+                                      FormType.Symptoms,
+                                      symptomsList[index],
+                                      context.read<AuthProvider>().user,
+                                    );
+                              },
+                              child: Container(
+                                padding: EdgeInsets.all(5),
+                                margin: EdgeInsets.symmetric(horizontal: 5),
+                                decoration: BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  color: ColorPalette.generalPrimaryColor,
+                                  border: stateForm.formModel.symptoms
+                                              .firstWhereOrNull((element) =>
+                                                  element.value ==
+                                                  symptomsList[index]) !=
+                                          null
+                                      ? Border.all(width: 2, color: Colors.blue)
+                                      : null,
+                                ),
+                                alignment: Alignment.center,
+                                child: Text(
+                                  symptomsList[index],
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                  ),
                                 ),
                               ),
                             );
                           },
                         ),
                         SizedBox(height: 10),
+                        if (stateForm.formModel.dailySymptoms?.firstWhereOrNull(
+                                (element) => element.value2 != null) !=
+                            null)
+                          GridView.builder(
+                            itemCount: stateForm.formModel.dailySymptoms
+                                ?.where((element) => element.value2 != null)
+                                .toList()
+                                .length,
+                            shrinkWrap: true,
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 3,
+                              mainAxisSpacing: 5,
+                              childAspectRatio: 1.9,
+                            ),
+                            itemBuilder: (context, index) {
+                              final symptomInput = stateForm
+                                  .formModel.dailySymptoms
+                                  ?.where((element) => element.value2 != null)
+                                  .toList();
+                              return Container(
+                                padding: EdgeInsets.all(5),
+                                margin: EdgeInsets.symmetric(horizontal: 5),
+                                decoration: BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10)),
+                                    color: ColorPalette.generalPrimaryColor,
+                                    border: Border.all(
+                                        width: 2, color: Colors.blue)),
+                                alignment: Alignment.center,
+                                child: Text(
+                                  symptomInput?[index].value ?? "-",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        SizedBox(height: 10),
                         Container(
-                          padding: EdgeInsets.all(5),
+                          margin: EdgeInsets.only(left: 10),
+                          padding:
+                              EdgeInsets.symmetric(vertical: 5, horizontal: 20),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                             color: ColorPalette.generalPrimaryColor,
@@ -178,30 +249,73 @@ class UserProfilePage extends StatelessWidget {
                         ),
 
                         SizedBox(height: 20),
-                        RichText(
-                          text: TextSpan(
-                            text: "Track Period",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                              color: Colors.black,
-                            ),
-                            children: [
-                              WidgetSpan(
-                                child: Icon(
-                                  Icons.water_drop,
-                                  color: ColorPalette.generalPrimaryColor,
+                        Row(
+                          children: [
+                            Expanded(
+                              child: RichText(
+                                text: TextSpan(
+                                  text: "Track Period",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18,
+                                    color: Colors.black,
+                                  ),
+                                  children: [
+                                    WidgetSpan(
+                                      child: Icon(
+                                        Icons.water_drop,
+                                        color: ColorPalette.generalPrimaryColor,
+                                      ),
+                                    )
+                                  ],
                                 ),
-                              )
-                            ],
-                          ),
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () => Get.toNamed(
+                                Routes.userFormDetail,
+                                arguments: stateForm.formModel.period,
+                              ),
+                              child: Icon(Icons.history,
+                                  color: ColorPalette.generalPrimaryColor),
+                            ),
+                          ],
                         ),
                         SizedBox(height: 20),
                         Slider(
                           activeColor: ColorPalette.generalPrimaryColor,
-                          value: 0,
-                          onChanged: (val) {},
+                          value: stateForm.periodProgress,
+                          min: 0,
+                          max: 100,
+                          onChanged: (val) {
+                            context
+                                .read<FormProvider>()
+                                .onChangePeriodTrack(val);
+                          },
                         ),
+                        Row(
+                          children: [
+                            Expanded(
+                                child: Text(
+                              "Light",
+                              style: TextStyle(fontSize: 16),
+                            )),
+                            Text(
+                              "Heavy",
+                              style: TextStyle(fontSize: 16),
+                            )
+                          ],
+                        ),
+                        if (stateForm.formModel.dailyPeriod == null)
+                          ButtonRounded(
+                            text: "Add",
+                            onPressed: () {
+                              context.read<FormProvider>().update(
+                                  FormType.Period,
+                                  "${stateForm.periodProgress} %",
+                                  context.read<AuthProvider>().user);
+                            },
+                          ),
                         SizedBox(height: 20),
                         RichText(
                           text: TextSpan(
@@ -248,7 +362,7 @@ class UserProfilePage extends StatelessWidget {
                                     TextSpan(
                                       text: "Daily Calories",
                                       style: TextStyle(
-                                        fontSize: 12,
+                                        fontSize: 16,
                                         color: Colors.black,
                                       ),
                                     )
@@ -275,7 +389,7 @@ class UserProfilePage extends StatelessWidget {
                                     TextSpan(
                                       text: "Previous Calories",
                                       style: TextStyle(
-                                        fontSize: 12,
+                                        fontSize: 16,
                                         color: Colors.black,
                                       ),
                                     )
@@ -332,7 +446,7 @@ class UserProfilePage extends StatelessWidget {
                                     TextSpan(
                                       text: "Daily",
                                       style: TextStyle(
-                                        fontSize: 12,
+                                        fontSize: 16,
                                         color: Colors.black,
                                       ),
                                     )
@@ -359,7 +473,7 @@ class UserProfilePage extends StatelessWidget {
                                     TextSpan(
                                       text: "Previous",
                                       style: TextStyle(
-                                        fontSize: 12,
+                                        fontSize: 16,
                                         color: Colors.black,
                                       ),
                                     )
@@ -416,7 +530,7 @@ class UserProfilePage extends StatelessWidget {
                                     TextSpan(
                                       text: "Today",
                                       style: TextStyle(
-                                        fontSize: 12,
+                                        fontSize: 16,
                                         color: Colors.black,
                                       ),
                                     )
@@ -443,7 +557,7 @@ class UserProfilePage extends StatelessWidget {
                                     TextSpan(
                                       text: "Weight Logs",
                                       style: TextStyle(
-                                        fontSize: 12,
+                                        fontSize: 16,
                                         color: Colors.black,
                                       ),
                                     )
@@ -452,7 +566,8 @@ class UserProfilePage extends StatelessWidget {
                               ),
                             ),
                           ],
-                        )
+                        ),
+                        SizedBox(height: 150),
                       ],
                     ),
                   ),
@@ -471,11 +586,13 @@ class UserProfilePage extends StatelessWidget {
   }
 
   showBottomModel(BuildContext context, UserModel user, FormType type) {
+    String value = '';
+    String valueExercise = '';
+    String value2 = '';
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
       builder: (context) {
-        String value = '';
         return SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.only(
@@ -499,16 +616,51 @@ class UserProfilePage extends StatelessWidget {
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 30),
-                InputFieldRounded(
-                  hint: '${type.name}',
-                  onChange: (val) {
-                    value = val;
-                  },
-                ),
+                type == FormType.Exercise
+                    ? Column(
+                        children: [
+                          InputFieldRounded(
+                            title: "Hours",
+                            hint: '...',
+                            keyboardType: TextInputType.number,
+                            onChange: (val) {
+                              print("ON CHANGE $val");
+                              valueExercise = val;
+
+                              print("valueExercise $valueExercise");
+                            },
+                          ),
+                          InputFieldRounded(
+                            title: "Intensity of exercise",
+                            hint: '...',
+                            onChange: (val) {
+                              value2 = val;
+                            },
+                          )
+                        ],
+                      )
+                    : InputFieldRounded(
+                        hint: '${type.name}',
+                        onChange: (val) {
+                          value = val;
+                        },
+                      ),
                 ButtonRounded(
                   text: "Add",
                   onPressed: () {
-                    context.read<FormProvider>().update(type, value, user);
+                    if (type == FormType.Symptoms) {
+                      context
+                          .read<FormProvider>()
+                          .update(type, value, user, value2: "input");
+                    } else if (type == FormType.Exercise) {
+                      context
+                          .read<FormProvider>()
+                          .update(type, valueExercise, user, value2: value2);
+                    } else {
+                      context
+                          .read<FormProvider>()
+                          .update(type, value, user, value2: value2);
+                    }
 
                     Get.back();
                   },

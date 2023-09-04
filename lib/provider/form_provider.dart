@@ -10,6 +10,7 @@ class FormProvider extends ChangeNotifier {
   FormService _formService = FormService();
   bool loading = true;
   bool dailyLogin = false;
+  double periodProgress = 50;
   FormModel formModel = FormModel(
     login: [],
     symptoms: [],
@@ -19,6 +20,11 @@ class FormProvider extends ChangeNotifier {
     weight: [],
     userId: '',
   );
+
+  void onChangePeriodTrack(double value) {
+    this.periodProgress = value;
+    notifyListeners();
+  }
 
   Future<void> getFormById(UserModel user) async {
     try {
@@ -41,7 +47,8 @@ class FormProvider extends ChangeNotifier {
     }
   }
 
-  Future<void> update(FormType type, String value, UserModel userModel) async {
+  Future<void> update(FormType type, String value, UserModel userModel,
+      {String? value2}) async {
     formModel.userId = userModel.id!;
     try {
       if (type == FormType.Login) {
@@ -50,12 +57,18 @@ class FormProvider extends ChangeNotifier {
             BaseFormModel(key: "Login", date: DateTime.now(), value: value));
       }
       if (type == FormType.Weight) {
-        formModel.weight.add(
-            BaseFormModel(key: "Weight", date: DateTime.now(), value: value));
+        formModel.weight.add(BaseFormModel(
+            key: "Weight", date: DateTime.now(), value: value + " Kg"));
       }
       if (type == FormType.Exercise) {
         formModel.exercise.add(
-            BaseFormModel(key: "Exercise", date: DateTime.now(), value: value));
+          BaseFormModel(
+            key: "Exercise",
+            date: DateTime.now(),
+            value: value + " Hours",
+            value2: value2,
+          ),
+        );
       }
       if (type == FormType.Period) {
         formModel.period.add(
@@ -66,8 +79,12 @@ class FormProvider extends ChangeNotifier {
             BaseFormModel(key: "Diet", date: DateTime.now(), value: value));
       }
       if (type == FormType.Symptoms) {
-        formModel.symptoms.add(
-            BaseFormModel(key: "Symptoms", date: DateTime.now(), value: value));
+        formModel.symptoms.add(BaseFormModel(
+          key: "Symptoms",
+          date: DateTime.now(),
+          value: value,
+          value2: value2,
+        ));
       }
 
       final result = await _formService.update(formModel);
