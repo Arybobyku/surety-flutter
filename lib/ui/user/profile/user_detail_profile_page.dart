@@ -37,7 +37,11 @@ class _UserDetailProfilePageState extends State<UserDetailProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Profile"),
+        title: Consumer<AuthProvider>(
+          builder: (context,state,_) {
+            return Text(state.user.fullName ?? "Profile");
+          }
+        ),
         backgroundColor: ColorPalette.generalSecondaryColor,
         actions: [
           TextButton(
