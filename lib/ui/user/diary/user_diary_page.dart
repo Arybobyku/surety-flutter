@@ -128,7 +128,10 @@ class _UserDiaryPageState extends State<UserDiaryPage> {
                                     child: Icon(Icons.delete),
                                   ),
                                   SizedBox(width: 10),
-                                  image!=null && image!.path.getExtension().contains("mp4")
+                                  image != null &&
+                                          image!.path
+                                              .getExtension()
+                                              .contains("mp4")
                                       ? Expanded(
                                           child: Container(
                                             height: 200,
@@ -284,7 +287,9 @@ class _UserDiaryPageState extends State<UserDiaryPage> {
                                             ),
                                             SizedBox(height: 5),
                                             diary.image != null
-                                                ? diary.image!.getExtension().contains("mp4")
+                                                ? diary.image!
+                                                        .getExtension()
+                                                        .contains("mp4")
                                                     ? VideoWidget(
                                                         url: diary.image!,
                                                         play: true,
@@ -405,72 +410,75 @@ class _UserDiaryPageState extends State<UserDiaryPage> {
 
                                                   Get.toNamed(
                                                     Routes.userCommentPage,
-                                                    arguments: context.read<
-                                                        DiaryProvider>(),
+                                                    arguments: context
+                                                        .read<DiaryProvider>(),
                                                   );
                                                 },
                                                 child: Container(
                                                   child: Column(
                                                     crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
+                                                        CrossAxisAlignment
+                                                            .start,
                                                     children: [
                                                       SizedBox(height: 5),
                                                       Divider(),
-                                                      Text("Comments ${diary.comments?.length ?? ""}"),
+                                                      Text(
+                                                          "Comments ${diary.comments?.length ?? ""}"),
                                                       SizedBox(height: 7),
                                                       Row(
                                                         children: [
                                                           CachedNetworkImage(
                                                             imageUrl: diary
-                                                                .userModel
-                                                                ?.photoProfile ??
+                                                                    .userModel
+                                                                    ?.photoProfile ??
                                                                 "",
                                                             imageBuilder: (context,
-                                                                imageProvider) =>
+                                                                    imageProvider) =>
                                                                 Container(
-                                                                  width: 20.0,
-                                                                  height: 20.0,
-                                                                  decoration:
+                                                              width: 20.0,
+                                                              height: 20.0,
+                                                              decoration:
                                                                   BoxDecoration(
-                                                                    shape:
-                                                                    BoxShape.circle,
-                                                                    image:
+                                                                shape: BoxShape
+                                                                    .circle,
+                                                                image:
                                                                     DecorationImage(
-                                                                      image:
+                                                                  image:
                                                                       imageProvider,
-                                                                      fit: BoxFit.cover,
-                                                                    ),
-                                                                  ),
+                                                                  fit: BoxFit
+                                                                      .cover,
                                                                 ),
+                                                              ),
+                                                            ),
                                                             placeholder: (context,
-                                                                url) =>
+                                                                    url) =>
                                                                 CircularProgressIndicator(),
-                                                            errorWidget: (context,
-                                                                url, error) =>
-                                                                Icon(
-                                                                  Icons.person,
-                                                                  size: 20,
-                                                                ),
+                                                            errorWidget:
+                                                                (context, url,
+                                                                        error) =>
+                                                                    Icon(
+                                                              Icons.person,
+                                                              size: 20,
+                                                            ),
                                                           ),
                                                           SizedBox(width: 10),
                                                           Expanded(
                                                             child: Text(
-                                                              "${diary.comments?.first
-                                                                  .description ?? ""}",
+                                                              "${diary.comments?.first.description ?? ""}",
                                                               maxLines: 2,
-                                                              overflow: TextOverflow
-                                                                  .ellipsis,
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
                                                             ),
                                                           ),
                                                           Text(
-                                                            "${diary.comments?.first
-                                                                .createAt ?? ""}",
+                                                            "${diary.comments?.first.createAt ?? ""}",
                                                             maxLines: 1,
                                                             style: TextStyle(
-                                                                fontSize: 10
-                                                            ),
-                                                            overflow: TextOverflow
-                                                                .ellipsis,
+                                                                fontSize: 10),
+                                                            overflow:
+                                                                TextOverflow
+                                                                    .ellipsis,
                                                           ),
                                                         ],
                                                       ),
