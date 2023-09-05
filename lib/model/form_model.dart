@@ -9,9 +9,11 @@ class FormModel {
   List<BaseFormModel> diet;
   List<BaseFormModel> exercise;
   List<BaseFormModel> weight;
+  List<BaseFormModel> mood;
   String userId;
 
   FormModel({
+    required this.mood,
     required this.login,
     required this.symptoms,
     required this.period,
@@ -22,6 +24,11 @@ class FormModel {
   });
 
   factory FormModel.fromJson(Map<String, dynamic> json) => FormModel(
+        mood: json['mood'] != null
+            ? List<BaseFormModel>.from(json['mood'].map((e) {
+                return BaseFormModel.fromJson(e as Map<String, dynamic>);
+              }).toList())
+            : [],
         login: json['login'] != null
             ? List<BaseFormModel>.from(json['login'].map((e) {
                 return BaseFormModel.fromJson(e as Map<String, dynamic>);
@@ -56,6 +63,7 @@ class FormModel {
       );
 
   toJson() => {
+        'mood': mood.map((e) => e.toJson()).toList(),
         'symptoms': symptoms.map((e) => e.toJson()).toList(),
         'period': period.map((e) => e.toJson()).toList(),
         'diet': diet.map((e) => e.toJson()).toList(),

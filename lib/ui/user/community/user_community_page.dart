@@ -296,10 +296,15 @@ class _UserCommunityPageState extends State<UserCommunityPage> {
                                       diary.comments!.isNotEmpty)
                                     InkWell(
                                       onTap: () {
+                                        context
+                                            .read<DiaryProvider>()
+                                            .viewDetail(diary);
+
                                         Get.toNamed(
-                                            Routes.userCommentPage,
-                                            arguments: context
-                                            .read<DiaryProvider>());
+                                          Routes.userCommentPage,
+                                          arguments: context
+                                              .read<DiaryProvider>(),
+                                        );
                                       },
                                       child: Container(
                                         child: Column(
@@ -345,13 +350,25 @@ class _UserCommunityPageState extends State<UserCommunityPage> {
                                                       ),
                                                 ),
                                                 SizedBox(width: 10),
+                                                Expanded(
+                                                  child: Text(
+                                                    "${diary.comments?.first
+                                                        .description ?? ""}",
+                                                    maxLines: 2,
+                                                    overflow: TextOverflow
+                                                        .ellipsis,
+                                                  ),
+                                                ),
                                                 Text(
                                                   "${diary.comments?.first
-                                                      .description ?? ""}",
-                                                  maxLines: 2,
+                                                      .createAt ?? ""}",
+                                                  maxLines: 1,
+                                                  style: TextStyle(
+                                                    fontSize: 10
+                                                  ),
                                                   overflow: TextOverflow
                                                       .ellipsis,
-                                                )
+                                                ),
                                               ],
                                             ),
                                           ],

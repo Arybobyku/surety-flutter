@@ -30,6 +30,12 @@ extension FormExtension on FormModel {
         .firstWhereOrNull((element) => element.date.isSameDate(DateTime.now()));
   }
 
+  BaseFormModel? get dailyMood {
+    return this
+        .mood
+        .firstWhereOrNull((element) => element.date.isSameDate(DateTime.now()));
+  }
+
   BaseFormModel? get dailyDiet {
     return this
         .diet
@@ -43,7 +49,10 @@ extension FormExtension on FormModel {
   }
 
   Set<String> get symptomGroupByDate {
-    Set<String> value = this.symptoms.map((e) => DateFormat("yyyy-MM-dd").format(e.date)).toSet();
+    Set<String> value = this
+        .symptoms
+        .map((e) => DateFormat("yyyy-MM-dd").format(e.date))
+        .toSet();
     return value;
   }
 

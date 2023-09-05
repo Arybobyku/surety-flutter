@@ -6,6 +6,8 @@ import 'package:provider/provider.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:surety/helper/color_palette.dart';
 import 'package:surety/helper/constants.dart';
+import 'package:surety/helper/enum/form_enums.dart';
+import 'package:surety/helper/extension/date_time_extension.dart';
 import 'package:surety/helper/extension/form_extension.dart';
 import 'package:surety/local_storage_service.dart';
 import 'package:surety/provider/article_provider.dart';
@@ -203,31 +205,59 @@ class _UserHomePageState extends State<UserHomePage> {
                           ],
                         ),
                         SizedBox(height: 10),
-                        Container(
-                          height: 25,
-                          width: double.infinity,
-                          child: GridView.builder(
-                            itemCount: moodStickers.length,
-                            shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
-                            scrollDirection: Axis.horizontal,
-                            gridDelegate:
-                                SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 1,
-                              mainAxisSpacing: 8,
-                              childAspectRatio: 0.6,
+                        Consumer<FormProvider>(
+                            builder: (context, stateForm, _) {
+                          return Container(
+                            height: 25,
+                            width: double.infinity,
+                            child: GridView.builder(
+                              itemCount: moodStickers.length,
+                              shrinkWrap: true,
+                              physics: NeverScrollableScrollPhysics(),
+                              scrollDirection: Axis.horizontal,
+                              gridDelegate:
+                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 1,
+                                mainAxisSpacing: 8,
+                                childAspectRatio: 0.55,
+                              ),
+                              itemBuilder: (context, index) {
+                                return InkWell(
+                                  onTap: () {
+                                    if (stateForm.formModel.dailyMood == null) {
+                                      context.read<FormProvider>().update(
+                                            FormType.Mood,
+                                            moodStickers[index].values.first,
+                                            context.read<AuthProvider>().user,
+                                          );
+                                    }
+                                  },
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: stateForm.formModel.mood
+                                                  .firstWhereOrNull((element) =>
+                                                      (element.value ==
+                                                          moodStickers[index]
+                                                              .values
+                                                              .first) &&
+                                                      element.date.isSameDate(
+                                                          DateTime.now())) !=
+                                              null
+                                          ? ColorPalette.generalDarkPrimaryColor
+                                          : null,
+                                    ),
+                                    child: Text(
+                                      moodStickers[index].values.first,
+                                      style: TextStyle(fontSize: 20),
+                                    ),
+                                  ),
+                                );
+                              },
                             ),
-                            itemBuilder: (context, index) {
-                              return InkWell(
-                                onTap: () {},
-                                child: Text(
-                                  moodStickers[index].values.first,
-                                  style: TextStyle(fontSize: 20),
-                                ),
-                              );
-                            },
-                          ),
-                        ),
+                          );
+                        }),
 
                         /// Article
                         SizedBox(height: 10),

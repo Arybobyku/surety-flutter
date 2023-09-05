@@ -12,6 +12,7 @@ class FormProvider extends ChangeNotifier {
   bool dailyLogin = false;
   double periodProgress = 50;
   FormModel formModel = FormModel(
+    mood: [],
     login: [],
     symptoms: [],
     period: [],
@@ -51,6 +52,10 @@ class FormProvider extends ChangeNotifier {
       {String? value2}) async {
     formModel.userId = userModel.id!;
     try {
+      if (type == FormType.Mood) {
+        formModel.mood.add(
+            BaseFormModel(key: "Mood", date: DateTime.now(), value: value));
+      }
       if (type == FormType.Login) {
         dailyLogin = true;
         formModel.login.add(
@@ -73,16 +78,15 @@ class FormProvider extends ChangeNotifier {
       if (type == FormType.Period) {
         print(value);
         String periodValue = "";
-        if(double.parse(value) == 50){
+        if (double.parse(value) == 50) {
           periodValue = "Medium";
-        }
-        else if(double.parse(value) > 50){
+        } else if (double.parse(value) > 50) {
           periodValue = "Heavy";
-        }else{
+        } else {
           periodValue = "Light";
         }
-        formModel.period.add(
-            BaseFormModel(key: "Period", date: DateTime.now(), value: periodValue));
+        formModel.period.add(BaseFormModel(
+            key: "Period", date: DateTime.now(), value: periodValue));
       }
       if (type == FormType.Diet) {
         formModel.diet.add(

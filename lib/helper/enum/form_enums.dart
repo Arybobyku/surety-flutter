@@ -4,5 +4,6 @@ enum FormType{
   Period,
   Diet,
   Exercise,
-  Weight
+  Weight,
+  Mood,
 }

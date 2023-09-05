@@ -393,7 +393,91 @@ class _UserDiaryPageState extends State<UserDiaryPage> {
                                                     ),
                                                   ),
                                               ],
-                                            )
+                                            ),
+
+                                            if (diary.comments != null &&
+                                                diary.comments!.isNotEmpty)
+                                              InkWell(
+                                                onTap: () {
+                                                  context
+                                                      .read<DiaryProvider>()
+                                                      .viewDetail(diary);
+
+                                                  Get.toNamed(
+                                                    Routes.userCommentPage,
+                                                    arguments: context.read<
+                                                        DiaryProvider>(),
+                                                  );
+                                                },
+                                                child: Container(
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                    children: [
+                                                      SizedBox(height: 5),
+                                                      Divider(),
+                                                      Text("Comments ${diary.comments?.length ?? ""}"),
+                                                      SizedBox(height: 7),
+                                                      Row(
+                                                        children: [
+                                                          CachedNetworkImage(
+                                                            imageUrl: diary
+                                                                .userModel
+                                                                ?.photoProfile ??
+                                                                "",
+                                                            imageBuilder: (context,
+                                                                imageProvider) =>
+                                                                Container(
+                                                                  width: 20.0,
+                                                                  height: 20.0,
+                                                                  decoration:
+                                                                  BoxDecoration(
+                                                                    shape:
+                                                                    BoxShape.circle,
+                                                                    image:
+                                                                    DecorationImage(
+                                                                      image:
+                                                                      imageProvider,
+                                                                      fit: BoxFit.cover,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                            placeholder: (context,
+                                                                url) =>
+                                                                CircularProgressIndicator(),
+                                                            errorWidget: (context,
+                                                                url, error) =>
+                                                                Icon(
+                                                                  Icons.person,
+                                                                  size: 20,
+                                                                ),
+                                                          ),
+                                                          SizedBox(width: 10),
+                                                          Expanded(
+                                                            child: Text(
+                                                              "${diary.comments?.first
+                                                                  .description ?? ""}",
+                                                              maxLines: 2,
+                                                              overflow: TextOverflow
+                                                                  .ellipsis,
+                                                            ),
+                                                          ),
+                                                          Text(
+                                                            "${diary.comments?.first
+                                                                .createAt ?? ""}",
+                                                            maxLines: 1,
+                                                            style: TextStyle(
+                                                                fontSize: 10
+                                                            ),
+                                                            overflow: TextOverflow
+                                                                .ellipsis,
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              )
                                           ],
                                         ),
                                       );
