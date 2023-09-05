@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:surety/helper/extension/date_time_extension.dart';
 import 'package:surety/model/base_form_model.dart';
 import 'package:surety/model/form_model.dart';
@@ -41,8 +42,18 @@ extension FormExtension on FormModel {
         .firstWhereOrNull((element) => element.date.isSameDate(DateTime.now()));
   }
 
-  int get totalPoints{
-    int total = this.weight.length + this.exercise.length + this.diet.length + this.period.length + this.symptoms.length + this.login.length;
+  Set<String> get symptomGroupByDate {
+    Set<String> value = this.symptoms.map((e) => DateFormat("yyyy-MM-dd").format(e.date)).toSet();
+    return value;
+  }
+
+  int get totalPoints {
+    int total = this.weight.length +
+        this.exercise.length +
+        this.diet.length +
+        this.period.length +
+        this.symptomGroupByDate.length +
+        this.login.length;
     return total;
   }
 }

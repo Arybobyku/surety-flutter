@@ -23,8 +23,8 @@ class DiaryProvider extends ChangeNotifier {
       diary.isExpert = diary.userModel?.expertise == null ? false : true;
       final result = await _diaryService.createDiary(diary, image);
       diary.likes = [];
-      diaries.add(result);
-      diariesByCreator.add(result);
+      diaries.insert(0,result);
+      diariesByCreator.insert(0,result);
       notifyListeners();
       return right(true);
     } catch (e) {
@@ -97,11 +97,14 @@ class DiaryProvider extends ChangeNotifier {
       loading = true;
       final result = await _diaryService.getDiaryByCreator(id);
       diariesByCreator = result;
+
+      if (diariesByCreator.isNotEmpty)
+        diariesByCreator.sort((a, b) => b.createdAt!.compareTo(a.createdAt!));
+
       loading = false;
 
       notifyListeners();
     } catch (e) {
-
       print("DIARY BY CREATOR $e");
       print(e.toString());
     }
@@ -112,6 +115,8 @@ class DiaryProvider extends ChangeNotifier {
       loading = true;
       final result = await _diaryService.getAllDiaries();
       diaries = result;
+      if (diaries.isNotEmpty)
+        diaries.sort((a, b) => b.createdAt!.compareTo(a.createdAt!));
       loading = false;
       notifyListeners();
     } catch (e) {

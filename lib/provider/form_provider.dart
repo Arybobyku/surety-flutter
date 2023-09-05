@@ -71,8 +71,18 @@ class FormProvider extends ChangeNotifier {
         );
       }
       if (type == FormType.Period) {
+        print(value);
+        String periodValue = "";
+        if(double.parse(value) == 50){
+          periodValue = "Medium";
+        }
+        else if(double.parse(value) > 50){
+          periodValue = "Heavy";
+        }else{
+          periodValue = "Light";
+        }
         formModel.period.add(
-            BaseFormModel(key: "Period", date: DateTime.now(), value: value));
+            BaseFormModel(key: "Period", date: DateTime.now(), value: periodValue));
       }
       if (type == FormType.Diet) {
         formModel.diet.add(

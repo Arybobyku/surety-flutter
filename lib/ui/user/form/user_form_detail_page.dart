@@ -15,6 +15,12 @@ class _UserFormDetailPageState extends State<UserFormDetailPage> {
   List<BaseFormModel>? forms = Get.arguments;
 
   @override
+  void initState() {
+    forms?.sort((a,b)=>b.date.compareTo(a.date));
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(

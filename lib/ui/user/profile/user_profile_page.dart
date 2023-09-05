@@ -5,12 +5,14 @@ import 'package:provider/provider.dart';
 import 'package:surety/helper/color_palette.dart';
 import 'package:surety/helper/constants.dart';
 import 'package:surety/helper/enum/form_enums.dart';
+import 'package:surety/helper/extension/date_time_extension.dart';
 import 'package:surety/helper/extension/form_extension.dart';
 import 'package:surety/model/user_model.dart';
 import 'package:surety/provider/auth.dart';
 import 'package:surety/provider/form_provider.dart';
 import 'package:surety/routes.dart';
 import 'package:surety/ui/widget/button_rounded.dart';
+import 'package:surety/ui/widget/dropdown_container.dart';
 import 'package:surety/ui/widget/input_field_rounded.dart';
 
 class UserProfilePage extends StatelessWidget {
@@ -109,7 +111,7 @@ class UserProfilePage extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            GestureDetector(
+                            InkWell(
                               onTap: () => Get.toNamed(
                                 Routes.userFormDetail,
                                 arguments: stateForm.formModel.symptoms,
@@ -140,13 +142,21 @@ class UserProfilePage extends StatelessWidget {
                             childAspectRatio: 1.9,
                           ),
                           itemBuilder: (context, index) {
-                            return GestureDetector(
+                            return InkWell(
                               onTap: () {
-                                context.read<FormProvider>().update(
-                                      FormType.Symptoms,
-                                      symptomsList[index],
-                                      context.read<AuthProvider>().user,
-                                    );
+                                if (stateForm.formModel.symptoms
+                                        .firstWhereOrNull((element) =>
+                                            (element.value ==
+                                                symptomsList[index]) &&
+                                            element.date
+                                                .isSameDate(DateTime.now())) ==
+                                    null) {
+                                  context.read<FormProvider>().update(
+                                        FormType.Symptoms,
+                                        symptomsList[index],
+                                        context.read<AuthProvider>().user,
+                                      );
+                                }
                               },
                               child: Container(
                                 padding: EdgeInsets.all(5),
@@ -157,10 +167,15 @@ class UserProfilePage extends StatelessWidget {
                                   color: ColorPalette.generalPrimaryColor,
                                   border: stateForm.formModel.symptoms
                                               .firstWhereOrNull((element) =>
-                                                  element.value ==
-                                                  symptomsList[index]) !=
+                                                  (element.value ==
+                                                      symptomsList[index]) &&
+                                                  element.date.isSameDate(
+                                                      DateTime.now())) !=
                                           null
-                                      ? Border.all(width: 2, color: Colors.blue)
+                                      ? Border.all(
+                                          width: 2,
+                                          color: ColorPalette
+                                              .generalDarkPrimaryColor)
                                       : null,
                                 ),
                                 alignment: Alignment.center,
@@ -206,7 +221,9 @@ class UserProfilePage extends StatelessWidget {
                                         BorderRadius.all(Radius.circular(10)),
                                     color: ColorPalette.generalPrimaryColor,
                                     border: Border.all(
-                                        width: 2, color: Colors.blue)),
+                                        width: 2,
+                                        color: ColorPalette
+                                            .generalDarkPrimaryColor)),
                                 alignment: Alignment.center,
                                 child: Text(
                                   symptomInput?[index].value ?? "-",
@@ -271,7 +288,7 @@ class UserProfilePage extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            GestureDetector(
+                            InkWell(
                               onTap: () => Get.toNamed(
                                 Routes.userFormDetail,
                                 arguments: stateForm.formModel.period,
@@ -300,6 +317,11 @@ class UserProfilePage extends StatelessWidget {
                               "Light",
                               style: TextStyle(fontSize: 16),
                             )),
+                            Expanded(
+                                child: Text(
+                              "Medium",
+                              style: TextStyle(fontSize: 16),
+                            )),
                             Text(
                               "Heavy",
                               style: TextStyle(fontSize: 16),
@@ -312,7 +334,7 @@ class UserProfilePage extends StatelessWidget {
                             onPressed: () {
                               context.read<FormProvider>().update(
                                   FormType.Period,
-                                  "${stateForm.periodProgress} %",
+                                  "${stateForm.periodProgress}",
                                   context.read<AuthProvider>().user);
                             },
                           ),
@@ -588,88 +610,98 @@ class UserProfilePage extends StatelessWidget {
   showBottomModel(BuildContext context, UserModel user, FormType type) {
     String value = '';
     String valueExercise = '';
+    String valueExercise2 = 'Light';
     String value2 = '';
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
       builder: (context) {
-        return SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.only(
-                bottom: MediaQuery.of(context).viewInsets.bottom,
-                left: 20,
-                right: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(height: 10),
-                Container(
-                  height: 3,
-                  width: 80,
-                  decoration: BoxDecoration(
-                      color: ColorPalette.generalDarkGrey,
-                      borderRadius: BorderRadius.circular(10)),
-                ),
-                SizedBox(height: 20),
-                Text(
-                  "Form ${type.name}",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(height: 30),
-                type == FormType.Exercise
-                    ? Column(
-                        children: [
-                          InputFieldRounded(
-                            title: "Hours",
-                            hint: '...',
-                            keyboardType: TextInputType.number,
-                            onChange: (val) {
-                              print("ON CHANGE $val");
-                              valueExercise = val;
+        return StatefulBuilder(
+            builder: (context, StateSetter updateStateModal) {
+          return SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.only(
+                  bottom: MediaQuery.of(context).viewInsets.bottom,
+                  left: 20,
+                  right: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(height: 10),
+                  Container(
+                    height: 3,
+                    width: 80,
+                    decoration: BoxDecoration(
+                        color: ColorPalette.generalDarkGrey,
+                        borderRadius: BorderRadius.circular(10)),
+                  ),
+                  SizedBox(height: 20),
+                  Text(
+                    "Form ${type.name}",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 30),
+                  type == FormType.Exercise
+                      ? Column(
+                          children: [
+                            InputFieldRounded(
+                              title: "Hours",
+                              hint: '...',
+                              keyboardType: TextInputType.number,
+                              onChange: (val) {
+                                print("ON CHANGE $val");
+                                valueExercise = val;
 
-                              print("valueExercise $valueExercise");
-                            },
-                          ),
-                          InputFieldRounded(
-                            title: "Intensity of exercise",
-                            hint: '...',
-                            onChange: (val) {
-                              value2 = val;
-                            },
-                          )
-                        ],
-                      )
-                    : InputFieldRounded(
-                        hint: '${type.name}',
-                        onChange: (val) {
-                          value = val;
-                        },
-                      ),
-                ButtonRounded(
-                  text: "Add",
-                  onPressed: () {
-                    if (type == FormType.Symptoms) {
-                      context
-                          .read<FormProvider>()
-                          .update(type, value, user, value2: "input");
-                    } else if (type == FormType.Exercise) {
-                      context
-                          .read<FormProvider>()
-                          .update(type, valueExercise, user, value2: value2);
-                    } else {
-                      context
-                          .read<FormProvider>()
-                          .update(type, value, user, value2: value2);
-                    }
+                                print("valueExercise $valueExercise");
+                              },
+                            ),
+                            DropdownContainer(
+                              value: valueExercise2,
+                              onChanged: (val) {
+                                updateStateModal(() {
+                                  valueExercise2 = val!;
+                                });
+                              },
+                              items: ["Light", "Medium", "High"],
+                              hint: 'Intensity of exercise',
+                            ),
+                          ],
+                        )
+                      : InputFieldRounded(
+                          hint: '${type.name}',
+                          onChange: (val) {
+                            value = val;
+                          },
+                        ),
+                  ButtonRounded(
+                    text: "Add",
+                    onPressed: () {
+                      if (type == FormType.Symptoms) {
+                        context
+                            .read<FormProvider>()
+                            .update(type, value, user, value2: "input");
+                      } else if (type == FormType.Exercise) {
+                        context.read<FormProvider>().update(
+                              type,
+                              valueExercise,
+                              user,
+                              value2: valueExercise2,
+                            );
+                      } else {
+                        context
+                            .read<FormProvider>()
+                            .update(type, value, user, value2: value2);
+                      }
 
-                    Get.back();
-                  },
-                ),
-                SizedBox(height: 30),
-              ],
+                      Get.back();
+                    },
+                  ),
+                  SizedBox(height: 30),
+                ],
+              ),
             ),
-          ),
-        );
+          );
+        });
       },
     );
   }
