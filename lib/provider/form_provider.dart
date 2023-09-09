@@ -35,12 +35,13 @@ class FormProvider extends ChangeNotifier {
       if (result != null) {
         formModel = result;
       }
+      loading = false;
+      dailyLogin = false;
+
       if (formModel.dailyLogin == null) {
         await update(FormType.Login, "1", user);
         dailyLogin = true;
       }
-      loading = false;
-      dailyLogin = false;
       notifyListeners();
     } catch (e) {
       print(e);

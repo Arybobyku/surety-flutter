@@ -56,6 +56,33 @@ extension FormExtension on FormModel {
     return value;
   }
 
+  List<BaseFormModel> get mergeAllForm {
+    final allForm = [
+      ...this.symptoms,
+      ...this.login,
+      ...this.period,
+      ...this.diet,
+      ...this.exercise,
+      ...this.weight
+    ];
+    return allForm;
+  }
+
+  Map<String,List <BaseFormModel>>  get pointsGroupByDate {
+    final allForm = this.mergeAllForm;
+    Map<String,List <BaseFormModel>> result = {};
+
+    for (var item in allForm) {
+      if (!result.containsKey(item.date.dateFormat())) {
+        result[item.date.dateFormat()] = [item];
+      } else {
+        result[item.date.dateFormat()]!.add(item);
+      }
+    }
+
+    return result;
+  }
+
   int get totalPoints {
     int total = this.weight.length +
         this.exercise.length +

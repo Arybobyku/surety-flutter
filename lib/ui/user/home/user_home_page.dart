@@ -127,15 +127,21 @@ class _UserHomePageState extends State<UserHomePage> {
                             ),
                             child: Consumer<FormProvider>(
                                 builder: (context, stateForm, _) {
-                              return Column(
-                                children: [
-                                  Image.asset("images/cup.png",
-                                      width: 30, height: 20),
-                                  Text(
-                                    "${stateForm.formModel.totalPoints}",
-                                    style: TextStyle(fontSize: 12),
-                                  )
-                                ],
+                              return InkWell(
+                                onTap: () => Get.toNamed(
+                                  Routes.userTrackingPage,
+                                  arguments: stateForm.formModel,
+                                ),
+                                child: Column(
+                                  children: [
+                                    Image.asset("images/cup.png",
+                                        width: 30, height: 20),
+                                    Text(
+                                      "${stateForm.formModel.totalPoints}",
+                                      style: TextStyle(fontSize: 12),
+                                    )
+                                  ],
+                                ),
                               );
                             }),
                           ),

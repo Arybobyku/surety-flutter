@@ -65,7 +65,8 @@ class UserProfilePage extends StatelessWidget {
                         )),
                         SizedBox(width: 10),
                         InkWell(
-                          onTap: () {},
+                          onTap: () => Get.toNamed(Routes.userTrackingPage,
+                              arguments: stateForm.formModel),
                           child: Container(
                             padding: EdgeInsets.all(5),
                             decoration: BoxDecoration(
