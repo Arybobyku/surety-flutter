@@ -157,6 +157,10 @@ class UserProfilePage extends StatelessWidget {
                                         symptomsList[index],
                                         context.read<AuthProvider>().user,
                                       );
+                                } else {
+                                  context
+                                      .read<FormProvider>()
+                                      .removeSymptoms(symptomsList[index]);
                                 }
                               },
                               child: Container(

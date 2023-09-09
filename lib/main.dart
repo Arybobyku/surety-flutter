@@ -4,6 +4,7 @@ import 'package:surety/provider/admin.dart';
 import 'package:surety/provider/article_provider.dart';
 import 'package:surety/provider/auth.dart';
 import 'package:surety/provider/form_provider.dart';
+import 'package:surety/provider/friends_provider.dart';
 import 'package:surety/routes.dart';
 import 'package:surety/setup_locator.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -66,6 +67,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => AuthProvider()),
         ChangeNotifierProvider(create: (context) => AdminProvider()),
         ChangeNotifierProvider(create: (context) => FormProvider()),
+        ChangeNotifierProvider(create: (context) => FriendsProvider()),
       ],
       child: GetMaterialApp(
         builder: EasyLoading.init(),

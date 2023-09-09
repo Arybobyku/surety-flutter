@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:surety/helper/enum/form_enums.dart';
+import 'package:surety/helper/extension/date_time_extension.dart';
 import 'package:surety/helper/extension/form_extension.dart';
 import 'package:surety/model/base_form_model.dart';
 import 'package:surety/model/form_model.dart';
@@ -47,6 +48,12 @@ class FormProvider extends ChangeNotifier {
       print(e);
       dailyLogin = false;
     }
+  }
+
+  Future removeSymptoms(String userValue)async{
+    formModel.symptoms.removeWhere((value) => value.date.isSameDate(DateTime.now()) && value.value == userValue);
+     await _formService.update(formModel);
+    notifyListeners();
   }
 
   Future<void> update(FormType type, String value, UserModel userModel,

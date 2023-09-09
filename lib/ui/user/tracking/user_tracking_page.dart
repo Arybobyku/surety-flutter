@@ -83,10 +83,14 @@ class _UserTrackingPageState extends State<UserTrackingPage> {
                         if (result != null) {
                           isUsingFilter = true;
                           setState(() {
-                            selected = {
-                              result.dateFormat():
-                                  forms.pointsGroupByDate[result.dateFormat()]!
-                            };
+                            if(forms.pointsGroupByDate[result.dateFormat()] != null){
+                              selected = {
+                                result.dateFormat():
+                                forms.pointsGroupByDate[result.dateFormat()]!
+                              };
+                            }else{
+                              selected = {};
+                            }
                           });
                         } else {
                           setState(() {
@@ -153,7 +157,7 @@ class _UserTrackingPageState extends State<UserTrackingPage> {
                             ),
                           ),
                           Container(
-                            width: 100,
+                            width: 105,
                             margin: EdgeInsets.only(top: 80),
                             padding: EdgeInsets.all(10),
                             decoration: BoxDecoration(
