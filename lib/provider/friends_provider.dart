@@ -8,6 +8,7 @@ class FriendsProvider extends ChangeNotifier {
   AdminService _adminService = AdminService();
   FriendsService _friendsService = FriendsService();
   List<UserModel> listUser = [];
+  List<UserModel> listExpert = [];
   FriendsModel myFriends = FriendsModel(
     friends: [],
   );
@@ -15,28 +16,31 @@ class FriendsProvider extends ChangeNotifier {
   Future<void> getAllUser(UserModel user) async {
     try {
       listUser = [];
+      listExpert = [];
+
       var result = await _adminService.getAllUsers();
       var friendsResult = await _friendsService.getFormById(user.id!);
 
-      print("Friends Length ${friendsResult?.friends.length}");
       if (friendsResult != null) {
         myFriends = friendsResult;
       }
       listUser = result;
-      listUser.removeWhere((element) => element.id == user.id);
-      notifyListeners();
+      listExpert = result;
 
+      listUser.removeWhere((element) => element.id == user.id ||  element.expertise != null);
+
+      notifyListeners();
     } catch (e) {
       print(e);
     }
   }
 
   Future addFriends(UserModel userModel, UserModel me) async {
-    try{
+    try {
       myFriends.friends.add(userModel);
       notifyListeners();
       var result = await _friendsService.update(myFriends, me);
-    }catch(e){
+    } catch (e) {
       print("ERROR ADD FRIENDS $e");
     }
   }

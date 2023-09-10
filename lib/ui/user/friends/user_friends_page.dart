@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:surety/helper/color_palette.dart';
 import 'package:surety/provider/auth.dart';
 import 'package:surety/provider/friends_provider.dart';
+import 'package:surety/routes.dart';
 
 class UserFriendsPage extends StatefulWidget {
   const UserFriendsPage({Key? key}) : super(key: key);
@@ -75,28 +76,34 @@ class _UserFriendsPageState extends State<UserFriendsPage> {
                               ),
                               SizedBox(width: 20),
                               Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "${user.fullName}",
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    if (user.expertise != null)
+                                child: InkWell(
+                                  onTap: () => Get.toNamed(
+                                      Routes.userFriendsDetailPage,
+                                      arguments: user),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
                                       Text(
-                                        "Experts",
+                                        "${user.fullName}",
                                         maxLines: 1,
                                         overflow: TextOverflow.ellipsis,
                                         style: TextStyle(
-                                          fontSize: 12,
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold,
                                         ),
                                       ),
-                                  ],
+                                      if (user.expertise != null)
+                                        Text(
+                                          "Experts",
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                          ),
+                                        ),
+                                    ],
+                                  ),
                                 ),
                               ),
                               TextButton(
@@ -108,9 +115,10 @@ class _UserFriendsPageState extends State<UserFriendsPage> {
                                           .contains(MaterialState.pressed)) {
                                         return ColorPalette.generalPrimaryColor;
                                       }
-                                      return state.myFriends.friends.firstWhereOrNull(
-                                              (e) => e.id == user.id) !=
-                                          null
+                                      return state.myFriends.friends
+                                                  .firstWhereOrNull(
+                                                      (e) => e.id == user.id) !=
+                                              null
                                           ? ColorPalette.generalSecondaryColor
                                           : ColorPalette.generalPrimaryColor;
                                     },

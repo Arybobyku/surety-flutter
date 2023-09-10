@@ -10,6 +10,7 @@ import 'package:surety/ui/navigator_page.dart';
 import 'package:surety/ui/user/article/user_article_detail_page.dart';
 import 'package:surety/ui/user/comment/user_comment_page.dart';
 import 'package:surety/ui/user/form/user_form_detail_page.dart';
+import 'package:surety/ui/user/friends/user_friends_detail_page.dart';
 import 'package:surety/ui/user/friends/user_friends_page.dart';
 import 'package:surety/ui/user/home/user_home_page.dart';
 import 'package:surety/ui/user/main_menu_page.dart';
@@ -41,6 +42,7 @@ class Routes {
   static const String userFormDetail = "/userFormDetail";
   static const String userTrackingPage = "/userTrackingPage";
   static const String userFriendsPage = "/userFriendsPage";
+  static const String userFriendsDetailPage = "/userFriendsDetailPage";
 
   static final newRoutes = <GetPage>[
     GetPage(name: navigator, page: () => NavigatorPage()),
@@ -66,5 +68,6 @@ class Routes {
     GetPage(name: userFormDetail, page: () => UserFormDetailPage()),
     GetPage(name: userTrackingPage, page: () => UserTrackingPage()),
     GetPage(name: userFriendsPage, page: () => UserFriendsPage()),
+    GetPage(name: userFriendsDetailPage, page: () => UserFriendsDetailPage()),
   ];
 }

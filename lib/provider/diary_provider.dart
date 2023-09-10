@@ -12,6 +12,7 @@ class DiaryProvider extends ChangeNotifier {
   DiaryModel formDiary = DiaryModel();
   List<DiaryModel> diaries = [];
   List<DiaryModel> diariesByCreator = [];
+  List<DiaryModel> friendsDiary = [];
   bool loading = true;
   late DiaryModel detail;
 
@@ -100,6 +101,26 @@ class DiaryProvider extends ChangeNotifier {
 
       if (diariesByCreator.isNotEmpty)
         diariesByCreator.sort((a, b) => b.createdAt!.compareTo(a.createdAt!));
+
+      loading = false;
+
+      notifyListeners();
+    } catch (e) {
+      print("DIARY BY CREATOR $e");
+      print(e.toString());
+    }
+  }
+
+  void getFriendsDiary(String id) async {
+    try {
+      loading = true;
+      final result = await _diaryService.getDiaryByCreator(id);
+      friendsDiary = result;
+
+      friendsDiary.removeWhere((element) => element.isPublic == false);
+
+      if (friendsDiary.isNotEmpty)
+        friendsDiary.sort((a, b) => b.createdAt!.compareTo(a.createdAt!));
 
       loading = false;
 

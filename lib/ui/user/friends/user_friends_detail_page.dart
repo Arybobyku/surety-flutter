@@ -1,134 +1,158 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:surety/helper/color_palette.dart';
 import 'package:surety/helper/extension/date_time_extension.dart';
 import 'package:surety/helper/extension/string_extension.dart';
+import 'package:surety/model/user_model.dart';
+import 'package:surety/provider/auth.dart';
 import 'package:surety/provider/diary_provider.dart';
+import 'package:surety/provider/friends_provider.dart';
 import 'package:surety/routes.dart';
-import 'package:surety/ui/widget/button_rounded.dart';
 import 'package:surety/ui/widget/video_widget.dart';
 
-import '../../../provider/auth.dart';
-
-class UserCommunityPage extends StatefulWidget {
-  const UserCommunityPage({Key? key}) : super(key: key);
+class UserFriendsDetailPage extends StatefulWidget {
+  const UserFriendsDetailPage({Key? key}) : super(key: key);
 
   @override
-  State<UserCommunityPage> createState() => _UserCommunityPageState();
+  State<UserFriendsDetailPage> createState() => _UserFriendsDetailPageState();
 }
 
-class _UserCommunityPageState extends State<UserCommunityPage> {
+class _UserFriendsDetailPageState extends State<UserFriendsDetailPage> {
+  UserModel user = Get.arguments;
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-            create: (context) => DiaryProvider()..getAllDiaries()),
+          create: (context) => DiaryProvider()
+            ..getFriendsDiary(user.id!),
+        ),
       ],
       child: Scaffold(
         backgroundColor: ColorPalette.generalBackgroundColor,
-        body: Consumer<AuthProvider>(builder: (context, authState, _) {
-          return SafeArea(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  /// Header
-                  Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Text(
-                            "Around Me",
-                            style: TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.bold),
+        body: SafeArea(
+          child: Consumer<AuthProvider>(builder: (context, authState, _) {
+            return SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  children: [
+                    SizedBox(height: 20),
+                    //Header
+                    Consumer<FriendsProvider>(builder: (context, state, _) {
+                      return Container(
+                        margin: EdgeInsets.only(bottom: 10),
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(10),
                           ),
                         ),
-                        Text(DateFormat('dd MMMM,yyyy').format(DateTime.now()))
-                      ],
-                    ),
-                  ),
-                  Divider(height: 10, color: Colors.black),
-
-                  /// Content
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: TextButton(
-                            style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStateProperty.resolveWith((states) {
-                                if (states.contains(MaterialState.pressed)) {
-                                  return ColorPalette.generalPrimaryColor;
-                                }
-                                return Colors.white;
-                              }),
-                            ),
-                            child: Text(
-                              "Following",
-                              style: TextStyle(
-                                color: Colors.black,
+                        child: Row(
+                          children: [
+                            CachedNetworkImage(
+                              imageUrl: "${user.photoProfile}",
+                              imageBuilder: (context, imageProvider) =>
+                                  Container(
+                                width: 60.0,
+                                height: 60.0,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                    image: imageProvider,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                              placeholder: (context, url) =>
+                                  CircularProgressIndicator(),
+                              errorWidget: (context, url, error) => Icon(
+                                Icons.person,
+                                size: 50,
                               ),
                             ),
-                            onPressed: () {},
-                          ),
-                        ),
-                        SizedBox(width: 20),
-                        Expanded(
-                          child: TextButton(
-                            style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStateProperty.resolveWith((states) {
-                                if (states.contains(MaterialState.pressed)) {
-                                  return ColorPalette.generalPrimaryColor;
-                                }
-                                return Colors.white;
-                              }),
-                            ),
-                            child: Text(
-                              "Near Me",
-                              style: TextStyle(
-                                color: Colors.black,
+                            SizedBox(width: 20),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "${user.fullName}",
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  if (user.expertise != null)
+                                    Text(
+                                      "Experts",
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                ],
                               ),
                             ),
-                            onPressed: () =>
-                                Get.toNamed(Routes.userFriendsPage),
-                          ),
+                            TextButton(
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.resolveWith(
+                                  (states) {
+                                    if (states
+                                        .contains(MaterialState.pressed)) {
+                                      return ColorPalette.generalPrimaryColor;
+                                    }
+                                    return state.myFriends.friends
+                                                .firstWhereOrNull(
+                                                    (e) => e.id == user.id) !=
+                                            null
+                                        ? ColorPalette.generalSecondaryColor
+                                        : ColorPalette.generalPrimaryColor;
+                                  },
+                                ),
+                              ),
+                              onPressed: () {
+                                if (state.myFriends.friends.firstWhereOrNull(
+                                        (e) => e.id == user.id) !=
+                                    null) {
+                                  context.read<FriendsProvider>().removeFriends(
+                                        user,
+                                        context.read<AuthProvider>().user,
+                                      );
+                                } else {
+                                  context.read<FriendsProvider>().addFriends(
+                                        user,
+                                        context.read<AuthProvider>().user,
+                                      );
+                                }
+                              },
+                              child: Text(
+                                state.myFriends.friends.firstWhereOrNull(
+                                            (e) => e.id == user.id) !=
+                                        null
+                                    ? "Unfollow"
+                                    : "Follow",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
+                              ),
+                            )
+                          ],
                         ),
-                        // SizedBox(width: 20),
-                        // Expanded(
-                        //   child: TextButton(
-                        //     style: ButtonStyle(
-                        //       backgroundColor:
-                        //           MaterialStateProperty.resolveWith((states) {
-                        //         // If the button is pressed, return green, otherwise blue
-                        //         if (states.contains(MaterialState.pressed)) {
-                        //           return ColorPalette.generalPrimaryColor;
-                        //         }
-                        //         return Colors.white;
-                        //       }),
-                        //     ),
-                        //     child: Text(
-                        //       "Experts",
-                        //       style: TextStyle(
-                        //         color: Colors.black,
-                        //       ),
-                        //     ),
-                        //     onPressed: () {},
-                        //   ),
-                        // ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Consumer<DiaryProvider>(
+                      );
+                    }),
+                    SizedBox(height: 10),
+                    Divider(height: 4),
+                    SizedBox(height: 10),
+                    Consumer<DiaryProvider>(
                       builder: (context, state, _) {
                         return state.loading
                             ? Center(
@@ -136,10 +160,10 @@ class _UserCommunityPageState extends State<UserCommunityPage> {
                               )
                             : ListView.builder(
                                 shrinkWrap: true,
-                                itemCount: state.diaries.length,
+                                itemCount: state.friendsDiary.length,
                                 physics: NeverScrollableScrollPhysics(),
                                 itemBuilder: (context, index) {
-                                  final diary = state.diaries[index];
+                                  final diary = state.friendsDiary[index];
                                   return Container(
                                     padding: EdgeInsets.all(15),
                                     margin: EdgeInsets.symmetric(vertical: 10),
@@ -417,13 +441,13 @@ class _UserCommunityPageState extends State<UserCommunityPage> {
                                 },
                               );
                       },
-                    ),
-                  ),
-                ],
+                    )
+                  ],
+                ),
               ),
-            ),
-          );
-        }),
+            );
+          }),
+        ),
       ),
     );
   }
