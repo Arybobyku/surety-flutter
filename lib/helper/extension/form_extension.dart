@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:surety/helper/extension/date_time_extension.dart';
@@ -80,7 +82,9 @@ extension FormExtension on FormModel {
       }
     }
 
-    return result;
+    var reverse = LinkedHashMap.fromEntries(result.entries.toList().reversed);
+
+    return reverse;
   }
 
   int get totalPoints {

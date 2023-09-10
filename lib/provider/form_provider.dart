@@ -40,7 +40,7 @@ class FormProvider extends ChangeNotifier {
       dailyLogin = false;
 
       if (formModel.dailyLogin == null) {
-        await update(FormType.Login, "1", user);
+        await update(FormType.Login, "Login", user);
         dailyLogin = true;
       }
       notifyListeners();

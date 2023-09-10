@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:surety/helper/color_palette.dart';
 import 'package:surety/helper/extension/date_time_extension.dart';
 import 'package:surety/helper/extension/form_extension.dart';
 import 'package:surety/helper/extension/list_extension.dart';
 import 'package:surety/model/base_form_model.dart';
 import 'package:surety/model/form_model.dart';
+import 'package:surety/routes.dart';
 
 class UserTrackingPage extends StatefulWidget {
   const UserTrackingPage({Key? key}) : super(key: key);
@@ -83,12 +85,13 @@ class _UserTrackingPageState extends State<UserTrackingPage> {
                         if (result != null) {
                           isUsingFilter = true;
                           setState(() {
-                            if(forms.pointsGroupByDate[result.dateFormat()] != null){
+                            if (forms.pointsGroupByDate[result.dateFormat()] !=
+                                null) {
                               selected = {
-                                result.dateFormat():
-                                forms.pointsGroupByDate[result.dateFormat()]!
+                                result.dateFormat(): forms
+                                    .pointsGroupByDate[result.dateFormat()]!
                               };
-                            }else{
+                            } else {
                               selected = {};
                             }
                           });
@@ -118,62 +121,77 @@ class _UserTrackingPageState extends State<UserTrackingPage> {
                       width: double.infinity,
                       margin: EdgeInsets.only(top: 20),
                       alignment: Alignment.center,
-                      child: Stack(
-                        children: [
-                          Container(
-                            padding: EdgeInsets.all(10),
-                            width: 100,
-                            height: 100,
-                            decoration: BoxDecoration(
-                              color: ColorPalette.generalDarkPrimaryColor,
-                              shape: BoxShape.circle,
-                            ),
-                            child: Column(
-                              children: [
-                                SizedBox(height: 4),
-                                Icon(Icons.star,
-                                    color: points.countStars >= 3
-                                        ? ColorPalette.generalCupColor
-                                        : ColorPalette.generalSoftGrey,
-                                    size: 25),
-                                SizedBox(height: 4),
-                                Row(
-                                  children: [
-                                    Icon(Icons.star,
-                                        color: ColorPalette.generalCupColor,
-                                        size: 25),
-                                    Image.asset(
-                                      "images/cup.png",
-                                      width: 30,
-                                    ),
-                                    Icon(Icons.star,
-                                        color: points.countStars >= 6
-                                            ? ColorPalette.generalCupColor
-                                            : ColorPalette.generalSoftGrey,
-                                        size: 25),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            width: 105,
-                            margin: EdgeInsets.only(top: 80),
-                            padding: EdgeInsets.all(10),
-                            decoration: BoxDecoration(
+                      child: InkWell(
+                        onTap: () {
+                          DateTime date = DateFormat("dd-MM-yyyy").parse(key);
+                          print("DATE $key");
+                          print("MA DATE ${date}");
+
+                          final result = forms.mergeAllForm
+                              .where((element) => element.date.isSameDate(date))
+                              .toList();
+
+                          print("RESULT ${result.length}");
+
+                          Get.toNamed(Routes.userFormDetail, arguments: result);
+                        },
+                        child: Stack(
+                          children: [
+                            Container(
+                              padding: EdgeInsets.all(10),
+                              width: 100,
+                              height: 100,
+                              decoration: BoxDecoration(
                                 color: ColorPalette.generalDarkPrimaryColor,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10))),
-                            alignment: Alignment.center,
-                            child: Text(
-                              "${key}",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold),
+                                shape: BoxShape.circle,
+                              ),
+                              child: Column(
+                                children: [
+                                  SizedBox(height: 4),
+                                  Icon(Icons.star,
+                                      color: points.countStars >= 3
+                                          ? ColorPalette.generalCupColor
+                                          : ColorPalette.generalSoftGrey,
+                                      size: 25),
+                                  SizedBox(height: 4),
+                                  Row(
+                                    children: [
+                                      Icon(Icons.star,
+                                          color: ColorPalette.generalCupColor,
+                                          size: 25),
+                                      Image.asset(
+                                        "images/cup.png",
+                                        width: 30,
+                                      ),
+                                      Icon(Icons.star,
+                                          color: points.countStars >= 6
+                                              ? ColorPalette.generalCupColor
+                                              : ColorPalette.generalSoftGrey,
+                                          size: 25),
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
-                          )
-                        ],
+                            Container(
+                              width: 105,
+                              margin: EdgeInsets.only(top: 80),
+                              padding: EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                  color: ColorPalette.generalDarkPrimaryColor,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10))),
+                              alignment: Alignment.center,
+                              child: Text(
+                                "${key}",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     );
                   },
