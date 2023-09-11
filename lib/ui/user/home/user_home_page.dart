@@ -466,7 +466,7 @@ class _UserHomePageState extends State<UserHomePage> {
                                               ),
                                             ),
                                           ),
-                                          SizedBox(height: 10),
+                                          SizedBox(height: 2),
                                           Text(
                                             product.title ?? "-",
                                             maxLines: 1,
@@ -484,7 +484,7 @@ class _UserHomePageState extends State<UserHomePage> {
                                               fontSize: 16,
                                             ),
                                           ),
-                                          SizedBox(height: 10),
+                                          SizedBox(height: 2),
                                           Expanded(
                                             child: InkWell(
                                               onTap: () {},

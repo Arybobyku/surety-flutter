@@ -254,7 +254,7 @@ class _UserDetailProfilePageState extends State<UserDetailProfilePage> {
                     ),
 
                     ButtonRounded(
-                      text: "Reset Password",
+                      text: "Change Password",
                       onPressed: () => doChangePassword(password,password2),
                     ),
                   ],

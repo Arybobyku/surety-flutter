@@ -2,17 +2,21 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:fpdart/fpdart.dart';
+import 'package:get/get.dart';
 import 'package:surety/model/comment_model.dart';
 import 'package:surety/model/diary_model.dart';
 import 'package:surety/model/user_model.dart';
 import 'package:surety/service/diary_service.dart';
+import 'package:surety/service/friends_service.dart';
 
 class DiaryProvider extends ChangeNotifier {
   DiaryService _diaryService = DiaryService();
+  FriendsService _friendsService = FriendsService();
   DiaryModel formDiary = DiaryModel();
   List<DiaryModel> diaries = [];
   List<DiaryModel> diariesByCreator = [];
   List<DiaryModel> friendsDiary = [];
+  List<DiaryModel> followingDiary = [];
   bool loading = true;
   late DiaryModel detail;
 
@@ -131,13 +135,24 @@ class DiaryProvider extends ChangeNotifier {
     }
   }
 
-  void getAllDiaries() async {
+  void getAllDiaries(UserModel user) async {
     try {
       loading = true;
+      diaries = [];
       final result = await _diaryService.getAllDiaries();
-      diaries = result;
+
+      final friendsModel = await _friendsService.getFormById(user.id!);
+      result.forEach((element) {
+        final isFriends = friendsModel?.friends.firstWhereOrNull((value)=>value.id == element.userModel?.id);
+        if(isFriends != null){
+          diaries.add(element);
+        }
+      });
+
+
       if (diaries.isNotEmpty)
         diaries.sort((a, b) => b.createdAt!.compareTo(a.createdAt!));
+
       loading = false;
       notifyListeners();
     } catch (e) {

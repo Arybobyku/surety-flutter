@@ -1,5 +1,3 @@
-import 'dart:collection';
-
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:surety/helper/extension/date_time_extension.dart';
@@ -70,9 +68,11 @@ extension FormExtension on FormModel {
     return allForm;
   }
 
-  Map<String,List <BaseFormModel>>  get pointsGroupByDate {
+  Map<String, List<BaseFormModel>> get pointsGroupByDate {
     final allForm = this.mergeAllForm;
-    Map<String,List <BaseFormModel>> result = {};
+    Map<String, List<BaseFormModel>> result = {};
+
+    allForm.sort((a, b) => b.date.compareTo(a.date));
 
     for (var item in allForm) {
       if (!result.containsKey(item.date.dateFormat())) {
@@ -82,9 +82,7 @@ extension FormExtension on FormModel {
       }
     }
 
-    var reverse = LinkedHashMap.fromEntries(result.entries.toList().reversed);
-
-    return reverse;
+    return result;
   }
 
   int get totalPoints {

@@ -186,7 +186,7 @@ class _UserTrackingPageState extends State<UserTrackingPage> {
                                 "${key}",
                                 style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: 14,
+                                    fontSize: 12,
                                     fontWeight: FontWeight.bold),
                               ),
                             )

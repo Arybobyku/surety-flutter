@@ -84,7 +84,7 @@ class MyApp extends StatelessWidget {
               color: ColorPalette.generalPrimaryColor,
               iconTheme:
                   IconThemeData(color: ColorPalette.generalPrimaryColor)),
-          fontFamily: 'ubuntu',
+          fontFamily: 'Poppins',
         ),
       ),
     );

@@ -26,7 +26,8 @@ class _UserCommunityPageState extends State<UserCommunityPage> {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-            create: (context) => DiaryProvider()..getAllDiaries()),
+            create: (context) => DiaryProvider()
+              ..getAllDiaries(context.read<AuthProvider>().user)),
       ],
       child: Scaffold(
         backgroundColor: ColorPalette.generalBackgroundColor,
@@ -82,24 +83,26 @@ class _UserCommunityPageState extends State<UserCommunityPage> {
                         SizedBox(width: 20),
                         Expanded(
                           child: TextButton(
-                            style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStateProperty.resolveWith((states) {
-                                if (states.contains(MaterialState.pressed)) {
-                                  return ColorPalette.generalPrimaryColor;
-                                }
-                                return Colors.white;
-                              }),
-                            ),
-                            child: Text(
-                              "Near Me",
-                              style: TextStyle(
-                                color: Colors.black,
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.resolveWith((states) {
+                                  if (states.contains(MaterialState.pressed)) {
+                                    return ColorPalette.generalPrimaryColor;
+                                  }
+                                  return Colors.white;
+                                }),
                               ),
-                            ),
-                            onPressed: () =>
-                                Get.toNamed(Routes.userFriendsPage),
-                          ),
+                              child: Text(
+                                "Near Me",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                ),
+                              ),
+                              onPressed: () async {
+                                await Get.toNamed(Routes.userFriendsPage);
+                                context.read<DiaryProvider>().getAllDiaries(
+                                    context.read<AuthProvider>().user);
+                              }),
                         ),
                         // SizedBox(width: 20),
                         // Expanded(
@@ -152,70 +155,80 @@ class _UserCommunityPageState extends State<UserCommunityPage> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         /// Header
-                                        Row(
-                                          children: [
-                                            CachedNetworkImage(
-                                              imageUrl: diary.userModel
-                                                      ?.photoProfile ??
-                                                  "",
-                                              imageBuilder:
-                                                  (context, imageProvider) =>
-                                                      Container(
-                                                width: 30.0,
-                                                height: 30.0,
-                                                decoration: BoxDecoration(
-                                                  shape: BoxShape.circle,
-                                                  image: DecorationImage(
-                                                    image: imageProvider,
-                                                    fit: BoxFit.cover,
+                                        InkWell(
+                                          onTap: () {
+                                            Get.toNamed(
+                                              Routes.userFriendsDetailPage,
+                                              arguments: diary.userModel,
+                                            );
+                                          },
+                                          child: Row(
+                                            children: [
+                                              CachedNetworkImage(
+                                                imageUrl: diary.userModel
+                                                        ?.photoProfile ??
+                                                    "",
+                                                imageBuilder:
+                                                    (context, imageProvider) =>
+                                                        Container(
+                                                  width: 30.0,
+                                                  height: 30.0,
+                                                  decoration: BoxDecoration(
+                                                    shape: BoxShape.circle,
+                                                    image: DecorationImage(
+                                                      image: imageProvider,
+                                                      fit: BoxFit.cover,
+                                                    ),
                                                   ),
                                                 ),
+                                                placeholder: (context, url) =>
+                                                    CircularProgressIndicator(),
+                                                errorWidget:
+                                                    (context, url, error) =>
+                                                        Icon(
+                                                  Icons.person,
+                                                ),
                                               ),
-                                              placeholder: (context, url) =>
-                                                  CircularProgressIndicator(),
-                                              errorWidget:
-                                                  (context, url, error) => Icon(
-                                                Icons.person,
-                                              ),
-                                            ),
-                                            SizedBox(width: 10),
-                                            Expanded(
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    "${diary.userModel?.fullName ?? ""}'s diary",
-                                                    style:
-                                                        TextStyle(fontSize: 18),
-                                                  ),
-                                                  if (diary.isExpert!)
-                                                    Row(
-                                                      children: [
-                                                        Icon(Icons.stars_sharp,
-                                                            size: 18),
-                                                        Text("Expert"),
-                                                      ],
+                                              SizedBox(width: 10),
+                                              Expanded(
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      "${diary.userModel?.fullName ?? ""}'s diary",
+                                                      style: TextStyle(
+                                                          fontSize: 18),
                                                     ),
+                                                    if (diary.isExpert!)
+                                                      Row(
+                                                        children: [
+                                                          Icon(
+                                                              Icons.stars_sharp,
+                                                              size: 18),
+                                                          Text("Expert"),
+                                                        ],
+                                                      ),
+                                                  ],
+                                                ),
+                                              ),
+                                              Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.end,
+                                                children: [
+                                                  diary.isPublic!
+                                                      ? Icon(Icons.public)
+                                                      : Icon(Icons.lock),
+                                                  Text(
+                                                    diary.createdAt!
+                                                        .timeAgoFormat(),
+                                                    style:
+                                                        TextStyle(fontSize: 11),
+                                                  )
                                                 ],
                                               ),
-                                            ),
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.end,
-                                              children: [
-                                                diary.isPublic!
-                                                    ? Icon(Icons.public)
-                                                    : Icon(Icons.lock),
-                                                Text(
-                                                  diary.createdAt!
-                                                      .timeAgoFormat(),
-                                                  style:
-                                                      TextStyle(fontSize: 11),
-                                                )
-                                              ],
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
 
                                         /// Body
