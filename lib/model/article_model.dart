@@ -7,6 +7,7 @@ class ArticleModel {
   String? description;
   String? createdAt;
   String? picture;
+  String? link;
   UserModel? userModel;
 
   ArticleModel({
@@ -17,6 +18,7 @@ class ArticleModel {
     this.createdAt,
     this.picture,
     this.userModel,
+    this.link,
   });
 
   factory ArticleModel.fromJson(Map<String, dynamic> json, id) => ArticleModel(
@@ -26,6 +28,7 @@ class ArticleModel {
         description: json['description'],
         createdAt: json['createdAt'],
         picture: json['picture'],
+        link: json['link'],
         userModel: json['userModel'] != null
             ? UserModel.fromJsonWithId(json['userModel'])
             : null,
@@ -38,6 +41,7 @@ class ArticleModel {
         'description': description,
         'createdAt': createdAt,
         'picture': picture,
+        'link': link,
         'userModel': userModel!.toJson(),
       };
 }

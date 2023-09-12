@@ -77,32 +77,37 @@ class _UserCommunityPageState extends State<UserCommunityPage> {
                                 color: Colors.black,
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () async{
+                              await Get.toNamed(Routes.userFriendsPage,arguments: true);
+                              context.read<DiaryProvider>().getAllDiaries(
+                                  context.read<AuthProvider>().user);
+                            },
                           ),
                         ),
                         SizedBox(width: 20),
                         Expanded(
                           child: TextButton(
-                              style: ButtonStyle(
-                                backgroundColor:
-                                    MaterialStateProperty.resolveWith((states) {
-                                  if (states.contains(MaterialState.pressed)) {
-                                    return ColorPalette.generalPrimaryColor;
-                                  }
-                                  return Colors.white;
-                                }),
-                              ),
-                              child: Text(
-                                "Near Me",
-                                style: TextStyle(
-                                  color: Colors.black,
-                                ),
-                              ),
-                              onPressed: () async {
-                                await Get.toNamed(Routes.userFriendsPage);
-                                context.read<DiaryProvider>().getAllDiaries(
-                                    context.read<AuthProvider>().user);
+                            style: ButtonStyle(
+                              backgroundColor:
+                                  MaterialStateProperty.resolveWith((states) {
+                                if (states.contains(MaterialState.pressed)) {
+                                  return ColorPalette.generalPrimaryColor;
+                                }
+                                return Colors.white;
                               }),
+                            ),
+                            child: Text(
+                              "Near Me",
+                              style: TextStyle(
+                                color: Colors.black,
+                              ),
+                            ),
+                            onPressed: () async {
+                              await Get.toNamed(Routes.userFriendsPage,arguments: false);
+                              context.read<DiaryProvider>().getAllDiaries(
+                                  context.read<AuthProvider>().user);
+                            },
+                          ),
                         ),
                         // SizedBox(width: 20),
                         // Expanded(

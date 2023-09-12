@@ -13,6 +13,7 @@ class UserModel {
   String? dateOfBirth;
   String? gender;
   String? expertise;
+  List<String>? bio;
 
   UserModel({
     this.id,
@@ -25,6 +26,7 @@ class UserModel {
     this.dateOfBirth,
     this.gender,
     this.expertise,
+    this.bio,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json, String id) {

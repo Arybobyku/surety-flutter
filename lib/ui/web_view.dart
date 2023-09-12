@@ -10,47 +10,69 @@ class WebViewPage extends StatefulWidget {
 }
 
 class _WebViewPageState extends State<WebViewPage> {
-  late WebViewController controller;
-  bool isLoading  = true;
+  bool isLoading = true;
   String url = Get.arguments;
+  late final WebViewController _controller;
+
   @override
   void initState() {
     super.initState();
+
+    // #docregion platform_features
+    late final PlatformWebViewControllerCreationParams params;
+    params = const PlatformWebViewControllerCreationParams();
+
+    final WebViewController controller =
+        WebViewController.fromPlatformCreationParams(params);
+    // #enddocregion platform_features
+
+    controller
+      ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      ..setNavigationDelegate(
+        NavigationDelegate(
+          onProgress: (int progress) {
+            isLoading= true;
+            debugPrint('WebView is loading (progress : $progress%)');
+          },
+          onPageStarted: (String url) {
+            setState(() {
+              isLoading = false;
+            });
+            debugPrint('Page started loading: $url');
+          },
+          onPageFinished: (String url) {
+            debugPrint('Page finished loading: $url');
+          },
+        ),
+      )
+      ..loadRequest(Uri.parse(url));
+
+    _controller = controller;
   }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: WillPopScope(
-        onWillPop: ()async{
-          if(await controller.canGoBack()){
-            controller.goBack();
+        onWillPop: () async {
+          if (await _controller.canGoBack()) {
+            _controller.goBack();
             return false;
-          }else{
+          } else {
             return true;
           }
         },
         child: Scaffold(
           body: Stack(
             children: [
-              // WebView(
-              //   javascriptMode: JavascriptMode.unrestricted,
-              //   initialUrl: url,
-              //   onPageStarted: (String value){
-              //     setState(() {
-              //       isLoading = false;
-              //     });
-              //   },
-              //   gestureNavigationEnabled: true,
-              //   onWebViewCreated: ( webViewController) {
-              //     controller=webViewController;
-              //   },
-              // ),
-              if(isLoading)
-                const Align(
-                  alignment: Alignment.center,
-                  child:CircularProgressIndicator(),
-                ),
+              WebViewWidget(
+                controller: _controller,
+              ),
+              // if (isLoading)
+              //   const Align(
+              //     alignment: Alignment.center,
+              //     child: CircularProgressIndicator(),
+              //   ),
             ],
           ),
         ),

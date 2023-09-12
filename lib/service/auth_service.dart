@@ -67,11 +67,12 @@ class AuthService {
         password: password,
       );
 
-      if (_auth.currentUser != null && !_auth.currentUser!.emailVerified) {
-        return throw ("Please Verified Your Email");
-      }
       UserModel user =
           await UserService().getUserById(userCredential.user!.uid);
+
+      if (user.expertise != null ||(user.role == 0 && _auth.currentUser != null && !_auth.currentUser!.emailVerified)) {
+        return throw ("Please Verified Your Email");
+      }
       return user;
     } catch (e) {
       debugPrint("=====ERROR SignIN ====> $e");

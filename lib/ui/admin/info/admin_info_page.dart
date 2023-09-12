@@ -40,54 +40,57 @@ class _AdminInfoPageState extends State<AdminInfoPage> {
             child: ListView(
               children: [
                 DrawerHeader(
-                    decoration: BoxDecoration(
-                      color: ColorPalette.generalPrimaryColor,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        CachedNetworkImage(
-                          imageUrl: state.user.photoProfile ?? "",
-                          imageBuilder: (context, imageProvider) => Container(
-                            width: 60.0,
-                            height: 60.0,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              image: DecorationImage(
-                                image: imageProvider,
-                                fit: BoxFit.cover,
-                              ),
+                  decoration: BoxDecoration(
+                    color: ColorPalette.generalPrimaryColor,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CachedNetworkImage(
+                        imageUrl: state.user.photoProfile ?? "",
+                        imageBuilder: (context, imageProvider) => Container(
+                          width: 60.0,
+                          height: 60.0,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                              image: imageProvider,
+                              fit: BoxFit.cover,
                             ),
                           ),
-                          placeholder: (context, url) =>
-                              CircularProgressIndicator(),
-                          errorWidget: (context, url, error) => Icon(
-                            Icons.person,
-                            size: 80,
-                          ),
                         ),
-                        SizedBox(
-                          height: 10,
+                        placeholder: (context, url) =>
+                            CircularProgressIndicator(),
+                        errorWidget: (context, url, error) => Icon(
+                          Icons.person,
+                          size: 60,
                         ),
-                        Text(
-                          state.user.fullName,
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        state.user.fullName,
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
                         ),
-                        SizedBox(height: 4),
-                        Text(
-                          state.user.email,
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.white,
-                          ),
+                      ),
+                      SizedBox(height: 4),
+                      Text(
+                        state.user.email,
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.white,
                         ),
-                        SizedBox(height: 4),
-                      ],
-                    )),
+                      ),
+                      SizedBox(height: 4),
+                    ],
+                  ),
+                ),
                 HorizontalIconLabel(
                   icon: Icons.add,
                   label: "Add Article",

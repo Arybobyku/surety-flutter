@@ -276,7 +276,10 @@ class _UserHomePageState extends State<UserHomePage> {
                               ),
                             ),
                             InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                Get.toNamed(Routes.webView,
+                                    arguments: "https://www.suretysg.com/");
+                              },
                               child: Text(
                                 "see all",
                                 style: TextStyle(
@@ -298,9 +301,12 @@ class _UserHomePageState extends State<UserHomePage> {
                               itemBuilder: (context, index) {
                                 final article = state.articles[index];
                                 return InkWell(
-                                  onTap: () => Get.toNamed(
-                                      Routes.userArticleDetail,
-                                      arguments: article),
+                                  onTap: () {
+                                    if (article.link != null) {
+                                      Get.toNamed(Routes.webView,
+                                          arguments: article.link);
+                                    }
+                                  },
                                   child: Container(
                                     width: 250,
                                     margin: EdgeInsets.all(10),
@@ -413,7 +419,10 @@ class _UserHomePageState extends State<UserHomePage> {
                               ),
                             ),
                             InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                Get.toNamed(Routes.webView,
+                                    arguments: "https://www.suretysg.com/");
+                              },
                               child: Text(
                                 "see all",
                                 style: TextStyle(
@@ -436,9 +445,13 @@ class _UserHomePageState extends State<UserHomePage> {
                                 itemBuilder: (context, index) {
                                   final product = state.products[index];
                                   return InkWell(
-                                    onTap: () => Get.toNamed(
-                                        Routes.userProductDetail,
-                                        arguments: product),
+                                    onTap: () {
+                                      if (product.link != null)
+                                        Get.toNamed(
+                                          Routes.webView,
+                                          arguments: product.link,
+                                        );
+                                    },
                                     child: Container(
                                       width: 250,
                                       margin: EdgeInsets.all(10),

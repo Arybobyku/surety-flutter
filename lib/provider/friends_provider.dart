@@ -38,6 +38,7 @@ class FriendsProvider extends ChangeNotifier {
   Future addFriends(UserModel userModel, UserModel me) async {
     try {
       myFriends.friends.add(userModel);
+      listUser.removeWhere((element) => element.id == userModel.id);
       notifyListeners();
       var result = await _friendsService.update(myFriends, me);
     } catch (e) {

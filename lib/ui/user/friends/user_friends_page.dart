@@ -15,6 +15,8 @@ class UserFriendsPage extends StatefulWidget {
 }
 
 class _UserFriendsPageState extends State<UserFriendsPage> {
+  final isFollowing = Get.arguments;
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -39,9 +41,13 @@ class _UserFriendsPageState extends State<UserFriendsPage> {
                     return ListView.builder(
                       shrinkWrap: true,
                       physics: NeverScrollableScrollPhysics(),
-                      itemCount: state.listUser.length,
+                      itemCount: isFollowing
+                          ? state.myFriends.friends.length
+                          : state.listUser.length,
                       itemBuilder: (context, index) {
-                        final user = state.listUser[index];
+                        final user = isFollowing
+                            ? state.myFriends.friends[index]
+                            : state.listUser[index];
                         return Container(
                           margin: EdgeInsets.only(bottom: 10),
                           padding: EdgeInsets.all(10),

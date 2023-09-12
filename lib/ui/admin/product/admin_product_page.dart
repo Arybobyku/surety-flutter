@@ -106,6 +106,14 @@ class _AdminProductPageState extends State<AdminProductPage> {
                                       productModel.description = val;
                                     },
                                   ),
+                                  InputFieldRounded(
+                                    title: "Link",
+                                    hint: "Link",
+                                    minLines: 5,
+                                    onChange: (val) {
+                                      productModel.link = val;
+                                    },
+                                  ),
                                   SizedBox(height: 10),
                                   InputFieldRounded(
                                     title: "Price",

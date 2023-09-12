@@ -106,6 +106,14 @@ class _AdminArticlePageState extends State<AdminArticlePage> {
                                       articleModel.description = val;
                                     },
                                   ),
+                                  InputFieldRounded(
+                                    title: "Link",
+                                    hint: "Link",
+                                    minLines: 5,
+                                    onChange: (val) {
+                                      articleModel.link = val;
+                                    },
+                                  ),
                                   image != null
                                       ? Column(
                                           children: [
