@@ -70,7 +70,12 @@ class AuthService {
       UserModel user =
           await UserService().getUserById(userCredential.user!.uid);
 
-      if (user.expertise != null ||(user.role == 0 && _auth.currentUser != null && !_auth.currentUser!.emailVerified)) {
+      print("USER ALLOW ${user.email} => ${user.allow}");
+
+      if(user.expertise != null && user.allow == false){
+        return throw ("Please ask admin for verification account");
+      }
+      else if (user.expertise == null &&(user.role == 0 && _auth.currentUser != null && !_auth.currentUser!.emailVerified)) {
         return throw ("Please Verified Your Email");
       }
       return user;

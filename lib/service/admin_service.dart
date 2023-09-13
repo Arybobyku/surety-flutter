@@ -11,16 +11,40 @@ class AdminService {
   final CollectionReference _userReference =
       FirebaseFirestore.instance.collection('Users');
 
-  Future<List<UserModel>> getAllUsers() async {
+  Future<List<UserModel>> getAllExperts() async {
     try {
       QuerySnapshot result =
-          await _userReference.where("role", isEqualTo: 0).get();
+          await _userReference.where("expertise", isNull: false).get();
       List<UserModel> users = result.docs.map((e) {
         return UserModel.fromJson(e.data() as Map<String, dynamic>, e.id);
       }).toList();
       return users;
     } catch (e) {
       print(e);
+      rethrow;
+    }
+  }
+
+  Future<List<UserModel>> getAllUsers() async {
+    try {
+      QuerySnapshot result =
+      await _userReference.where("role", isEqualTo: 0).get();
+      List<UserModel> users = result.docs.map((e) {
+        return UserModel.fromJson(e.data() as Map<String, dynamic>, e.id);
+      }).toList();
+      return users;
+    } catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
+
+  Future<UserModel> update(UserModel user) async {
+    try {
+      var result = await _userReference.doc(user.id);
+      await result.set(user.toJson());
+      return user;
+    } catch (e) {
       rethrow;
     }
   }

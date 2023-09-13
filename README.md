@@ -1,4 +1,4 @@
-# my_perpus
+# surety
 
 A new Flutter application.
 
@@ -19,8 +19,9 @@ samples, guidance on mobile development, and a full API reference.
 - track period calendar
 - group symptoms by date ✅
 - fix following tab & near me tab ✅
-- banner
+- banner ✅
 - bio of expertise
 - approve expert by admin
 - link article and product ✅
 - tracking journal
+- expert page

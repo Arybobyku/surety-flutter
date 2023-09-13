@@ -31,8 +31,6 @@ class _AdminInfoPageState extends State<AdminInfoPage> {
   @override
   void initState() {
     if (getData) {
-      // EasyLoading.show(status: "Loading");
-      Provider.of<AdminProvider>(context, listen: false).getAllUser();
       getData = false;
     }
     super.initState();
@@ -107,6 +105,11 @@ class _AdminInfoPageState extends State<AdminInfoPage> {
                   icon: Icons.add,
                   label: "Add Products",
                   ontap: () => Get.toNamed(Routes.adminProducts),
+                ),
+                HorizontalIconLabel(
+                  icon: Icons.psychology,
+                  label: "Experts",
+                  ontap: () => Get.toNamed(Routes.adminExperts),
                 ),
                 HorizontalIconLabel(
                   icon: Icons.app_shortcut,

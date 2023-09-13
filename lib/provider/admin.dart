@@ -5,14 +5,14 @@ import 'package:surety/service/admin_service.dart';
 
 class AdminProvider extends ChangeNotifier {
   AdminService _adminService = AdminService();
-  List<UserModel> listUser = [];
+  List<UserModel> listExperts = [];
   late UserModel selectedUser;
 
-  Future<Either<String, List<UserModel>>> getAllUser() async {
+  Future<Either<String, List<UserModel>>> getExperts() async {
     try {
-      listUser = [];
-      var result = await _adminService.getAllUsers();
-      listUser = result;
+      listExperts = [];
+      var result = await _adminService.getAllExperts();
+      listExperts = result;
       notifyListeners();
       return right(result);
     } catch (e) {
@@ -20,8 +20,19 @@ class AdminProvider extends ChangeNotifier {
     }
   }
 
-  selectDetailAnggota(UserModel userModel) {
-    selectedUser = userModel;
+  Future<void> allowExpert(UserModel user) async {
+    user.allow = true;
+    await _adminService.update(user);
+    listExperts[listExperts.indexWhere((element) => element.id == user.id)] =
+        user;
+    notifyListeners();
+  }
+
+  Future<void> disAllowExpert(UserModel user) async {
+    user.allow = true;
+    await _adminService.update(user);
+    listExperts[listExperts.indexWhere((element) => element.id == user.id)] =
+        user;
     notifyListeners();
   }
 }

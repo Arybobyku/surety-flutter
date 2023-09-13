@@ -43,6 +43,7 @@ class UserService {
         'gender': user.gender,
         'expertise': user.expertise,
         'photoProfile': null,
+        'allow': false,
       });
       return user;
     } catch (e) {
@@ -69,18 +70,7 @@ class UserService {
     try {
       DocumentSnapshot snapshot = await _userReference.doc(id).get();
 
-      return UserModel(
-        id: id,
-        email: snapshot['email'],
-        fullName: snapshot['fullName'],
-        password: '',
-        role: snapshot['role'],
-        isValid: snapshot['isValid'],
-        photoProfile: snapshot['photoProfile'],
-        dateOfBirth: snapshot['dateOfBirth'],
-        gender: snapshot['gender'],
-        expertise: snapshot['expertise'],
-      );
+      return UserModel.fromJson(snapshot.data() as Map<String, dynamic>, id);
     } catch (e) {
       debugPrint("=====ERROR getUserById ====> $e");
       rethrow;

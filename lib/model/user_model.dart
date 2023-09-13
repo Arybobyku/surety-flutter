@@ -14,6 +14,7 @@ class UserModel {
   String? gender;
   String? expertise;
   List<String>? bio;
+  bool allow;
 
   UserModel({
     this.id,
@@ -27,6 +28,7 @@ class UserModel {
     this.gender,
     this.expertise,
     this.bio,
+    this.allow = false,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json, String id) {
@@ -41,6 +43,7 @@ class UserModel {
       dateOfBirth: json['dateOfBirth'],
       gender: json['gender'],
       expertise: json['expertise'],
+      allow: json['allow'] ?? false,
     );
   }
 
@@ -56,6 +59,7 @@ class UserModel {
       dateOfBirth: json['dateOfBirth'],
       gender: json['gender'],
       expertise: json['expertise'],
+      allow: json['allow'] ?? false,
     );
   }
 
@@ -69,6 +73,7 @@ class UserModel {
     'dateOfBirth': dateOfBirth,
     'gender': gender,
     'expertise': expertise,
+    'allow': allow,
   };
 
 }

@@ -32,7 +32,7 @@ class BannerService {
 
   Future<BannerModel> update(File? image, String url, String oldImage) async {
     try {
-      final filePath =image!= null ? await saveImage(image) :"";
+      final filePath =image!= null ? await saveImage(image) : oldImage;
       var result = await _friendsReference.doc(bannerId);
 
       final banner = BannerModel(url: url, image: filePath);
