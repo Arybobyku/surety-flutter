@@ -3,6 +3,7 @@ import 'package:surety/injection.dart';
 import 'package:surety/provider/admin.dart';
 import 'package:surety/provider/article_provider.dart';
 import 'package:surety/provider/auth.dart';
+import 'package:surety/provider/banner_provider.dart';
 import 'package:surety/provider/form_provider.dart';
 import 'package:surety/provider/friends_provider.dart';
 import 'package:surety/routes.dart';
@@ -68,6 +69,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => AdminProvider()),
         ChangeNotifierProvider(create: (context) => FormProvider()),
         ChangeNotifierProvider(create: (context) => FriendsProvider()),
+        ChangeNotifierProvider(create: (context) => BannerProvider()..getBanner()),
       ],
       child: GetMaterialApp(
         builder: EasyLoading.init(),

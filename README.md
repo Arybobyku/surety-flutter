@@ -23,3 +23,4 @@ samples, guidance on mobile development, and a full API reference.
 - bio of expertise
 - approve expert by admin
 - link article and product ✅
+- tracking journal

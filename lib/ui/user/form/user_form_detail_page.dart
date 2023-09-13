@@ -21,8 +21,7 @@ class _UserFormDetailPageState extends State<UserFormDetailPage> {
   @override
   void initState() {
     forms?.sort((a, b) => b.date.compareTo(a.date));
-    print("${forms?.first.key}");
-    if (forms != null && forms?.first.key == FormType.Symptoms.name) {
+    if (forms!= null && forms!.isNotEmpty && forms?.first.key == FormType.Symptoms.name) {
       isSymptoms = true;
       Set<String> dateMap =
           forms!.map((e) => DateFormat("dd-MM-yyyy").format(e.date)).toSet();

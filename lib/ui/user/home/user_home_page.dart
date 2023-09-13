@@ -12,6 +12,7 @@ import 'package:surety/helper/extension/form_extension.dart';
 import 'package:surety/local_storage_service.dart';
 import 'package:surety/provider/article_provider.dart';
 import 'package:surety/provider/auth.dart';
+import 'package:surety/provider/banner_provider.dart';
 import 'package:surety/provider/form_provider.dart';
 import 'package:surety/provider/product_provider.dart';
 import 'package:surety/routes.dart';
@@ -177,21 +178,29 @@ class _UserHomePageState extends State<UserHomePage> {
                   ),
 
                   ///  Banner
-                  InkWell(
-                    onTap: () {},
-                    child: Container(
-                      width: double.infinity,
-                      height: 120,
-                      margin: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(20)),
-                        color: ColorPalette.generalPrimaryColor,
-                        image: DecorationImage(
-                          fit: BoxFit.fill,
-                          image: NetworkImage(Constants.banner),
+                  Consumer<BannerProvider>(
+                    builder: (context,stateBanner,_) {
+                      return InkWell(
+                        onTap: () {
+                          if(stateBanner.banner?.url!= null){
+                            Get.toNamed(Routes.webView,arguments: stateBanner.banner!.url!);
+                          }
+                        },
+                        child: Container(
+                          width: double.infinity,
+                          height: 120,
+                          margin: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            color: ColorPalette.generalPrimaryColor,
+                            image: DecorationImage(
+                              fit: BoxFit.fill,
+                              image: NetworkImage(stateBanner.banner?.image ?? Constants.banner),
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
+                      );
+                    }
                   ),
 
                   /// Content

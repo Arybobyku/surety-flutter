@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
@@ -7,8 +10,11 @@ import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:surety/helper/color_palette.dart';
 import 'package:surety/provider/admin.dart';
 import 'package:surety/provider/auth.dart';
+import 'package:surety/provider/banner_provider.dart';
 import 'package:surety/routes.dart';
+import 'package:surety/ui/widget/button_rounded.dart';
 import 'package:surety/ui/widget/horizontal_icon_label.dart';
+import 'package:surety/ui/widget/input_field_rounded.dart';
 
 class AdminInfoPage extends StatefulWidget {
   const AdminInfoPage({Key? key}) : super(key: key);
@@ -20,6 +26,7 @@ class AdminInfoPage extends StatefulWidget {
 class _AdminInfoPageState extends State<AdminInfoPage> {
   bool getData = true;
   int selectedIndex = Get.arguments ?? 0;
+  File? photoProfile = null;
 
   @override
   void initState() {
@@ -134,12 +141,109 @@ class _AdminInfoPageState extends State<AdminInfoPage> {
           elevation: 0,
         ),
         body: SingleChildScrollView(
-          child: Column(
-            children: [],
-          ),
+          child: Consumer<BannerProvider>(builder: (context, state, _) {
+            String imageUrl = state.banner?.url ?? "";
+            return Padding(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                children: [
+                  state.banner?.image != null
+                      ? CachedNetworkImage(
+                          imageUrl: state.banner?.image ?? "",
+                          imageBuilder: (context, imageProvider) => Container(
+                            width: double.infinity,
+                            height: 150,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: imageProvider,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          placeholder: (context, url) =>
+                              CircularProgressIndicator(),
+                          errorWidget: (context, url, error) => Icon(
+                            Icons.image,
+                            size: 150,
+                          ),
+                        )
+                      : photoProfile != null
+                          ? Stack(
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(top: 15, bottom: 30),
+                                  height: double.infinity,
+                                  width: 150,
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: FileImage(photoProfile!),
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  width: 150,
+                                  height: 150,
+                                  alignment: Alignment.bottomCenter,
+                                  child: InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        photoProfile = null;
+                                      });
+                                    },
+                                    child:
+                                        Icon(Icons.delete, color: Colors.red),
+                                  ),
+                                )
+                              ],
+                            )
+                          : Icon(
+                              Icons.person,
+                              size: 150,
+                            ),
+                  photoProfile == null
+                      ? InkWell(
+                          onTap: () => doImagePicker(),
+                          child: Icon(Icons.edit),
+                        )
+                      : SizedBox(),
+                  InputFieldRounded(
+                    title: "Url",
+                    hint: "Url",
+                    minLines: 5,
+                    initialValue: state.banner?.url,
+                    onChange: (val) {
+                      imageUrl = val;
+                    },
+                  ),
+                  ButtonRounded(
+                    text: "Update Banner",
+                    onPressed: () {
+                      context.read<BannerProvider>().updateBanner(photoProfile, imageUrl);
+                    },
+                  ),
+                ],
+              ),
+            );
+          }),
         ),
       ),
     );
+  }
+
+  doImagePicker() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: ['jpg', 'png', 'jpeg'],
+    );
+
+    if (result != null) {
+      setState(() {
+        photoProfile = File(result.files.single.path!);
+      });
+    } else {
+      // User canceled the picker
+    }
   }
 
   doSignOut(BuildContext context) async {
