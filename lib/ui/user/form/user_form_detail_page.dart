@@ -1,3 +1,4 @@
+import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -17,11 +18,19 @@ class _UserFormDetailPageState extends State<UserFormDetailPage> {
   List<BaseFormModel>? forms = Get.arguments;
   bool isSymptoms = false;
   List<SymptomsGroupModel> symptomsGroup = [];
+  Set<DateTime> dateValue = {};
 
   @override
   void initState() {
     forms?.sort((a, b) => b.date.compareTo(a.date));
-    if (forms!= null && forms!.isNotEmpty && forms?.first.key == FormType.Symptoms.name) {
+
+    if (forms != null && forms!.isNotEmpty) {
+      dateValue = forms!.map((e) => e.date).toSet();
+    }
+
+    if (forms != null &&
+        forms!.isNotEmpty &&
+        forms?.first.key == FormType.Symptoms.name) {
       isSymptoms = true;
       Set<String> dateMap =
           forms!.map((e) => DateFormat("dd-MM-yyyy").format(e.date)).toSet();
@@ -59,8 +68,44 @@ class _UserFormDetailPageState extends State<UserFormDetailPage> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: 20),
+                if (forms != null &&
+                    forms!.isNotEmpty &&
+                    forms?.first.key == FormType.Period.name)
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      InkWell(
+                        onTap: () async {
+                          print("ONCLICK");
+                          var results = await showCalendarDatePicker2Dialog(
+                            context: context,
+                            config: CalendarDatePicker2WithActionButtonsConfig(
+                              calendarType: CalendarDatePicker2Type.multi,
+                            ),
+                            dialogSize: const Size(325, 400),
+                            value: [
+                              ...dateValue
+                            ],
+                            borderRadius: BorderRadius.circular(15),
+                          );
+                          // await CalendarDatePicker2(
+                          //   config: CalendarDatePicker2Config(
+                          //     calendarType: CalendarDatePicker2Type.multi,
+                          //   ),
+                          //   value: [
+                          //     ...dateValue,
+                          //   ],
+                          //   onValueChanged: (dates) {},
+                          // );
+                        },
+                        child: Icon(Icons.calendar_month),
+                      ),
+                      SizedBox(height: 20),
+                    ],
+                  ),
                 if (isSymptoms)
                   ...symptomsGroup.map(
                     (e) => Container(
