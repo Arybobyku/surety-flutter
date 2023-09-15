@@ -13,7 +13,7 @@ class UserModel {
   String? dateOfBirth;
   String? gender;
   String? expertise;
-  List<String>? bio;
+  String? bio;
   bool allow;
 
   UserModel({
@@ -43,6 +43,7 @@ class UserModel {
       dateOfBirth: json['dateOfBirth'],
       gender: json['gender'],
       expertise: json['expertise'],
+      bio: json['bio'],
       allow: json['allow'] ?? false,
     );
   }
@@ -59,6 +60,7 @@ class UserModel {
       dateOfBirth: json['dateOfBirth'],
       gender: json['gender'],
       expertise: json['expertise'],
+      bio: json['bio'],
       allow: json['allow'] ?? false,
     );
   }
@@ -74,6 +76,7 @@ class UserModel {
     'gender': gender,
     'expertise': expertise,
     'allow': allow,
+    'bio': bio,
   };
 
 }

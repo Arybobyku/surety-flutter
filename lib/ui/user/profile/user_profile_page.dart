@@ -64,29 +64,30 @@ class UserProfilePage extends StatelessWidget {
                           style: TextStyle(fontSize: 18),
                         )),
                         SizedBox(width: 10),
-                        InkWell(
-                          onTap: () => Get.toNamed(Routes.userTrackingPage,
-                              arguments: stateForm.formModel),
-                          child: Container(
-                            padding: EdgeInsets.all(5),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
-                            ),
-                            child: Column(
-                              children: [
-                                Image.asset("images/cup.png",
-                                    width: 30, height: 20),
-                                Text(
-                                  "${stateForm.formModel.totalPoints ?? "-"}",
-                                  style: TextStyle(fontSize: 16),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                        SizedBox(width: 10),
+                        // InkWell(
+                        //   onTap: () => Get.toNamed(Routes.userTrackingPage,
+                        //       arguments: stateForm.formModel),
+                        //   child: Container(
+                        //     padding: EdgeInsets.all(5),
+                        //     decoration: BoxDecoration(
+                        //       color: Colors.white,
+                        //       borderRadius:
+                        //           BorderRadius.all(Radius.circular(10)),
+                        //     ),
+                        //     child: Column(
+                        //       children: [
+                        //         Image.asset("images/cup.png",
+                        //             width: 30, height: 20),
+                        //         Text(
+                        //           "${stateForm.formModel.totalPoints ?? "-"}",
+                        //           style: TextStyle(fontSize: 16),
+                        //         )
+                        //       ],
+                        //     ),
+                        //   ),
+                        // ),
+                        // SizedBox(width: 10),
+
                         InkWell(
                           onTap: () => Get.toNamed(Routes.userProfileDetail),
                           child: Icon(Icons.edit),
@@ -94,6 +95,28 @@ class UserProfilePage extends StatelessWidget {
                       ],
                     ),
                   ),
+                  SizedBox(height: 20),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Expanded(child: Text(DateTime.now().dateFormat())),
+                        InkWell(
+                          onTap: () => Get.toNamed(Routes.userTrackingPage, arguments: stateForm.formModel),
+                          child: Container(
+                            padding: EdgeInsets.all(2),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                                color: ColorPalette.generalSecondaryColor),
+                            child: Text("Tracking Journal"),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Divider(height: 8, color: Colors.black),
                   SizedBox(height: 20),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20),

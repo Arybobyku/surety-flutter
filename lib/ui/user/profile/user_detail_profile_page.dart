@@ -135,7 +135,6 @@ class _UserDetailProfilePageState extends State<UserDetailProfilePage> {
                       onChange: (val) {
                         valueAuth.user.fullName = val;
                       },
-                      secureText: false,
                     ),
                     InputFieldRounded(
                       hint: "Email",
@@ -146,6 +145,14 @@ class _UserDetailProfilePageState extends State<UserDetailProfilePage> {
                         valueAuth.user.email = val;
                       },
                       secureText: false,
+                    ),
+                    InputFieldRounded(
+                      hint: "Bio",
+                      initialValue: valueAuth.user.bio,
+                      minLines: 5,
+                      onChange: (val) {
+                        valueAuth.user.bio = val;
+                      },
                     ),
                     SizedBox(height: 7),
                     InkWell(
