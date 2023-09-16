@@ -221,7 +221,7 @@ class _UserDetailProfilePageState extends State<UserDetailProfilePage> {
                     SizedBox(height: 20),
 
                     InputFieldRounded(
-                      hint: "Password",
+                      hint: "New Password",
                       icon: Icon(Icons.lock),
                       onChange: (val) {
                         password = val;
@@ -241,7 +241,7 @@ class _UserDetailProfilePageState extends State<UserDetailProfilePage> {
                     ),
 
                     InputFieldRounded(
-                      hint: "Confirm Password",
+                      hint: "Confirm New Password",
                       icon: Icon(Icons.lock),
                       onChange: (val) {
                         password2 = val;

@@ -77,8 +77,9 @@ class _UserCommunityPageState extends State<UserCommunityPage> {
                                 color: Colors.black,
                               ),
                             ),
-                            onPressed: () async{
-                              await Get.toNamed(Routes.userFriendsPage,arguments: true);
+                            onPressed: () async {
+                              await Get.toNamed(Routes.userFriendsPage,
+                                  arguments: true);
                               context.read<DiaryProvider>().getAllDiaries(
                                   context.read<AuthProvider>().user);
                             },
@@ -103,7 +104,8 @@ class _UserCommunityPageState extends State<UserCommunityPage> {
                               ),
                             ),
                             onPressed: () async {
-                              await Get.toNamed(Routes.userFriendsPage,arguments: false);
+                              await Get.toNamed(Routes.userFriendsPage,
+                                  arguments: false);
                               context.read<DiaryProvider>().getAllDiaries(
                                   context.read<AuthProvider>().user);
                             },
@@ -200,19 +202,26 @@ class _UserCommunityPageState extends State<UserCommunityPage> {
                                                   crossAxisAlignment:
                                                       CrossAxisAlignment.start,
                                                   children: [
-                                                    Text(
-                                                      "${diary.userModel?.fullName ?? ""}'s diary",
-                                                      style: TextStyle(
-                                                          fontSize: 18),
+
+                                                    Row(
+                                                      children: [
+                                                        Text(
+                                                          "${diary.userModel?.fullName ?? ""}'s diary  ",
+                                                          style: TextStyle(
+                                                              fontSize: 16),
+                                                        ),
+                                                        if (diary.isExpert!)
+                                                          Icon(Icons.stars_sharp,
+                                                              size: 18),
+                                                        if (diary.isExpert!)
+                                                          Text("Expert"),
+                                                      ],
                                                     ),
                                                     if (diary.isExpert!)
-                                                      Row(
-                                                        children: [
-                                                          Icon(
-                                                              Icons.stars_sharp,
-                                                              size: 18),
-                                                          Text("Expert"),
-                                                        ],
+                                                      Text(
+                                                        "${diary.userModel?.bio}",
+                                                        style: TextStyle(
+                                                            fontSize: 12),
                                                       ),
                                                   ],
                                                 ),

@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:surety/helper/color_palette.dart';
+import 'package:surety/helper/extension/form_extension.dart';
+import 'package:surety/provider/auth.dart';
 import 'package:surety/provider/expert_provider.dart';
+import 'package:surety/provider/form_provider.dart';
 import 'package:surety/routes.dart';
 import 'package:surety/ui/widget/button_rounded.dart';
 
@@ -26,11 +29,65 @@ class _UserExpertPageState extends State<UserExpertPage> {
           )
         ],
         child: SafeArea(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              children: [
-                Expanded(
+          child: Column(
+            children: [
+              ///  Header
+              Consumer<AuthProvider>(
+                  builder: (context, valueAuth, _) {
+                    return Container(
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: ColorPalette.generalSecondaryColor,
+                      ),
+                      child: Row(
+                        children: [
+                          Column(
+                            children: [
+                              Image.asset("images/expert.png",height: 30),
+                              Text("Experts",style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold),),
+                            ],
+                          ),
+                          SizedBox(width: 10),
+                          Expanded(
+                              child: Text(
+                                "Experts",
+                                style: TextStyle(fontSize: 18),
+                              )),
+                          SizedBox(width: 10),
+                          Consumer<FormProvider>(
+                              builder: (context, stateForm, _) {
+                                return InkWell(
+                                  onTap: () => Get.toNamed(
+                                      Routes.userTrackingPage,
+                                      arguments: stateForm.formModel),
+                                  child: Container(
+                                    padding: EdgeInsets.all(5),
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(10)),
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        Image.asset("images/cup.png",
+                                            width: 30, height: 20),
+                                        Text(
+                                          "${stateForm.formModel.totalPoints ?? "-"}",
+                                          style: TextStyle(fontSize: 16),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              }),
+                          SizedBox(width: 10),
+                        ],
+                      ),
+                    );
+                  }),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: Expanded(
                   child: SingleChildScrollView(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -147,7 +204,10 @@ class _UserExpertPageState extends State<UserExpertPage> {
                     ),
                   ),
                 ),
-                ButtonRounded(
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: ButtonRounded(
                   onPressed: () {
                     Get.toNamed(Routes.webView,
                         arguments:
@@ -155,9 +215,9 @@ class _UserExpertPageState extends State<UserExpertPage> {
                   },
                   text: "Noticing Changes? Take Quiz",
                 ),
-                SizedBox(height: 20)
-              ],
-            ),
+              ),
+              SizedBox(height: 20)
+            ],
           ),
         ),
       ),

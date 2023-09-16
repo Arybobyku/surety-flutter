@@ -27,8 +27,7 @@ class _UserFriendsDetailPageState extends State<UserFriendsDetailPage> {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (context) => DiaryProvider()
-            ..getFriendsDiary(user.id!),
+          create: (context) => DiaryProvider()..getFriendsDiary(user.id!),
         ),
       ],
       child: Scaffold(
@@ -208,18 +207,25 @@ class _UserFriendsDetailPageState extends State<UserFriendsDetailPage> {
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
                                                 children: [
-                                                  Text(
-                                                    "${diary.userModel?.fullName ?? ""}'s diary",
-                                                    style:
-                                                        TextStyle(fontSize: 18),
-                                                  ),
-                                                  if (diary.isExpert!)
-                                                    Row(
-                                                      children: [
+                                                  Row(
+                                                    children: [
+                                                      Text(
+                                                        "${diary.userModel?.fullName ?? ""}'s diary  ",
+                                                        style: TextStyle(
+                                                            fontSize: 16),
+                                                      ),
+                                                      if (diary.isExpert!)
                                                         Icon(Icons.stars_sharp,
                                                             size: 18),
+                                                      if (diary.isExpert!)
                                                         Text("Expert"),
-                                                      ],
+                                                    ],
+                                                  ),
+                                                  if (diary.isExpert!)
+                                                    Text(
+                                                      "${diary.userModel?.bio}",
+                                                      style: TextStyle(
+                                                          fontSize: 12),
                                                     ),
                                                 ],
                                               ),
