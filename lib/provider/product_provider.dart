@@ -49,6 +49,15 @@ class ProductProvider extends ChangeNotifier {
     }
   }
 
+  Future<bool> updateProduct(File? image, ProductModel articleModel) async {
+    final result = await _productService.update(image, articleModel);
+    productsByCreator[productsByCreator
+        .indexWhere((element) => element.id == articleModel.id)] = result;
+    notifyListeners();
+
+    return true;
+  }
+
   Future<Either<String, bool>> getAllProductByCreator(String id) async {
     try {
       loading = true;

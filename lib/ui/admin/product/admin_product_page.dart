@@ -10,6 +10,7 @@ import 'package:surety/helper/color_palette.dart';
 import 'package:surety/model/product_model.dart';
 import 'package:surety/provider/auth.dart';
 import 'package:surety/provider/product_provider.dart';
+import 'package:surety/routes.dart';
 import 'package:surety/ui/widget/button_picker.dart';
 import 'package:surety/ui/widget/button_rounded.dart';
 import 'package:surety/ui/widget/input_field_rounded.dart';
@@ -232,16 +233,35 @@ class _AdminProductPageState extends State<AdminProductPage> {
                                         fontWeight: FontWeight.bold),
                                   ),
                                   Text(e.description ?? "-"),
-                                  InkWell(
-                                    onTap: () {
-                                      context
-                                          .read<ProductProvider>()
-                                          .removeProduct(e.id!);
-                                    },
-                                    child: Icon(
-                                      Icons.delete,
-                                      color: Colors.red,
-                                    ),
+                                  Row(
+                                    children: [
+                                      InkWell(
+                                        onTap: () {
+                                          context
+                                              .read<ProductProvider>()
+                                              .removeProduct(e.id!);
+                                        },
+                                        child: Icon(
+                                          Icons.delete,
+                                          color: Colors.red,
+                                        ),
+                                      ),
+                                      InkWell(
+                                        onTap: () {
+                                          Get.toNamed(
+                                            Routes.adminProductDetail,
+                                            arguments: {
+                                              "product": e,
+                                              "provider": context
+                                                  .read<ProductProvider>()
+                                            },
+                                          );
+                                        },
+                                        child: Icon(
+                                          Icons.edit,
+                                        ),
+                                      ),
+                                    ],
                                   )
                                 ],
                               ),

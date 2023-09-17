@@ -66,6 +66,23 @@ class ProductService {
     }
   }
 
+
+  Future<ProductModel> update(File? image, ProductModel articleModel) async {
+    try {
+      final filePath =
+      image != null ? await saveImage(image) : articleModel.picture;
+
+      articleModel.picture = filePath;
+      var result = await _articleReference.doc(articleModel.id);
+      ;
+      await result.set(articleModel.toJson());
+
+      return articleModel;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   Future<void> remove(String id) async {
     try {
       await _articleReference.doc(id).delete();
