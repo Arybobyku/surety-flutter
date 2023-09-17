@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:surety/helper/color_palette.dart';
+import 'package:surety/model/banner_model.dart';
 import 'package:surety/provider/admin.dart';
 import 'package:surety/provider/auth.dart';
 import 'package:surety/provider/banner_provider.dart';
@@ -145,11 +146,87 @@ class _AdminInfoPageState extends State<AdminInfoPage> {
         ),
         body: SingleChildScrollView(
           child: Consumer<BannerProvider>(builder: (context, state, _) {
-            String imageUrl = state.banner?.url ?? "";
+            BannerModel? banner = state.banner;
             return Padding(
               padding: const EdgeInsets.all(20),
               child: Column(
                 children: [
+                  Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                        color: ColorPalette.generalBannerColor,
+                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                    height: 150,
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: CachedNetworkImage(
+                            imageUrl: state.banner?.image ?? "",
+                            imageBuilder: (context, imageProvider) => Container(
+                              width: double.infinity,
+                              height: 150,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(10),
+                                  bottomLeft: Radius.circular(10),
+                                ),
+                                image: DecorationImage(
+                                  image: imageProvider,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+                            placeholder: (context, url) =>
+                                CircularProgressIndicator(),
+                            errorWidget: (context, url, error) => Icon(
+                              Icons.image,
+                              size: 150,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 2,
+                          child: Container(
+                            width: double.infinity,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  banner?.text ?? "",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                InkWell(
+                                  onTap: ()=>Get.toNamed(Routes.webView,arguments: banner!.url!),
+                                  child: Container(
+                                    padding: EdgeInsets.symmetric(vertical: 5,horizontal: 10),
+                                    decoration: BoxDecoration(
+                                        color:
+                                            ColorPalette.generalMarronColor,
+                                      borderRadius: BorderRadius.all(Radius.circular(10))
+                                    ),
+                                    child: Text(
+                                      banner?.buttonText ?? "",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 20),
                   state.banner?.image != null && photoProfile == null
                       ? CachedNetworkImage(
                           imageUrl: state.banner?.image ?? "",
@@ -220,15 +297,35 @@ class _AdminInfoPageState extends State<AdminInfoPage> {
                     minLines: 5,
                     initialValue: state.banner?.url,
                     onChange: (val) {
-                      imageUrl = val;
+                      banner?.url = val;
+                    },
+                  ),
+                  InputFieldRounded(
+                    title: "Text",
+                    hint: "Text",
+                    minLines: 5,
+                    initialValue: state.banner?.text,
+                    onChange: (val) {
+                      banner?.text = val;
+                    },
+                  ),
+                  InputFieldRounded(
+                    title: "Button Text",
+                    hint: "Button Text",
+                    initialValue: state.banner?.text,
+                    onChange: (val) {
+                      banner?.buttonText = val;
                     },
                   ),
                   ButtonRounded(
                     text: "Update Banner",
-                    onPressed: () {
-                      context
+                    onPressed: () async {
+                      await context
                           .read<BannerProvider>()
-                          .updateBanner(photoProfile, imageUrl);
+                          .updateBanner(photoProfile, banner!);
+
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text("Success update banner")));
                     },
                   ),
                 ],

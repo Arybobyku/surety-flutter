@@ -178,30 +178,87 @@ class _UserHomePageState extends State<UserHomePage> {
                   ),
 
                   ///  Banner
-                  Consumer<BannerProvider>(
-                    builder: (context,stateBanner,_) {
-                      return InkWell(
-                        onTap: () {
-                          if(stateBanner.banner?.url!= null){
-                            Get.toNamed(Routes.webView,arguments: stateBanner.banner!.url!);
-                          }
-                        },
-                        child: Container(
-                          width: double.infinity,
-                          height: 120,
-                          margin: EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            color: ColorPalette.generalPrimaryColor,
-                            image: DecorationImage(
-                              fit: BoxFit.fill,
-                              image: NetworkImage(stateBanner.banner?.image ?? Constants.banner),
+                  Consumer<BannerProvider>(builder: (context, stateBanner, _) {
+                    return Container(
+                      margin: EdgeInsets.all(10),
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                          color: ColorPalette.generalBannerColor,
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                      height: 150,
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: CachedNetworkImage(
+                              imageUrl: stateBanner.banner?.image ?? "",
+                              imageBuilder: (context, imageProvider) =>
+                                  Container(
+                                width: double.infinity,
+                                height: 150,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(10),
+                                    bottomLeft: Radius.circular(10),
+                                  ),
+                                  image: DecorationImage(
+                                    image: imageProvider,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                              placeholder: (context, url) =>
+                                  CircularProgressIndicator(),
+                              errorWidget: (context, url, error) => Icon(
+                                Icons.image,
+                                size: 150,
+                              ),
                             ),
                           ),
-                        ),
-                      );
-                    }
-                  ),
+                          Expanded(
+                            flex: 2,
+                            child: Container(
+                              width: double.infinity,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    stateBanner.banner?.text ?? "",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  InkWell(
+                                    onTap: () => Get.toNamed(Routes.webView,
+                                        arguments: stateBanner.banner?.url!),
+                                    child: Container(
+                                      padding: EdgeInsets.symmetric(
+                                          vertical: 5, horizontal: 10),
+                                      decoration: BoxDecoration(
+                                          color:
+                                              ColorPalette.generalMarronColor,
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10))),
+                                      child: Text(
+                                        stateBanner.banner?.buttonText ?? "",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    );
+                  }),
 
                   /// Content
                   Padding(

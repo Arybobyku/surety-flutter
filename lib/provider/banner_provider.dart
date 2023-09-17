@@ -18,13 +18,15 @@ class BannerProvider extends ChangeNotifier {
     }
   }
 
-  Future<void> updateBanner(File? image,String url) async {
+  Future<bool> updateBanner(File? image,BannerModel bannerModel) async {
     try {
-      final result = await _bannerService.update(image,url,banner?.image ?? "-");
+      final result = await _bannerService.update(image,bannerModel);
       banner = result;
       notifyListeners();
+      return true;
     } catch (e) {
       print(e);
+      return false;
     }
   }
 }

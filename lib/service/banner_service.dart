@@ -30,15 +30,15 @@ class BannerService {
     }
   }
 
-  Future<BannerModel> update(File? image, String url, String oldImage) async {
+  Future<BannerModel> update(File? image, BannerModel bannerModel) async {
     try {
-      final filePath =image!= null ? await saveImage(image) : oldImage;
+      final filePath =image!= null ? await saveImage(image) : bannerModel.image;
       var result = await _friendsReference.doc(bannerId);
 
-      final banner = BannerModel(url: url, image: filePath);
-      await result.set(banner.toJson());
+      bannerModel.image = filePath;
+      await result.set(bannerModel.toJson());
 
-      return banner;
+      return bannerModel;
     } catch (e) {
       rethrow;
     }

@@ -29,7 +29,7 @@ class AuthService {
       user = userService;
       return user;
     } catch (e) {
-      rethrow;
+      throw e.toString().split(RegExp(r'\[|\]')).last;
     }
   }
 
@@ -81,7 +81,7 @@ class AuthService {
       return user;
     } catch (e) {
       debugPrint("=====ERROR SignIN ====> $e");
-      rethrow;
+      throw e.toString().split(RegExp(r'\[|\]')).last;
     }
   }
 
