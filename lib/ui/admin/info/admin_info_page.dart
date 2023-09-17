@@ -150,7 +150,7 @@ class _AdminInfoPageState extends State<AdminInfoPage> {
               padding: const EdgeInsets.all(20),
               child: Column(
                 children: [
-                  state.banner?.image != null
+                  state.banner?.image != null && photoProfile == null
                       ? CachedNetworkImage(
                           imageUrl: state.banner?.image ?? "",
                           imageBuilder: (context, imageProvider) => Container(
@@ -171,34 +171,38 @@ class _AdminInfoPageState extends State<AdminInfoPage> {
                           ),
                         )
                       : photoProfile != null
-                          ? Stack(
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.only(top: 15, bottom: 30),
-                                  height: double.infinity,
-                                  width: 150,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      fit: BoxFit.cover,
-                                      image: FileImage(photoProfile!),
+                          ? SizedBox(
+                              height: 150,
+                              child: Stack(
+                                children: [
+                                  Container(
+                                    margin:
+                                        EdgeInsets.only(top: 15, bottom: 30),
+                                    height: double.infinity,
+                                    width: 150,
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                        fit: BoxFit.cover,
+                                        image: FileImage(photoProfile!),
+                                      ),
                                     ),
                                   ),
-                                ),
-                                Container(
-                                  width: 150,
-                                  height: 150,
-                                  alignment: Alignment.bottomCenter,
-                                  child: InkWell(
-                                    onTap: () {
-                                      setState(() {
-                                        photoProfile = null;
-                                      });
-                                    },
-                                    child:
-                                        Icon(Icons.delete, color: Colors.red),
-                                  ),
-                                )
-                              ],
+                                  Container(
+                                    width: 150,
+                                    height: 150,
+                                    alignment: Alignment.bottomCenter,
+                                    child: InkWell(
+                                      onTap: () {
+                                        setState(() {
+                                          photoProfile = null;
+                                        });
+                                      },
+                                      child:
+                                          Icon(Icons.delete, color: Colors.red),
+                                    ),
+                                  )
+                                ],
+                              ),
                             )
                           : Icon(
                               Icons.person,
@@ -222,7 +226,9 @@ class _AdminInfoPageState extends State<AdminInfoPage> {
                   ButtonRounded(
                     text: "Update Banner",
                     onPressed: () {
-                      context.read<BannerProvider>().updateBanner(photoProfile, imageUrl);
+                      context
+                          .read<BannerProvider>()
+                          .updateBanner(photoProfile, imageUrl);
                     },
                   ),
                 ],

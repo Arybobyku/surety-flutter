@@ -10,6 +10,7 @@ import 'package:surety/helper/color_palette.dart';
 import 'package:surety/model/article_model.dart';
 import 'package:surety/provider/article_provider.dart';
 import 'package:surety/provider/auth.dart';
+import 'package:surety/routes.dart';
 import 'package:surety/ui/widget/button_picker.dart';
 import 'package:surety/ui/widget/button_rounded.dart';
 import 'package:surety/ui/widget/input_field_rounded.dart';
@@ -188,52 +189,61 @@ class _AdminArticlePageState extends State<AdminArticlePage> {
                       child: Column(
                         children: [
                           ...state.articlesByCreator.map(
-                            (e) => Container(
-                              width: double.infinity,
-                              margin: EdgeInsets.all(10),
-                              padding: EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(20),
-                                ),
+                            (e) => InkWell(
+                              onTap: () => Get.toNamed(
+                                Routes.adminArticlesDetail,
+                                arguments: {
+                                  "article":e,
+                                  "provider": context.read<ArticleProvider>()
+                                },
                               ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    width: double.infinity,
-                                    height: 100,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(10),
-                                      ),
-                                      image: DecorationImage(
-                                        fit: BoxFit.cover,
-                                        image: NetworkImage(e.picture!),
+                              child: Container(
+                                width: double.infinity,
+                                margin: EdgeInsets.all(10),
+                                padding: EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(20),
+                                  ),
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      width: double.infinity,
+                                      height: 100,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.all(
+                                          Radius.circular(10),
+                                        ),
+                                        image: DecorationImage(
+                                          fit: BoxFit.cover,
+                                          image: NetworkImage(e.picture!),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  SizedBox(height: 10),
-                                  Text(
-                                    e.title ?? "-",
-                                    style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  Text(e.description ?? "-"),
-                                  InkWell(
-                                    onTap: () {
-                                      context
-                                          .read<ArticleProvider>()
-                                          .removeArticle(e.id!);
-                                    },
-                                    child: Icon(
-                                      Icons.delete,
-                                      color: Colors.red,
+                                    SizedBox(height: 10),
+                                    Text(
+                                      e.title ?? "-",
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold),
                                     ),
-                                  )
-                                ],
+                                    Text(e.description ?? "-"),
+                                    InkWell(
+                                      onTap: () {
+                                        context
+                                            .read<ArticleProvider>()
+                                            .removeArticle(e.id!);
+                                      },
+                                      child: Icon(
+                                        Icons.delete,
+                                        color: Colors.red,
+                                      ),
+                                    )
+                                  ],
+                                ),
                               ),
                             ),
                           ),

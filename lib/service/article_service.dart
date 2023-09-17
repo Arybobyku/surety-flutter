@@ -53,6 +53,22 @@ class ArticleService {
     }
   }
 
+  Future<ArticleModel> update(File? image, ArticleModel articleModel) async {
+    try {
+      final filePath =
+          image != null ? await saveImage(image) : articleModel.picture;
+
+      articleModel.picture = filePath;
+      var result = await _articleReference.doc(articleModel.id);
+      ;
+      await result.set(articleModel.toJson());
+
+      return articleModel;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   Future<List<ArticleModel>> getAllArticles() async {
     try {
       QuerySnapshot result = await _articleReference.get();
@@ -66,10 +82,10 @@ class ArticleService {
     }
   }
 
-  Future<void> remove(String id)async{
-    try{
+  Future<void> remove(String id) async {
+    try {
       await _articleReference.doc(id).delete();
-    }catch(e){
+    } catch (e) {
       rethrow;
     }
   }

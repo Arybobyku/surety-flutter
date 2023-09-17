@@ -40,13 +40,22 @@ class ArticleProvider extends ChangeNotifier {
 
   Future<Either<String, bool>> removeArticle(String id) async {
     try {
-       await _articleService.remove(id);
+      await _articleService.remove(id);
       articlesByCreator.removeWhere((element) => element.id == id);
       notifyListeners();
       return right(true);
     } catch (e) {
       return left(e.toString());
     }
+  }
+
+  Future<bool> updateArticle(File? image, ArticleModel articleModel) async {
+    final result = await _articleService.update(image, articleModel);
+    articlesByCreator[articlesByCreator
+        .indexWhere((element) => element.id == articleModel.id)] = result;
+    notifyListeners();
+
+    return true;
   }
 
   Future<Either<String, bool>> getAllArticlesByCreator(String id) async {

@@ -20,6 +20,8 @@ import 'package:surety/ui/user/profile/user_detail_profile_page.dart';
 import 'package:surety/ui/user/tracking/user_tracking_page.dart';
 import 'package:surety/ui/web_view.dart';
 
+import 'ui/admin/article/admin_article_detail_page.dart';
+
 class Routes {
   Routes._();
 
@@ -33,6 +35,7 @@ class Routes {
 
   static const String adminDashboard = "/adminDashboard";
   static const String adminArticles = "/adminArticles";
+  static const String adminArticlesDetail = "/adminArticlesDetail";
   static const String adminProducts = "/adminProducts";
   static const String adminExperts = "/adminExperts";
 
@@ -58,6 +61,7 @@ class Routes {
     /// Admin Screen
     GetPage(name: adminDashboard, page: () => AdminInfoPage()),
     GetPage(name: adminArticles, page: () => AdminArticlePage()),
+    GetPage(name: adminArticlesDetail, page: () => AdminArticleDetailPage()),
     GetPage(name: adminProducts, page: () => AdminProductPage()),
     GetPage(name: adminExperts, page: () => AdminExpertPage()),
 
