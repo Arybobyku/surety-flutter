@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
 import 'package:surety/model/friends_model.dart';
 import 'package:surety/model/user_model.dart';
 import 'package:surety/service/admin_service.dart';
@@ -28,6 +29,7 @@ class FriendsProvider extends ChangeNotifier {
       listExpert = result;
 
       listUser.removeWhere((element) => element.id == user.id ||  element.expertise != null);
+      listUser.removeWhere((element) => myFriends.friends.firstWhereOrNull((friends)=> friends.id == element.id) != null);
 
       notifyListeners();
     } catch (e) {

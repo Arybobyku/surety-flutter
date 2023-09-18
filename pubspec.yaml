@@ -48,7 +48,7 @@ dependencies:
   cron: ^0.5.0
 #  modal_bottom_sheet:
   download_assets: ^3.0.0
-  webview_flutter:
+  webview_flutter: ^4.2.4
   firebase_auth_platform_interface:
 
 dev_dependencies:
