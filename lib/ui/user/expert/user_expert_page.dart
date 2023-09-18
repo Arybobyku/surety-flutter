@@ -48,11 +48,12 @@ class _UserExpertPageState extends State<UserExpertPage> {
                             ],
                           ),
                           SizedBox(width: 10),
-                          Text(
-                            "Experts",
-                            style: TextStyle(fontSize: 18),
+                          Expanded(
+                            child: Text(
+                              "Experts",
+                              style: TextStyle(fontSize: 18),
+                            ),
                           ),
-                          SizedBox(width: 10),
                           Consumer<FormProvider>(
                               builder: (context, stateForm, _) {
                                 return InkWell(

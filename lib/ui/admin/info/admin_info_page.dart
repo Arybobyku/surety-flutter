@@ -199,6 +199,7 @@ class _AdminInfoPageState extends State<AdminInfoPage> {
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
+
                                 SizedBox(
                                   height: 10,
                                 ),
@@ -295,7 +296,7 @@ class _AdminInfoPageState extends State<AdminInfoPage> {
                     title: "Url",
                     hint: "Url",
                     minLines: 5,
-                    initialValue: state.banner?.url,
+                    initialValue: banner?.url,
                     onChange: (val) {
                       banner?.url = val;
                     },
@@ -304,7 +305,7 @@ class _AdminInfoPageState extends State<AdminInfoPage> {
                     title: "Text",
                     hint: "Text",
                     minLines: 5,
-                    initialValue: state.banner?.text,
+                    initialValue: banner?.text,
                     onChange: (val) {
                       banner?.text = val;
                     },
@@ -312,7 +313,7 @@ class _AdminInfoPageState extends State<AdminInfoPage> {
                   InputFieldRounded(
                     title: "Button Text",
                     hint: "Button Text",
-                    initialValue: state.banner?.text,
+                    initialValue: banner?.text,
                     onChange: (val) {
                       banner?.buttonText = val;
                     },
