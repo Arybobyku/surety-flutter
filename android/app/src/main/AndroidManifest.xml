@@ -22,6 +22,8 @@
         android:exported="false"
         android:icon="@mipmap/ic_launcher"
         android:label="PausePlay"
+        android:allowBackup="false"
+        android:fullBackupContent="false"
         android:usesCleartextTraffic="true">
         <activity
             android:name=".MainActivity"
