@@ -424,33 +424,46 @@ class _UserDiaryPageState extends State<UserDiaryPage> {
                                                       context: context,
                                                       type: AlertType.warning,
                                                       title: "Remove",
-                                                      desc: "Are you sure to remove this post",
+                                                      desc:
+                                                          "Are you sure to remove this post",
                                                       buttons: [
                                                         DialogButton(
                                                           child: Text(
                                                             "Close",
-                                                            style: TextStyle(color: Colors.white, fontSize: 20),
+                                                            style: TextStyle(
+                                                                color: Colors
+                                                                    .white,
+                                                                fontSize: 20),
                                                           ),
-                                                          onPressed: (){
-                                                            Navigator.pop(context);
+                                                          onPressed: () {
+                                                            Navigator.pop(
+                                                                context);
                                                           },
                                                           color: Colors.red,
-                                                          radius: BorderRadius.circular(0.0),
+                                                          radius: BorderRadius
+                                                              .circular(0.0),
                                                         ),
                                                         DialogButton(
                                                           child: Text(
                                                             "Remove",
-                                                            style: TextStyle(color: Colors.white, fontSize: 20),
+                                                            style: TextStyle(
+                                                                color: Colors
+                                                                    .white,
+                                                                fontSize: 20),
                                                           ),
-                                                          onPressed: (){
+                                                          onPressed: () {
                                                             context
-                                                                .read<DiaryProvider>()
-                                                                .removeDiary(diary.id!);
+                                                                .read<
+                                                                    DiaryProvider>()
+                                                                .removeDiary(
+                                                                    diary.id!);
 
-                                                            Navigator.pop(context);
+                                                            Navigator.pop(
+                                                                context);
                                                           },
                                                           color: Colors.blue,
-                                                          radius: BorderRadius.circular(0.0),
+                                                          radius: BorderRadius
+                                                              .circular(0.0),
                                                         ),
                                                       ],
                                                     ).show();
