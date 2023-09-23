@@ -15,7 +15,8 @@ class UserFormDetailPage extends StatefulWidget {
 }
 
 class _UserFormDetailPageState extends State<UserFormDetailPage> {
-  List<BaseFormModel>? forms = Get.arguments;
+  List<BaseFormModel>? forms = Get.arguments['content'];
+  String? title = Get.arguments['title'];
   bool isSymptoms = false;
   List<SymptomsGroupModel> symptomsGroup = [];
   Set<DateTime> dateValue = {};
@@ -60,7 +61,7 @@ class _UserFormDetailPageState extends State<UserFormDetailPage> {
       appBar: AppBar(
         backgroundColor: ColorPalette.generalSecondaryColor,
         title: Text(
-            "History ${forms != null && forms!.isNotEmpty ? forms!.first.key : ""}"),
+            "History ${title ?? "" }"),
       ),
       backgroundColor: ColorPalette.generalBackgroundColor,
       body: SafeArea(

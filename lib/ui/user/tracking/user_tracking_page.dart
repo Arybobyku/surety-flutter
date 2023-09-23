@@ -133,7 +133,12 @@ class _UserTrackingPageState extends State<UserTrackingPage> {
 
                           print("RESULT ${result.length}");
 
-                          Get.toNamed(Routes.userFormDetail, arguments: result);
+                          Get.toNamed(
+                            Routes.userFormDetail,
+                            arguments: {
+                              "content": result,
+                            },
+                          );
                         },
                         child: Stack(
                           children: [

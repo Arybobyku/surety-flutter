@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:surety/helper/color_palette.dart';
 import 'package:surety/helper/extension/date_time_extension.dart';
 import 'package:surety/helper/extension/string_extension.dart';
@@ -419,9 +420,40 @@ class _UserDiaryPageState extends State<UserDiaryPage> {
                                                 SizedBox(width: 10),
                                                 InkWell(
                                                   onTap: () {
-                                                    context
-                                                        .read<DiaryProvider>()
-                                                        .removeDiary(diary.id!);
+                                                    Alert(
+                                                      context: context,
+                                                      type: AlertType.warning,
+                                                      title: "Remove",
+                                                      desc: "Are you sure to remove this post",
+                                                      buttons: [
+                                                        DialogButton(
+                                                          child: Text(
+                                                            "Close",
+                                                            style: TextStyle(color: Colors.white, fontSize: 20),
+                                                          ),
+                                                          onPressed: (){
+                                                            Navigator.pop(context);
+                                                          },
+                                                          color: Colors.red,
+                                                          radius: BorderRadius.circular(0.0),
+                                                        ),
+                                                        DialogButton(
+                                                          child: Text(
+                                                            "Remove",
+                                                            style: TextStyle(color: Colors.white, fontSize: 20),
+                                                          ),
+                                                          onPressed: (){
+                                                            context
+                                                                .read<DiaryProvider>()
+                                                                .removeDiary(diary.id!);
+
+                                                            Navigator.pop(context);
+                                                          },
+                                                          color: Colors.blue,
+                                                          radius: BorderRadius.circular(0.0),
+                                                        ),
+                                                      ],
+                                                    ).show();
                                                   },
                                                   child: Icon(
                                                     Icons.delete,

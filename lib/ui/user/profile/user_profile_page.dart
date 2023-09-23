@@ -103,11 +103,13 @@ class UserProfilePage extends StatelessWidget {
                       children: [
                         Expanded(child: Text(DateTime.now().dateFormat())),
                         InkWell(
-                          onTap: () => Get.toNamed(Routes.userTrackingPage, arguments: stateForm.formModel),
+                          onTap: () => Get.toNamed(Routes.userTrackingPage,
+                              arguments: stateForm.formModel),
                           child: Container(
                             padding: EdgeInsets.all(2),
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
                                 color: ColorPalette.generalSecondaryColor),
                             child: Text("Tracking Journal"),
                           ),
@@ -138,7 +140,10 @@ class UserProfilePage extends StatelessWidget {
                             InkWell(
                               onTap: () => Get.toNamed(
                                 Routes.userFormDetail,
-                                arguments: stateForm.formModel.symptoms,
+                                arguments: {
+                                  "content": stateForm.formModel.symptoms,
+                                  "title": FormType.Symptoms.name,
+                                },
                               ),
                               child: RichText(
                                 text: TextSpan(
@@ -319,7 +324,10 @@ class UserProfilePage extends StatelessWidget {
                             InkWell(
                               onTap: () => Get.toNamed(
                                 Routes.userFormDetail,
-                                arguments: stateForm.formModel.period,
+                                arguments: {
+                                  "content": stateForm.formModel.period,
+                                  "title": FormType.Period.name,
+                                },
                               ),
                               child: Icon(Icons.history,
                                   color: ColorPalette.generalPrimaryColor),
@@ -422,8 +430,13 @@ class UserProfilePage extends StatelessWidget {
                             ),
                             SizedBox(width: 20),
                             InkWell(
-                              onTap: () => Get.toNamed(Routes.userFormDetail,
-                                  arguments: stateForm.formModel.diet),
+                              onTap: () => Get.toNamed(
+                                Routes.userFormDetail,
+                                arguments: {
+                                  "content": stateForm.formModel.diet,
+                                  "title": FormType.Diet.name,
+                                },
+                              ),
                               child: RichText(
                                 text: TextSpan(
                                   children: [
@@ -506,8 +519,13 @@ class UserProfilePage extends StatelessWidget {
                             ),
                             SizedBox(width: 70),
                             InkWell(
-                              onTap: () => Get.toNamed(Routes.userFormDetail,
-                                  arguments: stateForm.formModel.exercise),
+                              onTap: () => Get.toNamed(
+                                Routes.userFormDetail,
+                                arguments: {
+                                  "content": stateForm.formModel.exercise,
+                                  "title": FormType.Exercise.name,
+                                },
+                              ),
                               child: RichText(
                                 text: TextSpan(
                                   children: [
@@ -590,8 +608,13 @@ class UserProfilePage extends StatelessWidget {
                             ),
                             SizedBox(width: 60),
                             InkWell(
-                              onTap: () => Get.toNamed(Routes.userFormDetail,
-                                  arguments: stateForm.formModel.weight),
+                              onTap: () => Get.toNamed(
+                                Routes.userFormDetail,
+                                arguments: {
+                                  "content": stateForm.formModel.weight,
+                                  "title": FormType.Weight.name,
+                                },
+                              ),
                               child: RichText(
                                 text: TextSpan(
                                   children: [
@@ -709,16 +732,26 @@ class UserProfilePage extends StatelessWidget {
                             .read<FormProvider>()
                             .update(type, value, user, value2: "input");
                       } else if (type == FormType.Exercise) {
-                        context.read<FormProvider>().update(
-                              type,
-                              valueExercise,
-                              user,
-                              value2: valueExercise2,
-                            );
+                        if (valueExercise != '' && valueExercise2 != '') {
+                          context.read<FormProvider>().update(
+                                type,
+                                valueExercise,
+                                user,
+                                value2: valueExercise2,
+                              );
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text("Please fill all the form input")));
+                        }
                       } else {
-                        context
-                            .read<FormProvider>()
-                            .update(type, value, user, value2: value2);
+                        if (value != '') {
+                          context
+                              .read<FormProvider>()
+                              .update(type, value, user, value2: value2);
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text("Please fill the form input")));
+                        }
                       }
 
                       Get.back();
