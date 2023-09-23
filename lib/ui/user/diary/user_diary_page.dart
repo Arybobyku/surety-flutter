@@ -397,6 +397,37 @@ class _UserDiaryPageState extends State<UserDiaryPage> {
                                                           .generalPrimaryColor,
                                                     ),
                                                   ),
+                                                Expanded(
+                                                    child: SizedBox(
+                                                  width: 10,
+                                                )),
+                                                InkWell(
+                                                  onTap: () {
+                                                    Get.toNamed(
+                                                      Routes.userDiaryEditPage,
+                                                      arguments: {
+                                                        "diary": diary,
+                                                        'provider': context.read<
+                                                            DiaryProvider>(),
+                                                      },
+                                                    );
+                                                  },
+                                                  child: Icon(
+                                                    Icons.edit,
+                                                  ),
+                                                ),
+                                                SizedBox(width: 10),
+                                                InkWell(
+                                                  onTap: () {
+                                                    context
+                                                        .read<DiaryProvider>()
+                                                        .removeDiary(diary.id!);
+                                                  },
+                                                  child: Icon(
+                                                    Icons.delete,
+                                                    color: Colors.red,
+                                                  ),
+                                                ),
                                               ],
                                             ),
 

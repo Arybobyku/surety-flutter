@@ -12,6 +12,7 @@ import 'package:surety/model/banner_model.dart';
 import 'package:surety/provider/admin.dart';
 import 'package:surety/provider/auth.dart';
 import 'package:surety/provider/banner_provider.dart';
+import 'package:surety/provider/form_provider.dart';
 import 'package:surety/routes.dart';
 import 'package:surety/ui/widget/button_rounded.dart';
 import 'package:surety/ui/widget/horizontal_icon_label.dart';
@@ -376,7 +377,8 @@ class _AdminInfoPageState extends State<AdminInfoPage> {
           ),
         ],
       ).show();
-    }, (r) {
+    }, (r) async {
+      await context.read<FormProvider>().resetForm();
       EasyLoading.dismiss();
       Get.offAllNamed(Routes.login);
     });

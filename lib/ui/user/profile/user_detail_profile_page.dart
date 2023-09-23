@@ -11,6 +11,7 @@ import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:surety/helper/color_palette.dart';
 import 'package:surety/model/user_model.dart';
 import 'package:surety/provider/auth.dart';
+import 'package:surety/provider/form_provider.dart';
 import 'package:surety/routes.dart';
 import 'package:surety/ui/widget/button_picker.dart';
 import 'package:surety/ui/widget/button_rounded.dart';
@@ -378,7 +379,8 @@ class _UserDetailProfilePageState extends State<UserDetailProfilePage> {
           ),
         ],
       ).show();
-    }, (r) {
+    }, (r) async {
+      await context.read<FormProvider>().resetForm();
       EasyLoading.dismiss();
       Get.offAllNamed(Routes.login);
     });

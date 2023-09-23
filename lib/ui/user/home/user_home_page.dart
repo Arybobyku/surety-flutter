@@ -634,7 +634,8 @@ class _UserHomePageState extends State<UserHomePage> {
           ),
         ],
       ).show();
-    }, (r) {
+    }, (r) async {
+      await context.read<FormProvider>().resetForm();
       EasyLoading.dismiss();
       Get.offAllNamed(Routes.login);
     });

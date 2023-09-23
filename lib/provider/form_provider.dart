@@ -116,4 +116,20 @@ class FormProvider extends ChangeNotifier {
       print("ERROR FORM" + e.toString());
     }
   }
+
+  Future<void> resetForm()async{
+    this.loading = true;
+    this.dailyLogin = false;
+    this.periodProgress = 50;
+    this.formModel = FormModel(
+      mood: [],
+      login: [],
+      symptoms: [],
+      period: [],
+      diet: [],
+      exercise: [],
+      weight: [],
+      userId: '',
+    );
+  }
 }

@@ -33,7 +33,9 @@ class DiaryService {
     diary.image = path;
 
     try {
-      _diariesReference.doc().set(diary.toJson());
+      String docId = _diariesReference.doc().id;
+      diary.id = docId;
+      _diariesReference.doc(docId).set(diary.toJson());
       return diary;
     } catch (e) {
       rethrow;
@@ -70,6 +72,22 @@ class DiaryService {
       }).toList();
       print(diaries.length);
       return diaries;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<DiaryModel> update(File? image, DiaryModel diaryModel) async {
+    try {
+      final filePath =
+      image != null ? await saveImage(image) : diaryModel.image;
+
+      diaryModel.image = filePath;
+      var result = await _diariesReference.doc(diaryModel.id);
+      ;
+      await result.set(diaryModel.toJson());
+
+      return diaryModel;
     } catch (e) {
       rethrow;
     }

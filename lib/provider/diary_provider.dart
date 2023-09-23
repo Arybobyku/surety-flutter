@@ -160,7 +160,16 @@ class DiaryProvider extends ChangeNotifier {
     }
   }
 
-  void remove(String id) async {
+  Future<bool> updateDiary(File?image, DiaryModel diaryModel)async{
+    final result = await _diaryService.update(image, diaryModel);
+    diariesByCreator[diariesByCreator
+        .indexWhere((element) => element.id == diaryModel.id)] = result;
+    notifyListeners();
+    return true;
+  }
+
+
+  void removeDiary(String id) async {
     try {
       loading = true;
       await _diaryService.remove(id);

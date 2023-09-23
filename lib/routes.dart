@@ -22,6 +22,7 @@ import 'package:surety/ui/user/tracking/user_tracking_page.dart';
 import 'package:surety/ui/web_view.dart';
 
 import 'ui/admin/article/admin_article_detail_page.dart';
+import 'ui/user/diary/user_diary_edit_page.dart';
 
 class Routes {
   Routes._();
@@ -50,6 +51,7 @@ class Routes {
   static const String userTrackingPage = "/userTrackingPage";
   static const String userFriendsPage = "/userFriendsPage";
   static const String userFriendsDetailPage = "/userFriendsDetailPage";
+  static const String userDiaryEditPage = "/userDiaryEditPage";
 
   static final newRoutes = <GetPage>[
     GetPage(name: navigator, page: () => NavigatorPage()),
@@ -79,5 +81,6 @@ class Routes {
     GetPage(name: userTrackingPage, page: () => UserTrackingPage()),
     GetPage(name: userFriendsPage, page: () => UserFriendsPage()),
     GetPage(name: userFriendsDetailPage, page: () => UserFriendsDetailPage()),
+    GetPage(name: userDiaryEditPage, page: () => UserDiaryEditPage()),
   ];
 }
