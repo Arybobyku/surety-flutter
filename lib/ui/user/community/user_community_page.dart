@@ -217,7 +217,7 @@ class _UserCommunityPageState extends State<UserCommunityPage> {
                                                           Text("Expert"),
                                                       ],
                                                     ),
-                                                    if (diary.isExpert!)
+                                                    if (diary.isExpert! && diary.userModel?.bio != null)
                                                       Text(
                                                         "${diary.userModel?.bio}",
                                                         style: TextStyle(
